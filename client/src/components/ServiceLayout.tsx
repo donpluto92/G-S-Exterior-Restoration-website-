@@ -319,7 +319,7 @@ export default function ServiceLayout({
       <footer style={{ backgroundColor: "oklch(0.15 0.05 155)", borderTop: "1px solid oklch(0.25 0.06 155)" }} className="py-8">
         <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
           <img
-            src="/manus-storage/gs-logo_f2eb811c.png"
+            src="/images/gs-logo.png"
             alt="G&S Exterior Restoration LLC"
             className="h-12 w-auto object-contain"
           />

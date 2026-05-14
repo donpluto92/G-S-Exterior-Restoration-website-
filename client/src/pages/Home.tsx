@@ -999,7 +999,7 @@ export default function HomePage() {
             {/* Logo */}
             <div className="text-center md:text-left">
               <img
-                src="/manus-storage/gs-logo_f2eb811c.png"
+                src="/images/gs-logo.png"
                 alt="G&S Exterior Restoration LLC"
                 className="h-16 w-auto object-contain"
               />

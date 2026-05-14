@@ -47,7 +47,7 @@ export default function Navbar() {
           className="flex items-center group"
         >
           <img
-            src="/manus-storage/gs-logo_f2eb811c.png"
+            src="/images/gs-logo.png"
             alt="G&S Exterior Restoration LLC"
             className="h-14 w-auto object-contain"
           />
@@ -76,7 +76,7 @@ export default function Navbar() {
         <a
           href="tel:3144670332"
           className="hidden md:flex items-center gap-2 btn-gold rounded"
-          style={{ fontSize: "0.85rem" }}
+          style={{ fontSize: "1.05rem" }}
         >
           <Phone size={15} />
           (314) 467-0332
