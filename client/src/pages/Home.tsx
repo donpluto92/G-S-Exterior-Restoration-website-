@@ -29,7 +29,7 @@ const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNR
 const DRIVEWAY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/driveway-clean-miGtpBbYzGprrMxfiHWwZF.webp";
 const DECK_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/deck-clean-gknHjniPv6K2enyENyo566.webp";
 const SIDING_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/siding-clean-dk8VDGPUe5sPbznsNs5D65.webp";
-const VEHICLE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/vehicle-wash-ZkWmSLnWRhWMND2MiYTwHj.webp";
+const VEHICLE_IMG = "/images/vehicle-wash.jpg";
 
 // Scroll reveal hook inline
 function useReveal() {
