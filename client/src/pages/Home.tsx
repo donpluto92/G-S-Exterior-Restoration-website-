@@ -674,12 +674,6 @@ export default function HomePage() {
             ))}
           </div>
 
-          <p
-            className="text-center mt-10 text-sm"
-            style={{ color: "oklch(0.55 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
-          >
-            These are placeholder reviews — replace with real Google reviews from your customers.
-          </p>
         </div>
       </section>
 
