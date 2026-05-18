@@ -269,7 +269,7 @@ export default function HomePage() {
       <section
         id="trust"
         ref={trustRef}
-        style={{ backgroundColor: "oklch(0.72 0.12 75)" }}
+        style={{ backgroundColor: "oklch(0.72 0.12 75)", borderTop: "1px solid oklch(0.60 0.10 75)", borderBottom: "1px solid oklch(0.60 0.10 75)" }}
         className="py-5"
       >
         <div className="container">
@@ -304,7 +304,7 @@ export default function HomePage() {
         id="services"
         ref={servicesRef}
         className="py-24"
-        style={{ backgroundColor: "oklch(0.98 0.015 80)" }}
+        style={{ backgroundColor: "oklch(0.98 0.015 80)", borderTop: "1px solid oklch(0.92 0.004 286.32)", borderBottom: "1px solid oklch(0.92 0.004 286.32)" }}
       >
         <div className="container">
           {/* Header */}
@@ -458,7 +458,7 @@ export default function HomePage() {
         id="about"
         ref={aboutRef}
         className="py-24"
-        style={{ backgroundColor: "oklch(0.20 0.06 155)" }}
+        style={{ backgroundColor: "oklch(0.20 0.06 155)", borderTop: "1px solid oklch(0.35 0.08 155)", borderBottom: "1px solid oklch(0.35 0.08 155)" }}
       >
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -583,7 +583,7 @@ export default function HomePage() {
       {/* ── REVIEWS ── */}
       <section
         className="py-24"
-        style={{ backgroundColor: "oklch(0.20 0.06 155)" }}
+        style={{ backgroundColor: "oklch(0.20 0.06 155)", borderTop: "1px solid oklch(0.35 0.08 155)", borderBottom: "1px solid oklch(0.35 0.08 155)" }}
       >
         <div className="container">
           <div className="text-center mb-14">
@@ -681,7 +681,7 @@ export default function HomePage() {
       <section
         ref={whyRef}
         className="py-24"
-        style={{ backgroundColor: "oklch(0.93 0.02 80)" }}
+        style={{ backgroundColor: "oklch(0.93 0.02 80)", borderTop: "1px solid oklch(0.92 0.004 286.32)", borderBottom: "1px solid oklch(0.92 0.004 286.32)" }}
       >
         <div className="container">
           <div className="text-center mb-14">
@@ -753,7 +753,7 @@ export default function HomePage() {
         id="contact"
         ref={contactRef}
         className="py-24"
-        style={{ backgroundColor: "oklch(0.28 0.07 155)" }}
+        style={{ backgroundColor: "oklch(0.20 0.06 155)", borderTop: "1px solid oklch(0.35 0.08 155)", borderBottom: "1px solid oklch(0.35 0.08 155)" }}
       >
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
