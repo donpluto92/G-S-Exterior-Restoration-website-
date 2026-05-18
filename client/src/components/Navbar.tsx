@@ -49,7 +49,7 @@ export default function Navbar() {
           <img
             src="/images/gs-logo.png"
             alt="G&S Exterior Restoration LLC"
-            className="h-24 w-auto object-contain"
+            className="h-32 w-auto object-contain"
           />
         </button>
 
