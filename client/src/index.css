@@ -54,20 +54,20 @@
 
   /* Brand Colors */
   --forest-green: oklch(0.28 0.07 155);
-  --forest-green-dark: oklch(0.20 0.06 155);
+  --forest-green-dark: oklch(0.2 0.06 155);
   --forest-green-light: oklch(0.35 0.08 155);
   --gold: oklch(0.72 0.12 75);
-  --gold-light: oklch(0.82 0.10 75);
+  --gold-light: oklch(0.82 0.1 75);
   --cream: oklch(0.98 0.015 80);
   --cream-dark: oklch(0.93 0.02 80);
 
   /* Semantic tokens */
   --background: oklch(0.98 0.015 80);
-  --foreground: oklch(0.20 0.06 155);
+  --foreground: oklch(0.2 0.06 155);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.20 0.06 155);
+  --card-foreground: oklch(0.2 0.06 155);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.20 0.06 155);
+  --popover-foreground: oklch(0.2 0.06 155);
   --primary: oklch(0.28 0.07 155);
   --primary-foreground: oklch(0.98 0.015 80);
   --secondary: oklch(0.93 0.02 80);
@@ -75,7 +75,7 @@
   --muted: oklch(0.93 0.02 80);
   --muted-foreground: oklch(0.45 0.04 155);
   --accent: oklch(0.72 0.12 75);
-  --accent-foreground: oklch(0.20 0.06 155);
+  --accent-foreground: oklch(0.2 0.06 155);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
   --border: oklch(0.88 0.025 80);
@@ -84,12 +84,12 @@
   --chart-1: oklch(0.28 0.07 155);
   --chart-2: oklch(0.72 0.12 75);
   --chart-3: oklch(0.35 0.08 155);
-  --chart-4: oklch(0.82 0.10 75);
-  --chart-5: oklch(0.20 0.06 155);
+  --chart-4: oklch(0.82 0.1 75);
+  --chart-5: oklch(0.2 0.06 155);
   --sidebar: oklch(0.28 0.07 155);
   --sidebar-foreground: oklch(0.98 0.015 80);
   --sidebar-primary: oklch(0.72 0.12 75);
-  --sidebar-primary-foreground: oklch(0.20 0.06 155);
+  --sidebar-primary-foreground: oklch(0.2 0.06 155);
   --sidebar-accent: oklch(0.35 0.08 155);
   --sidebar-accent-foreground: oklch(0.98 0.015 80);
   --sidebar-border: oklch(0.35 0.08 155);
@@ -102,10 +102,12 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Barlow', sans-serif;
+    font-family: "Barlow", sans-serif;
   }
-  h1, h2, h3 {
-    font-family: 'Playfair Display', serif;
+  h1,
+  h2,
+  h3 {
+    font-family: "Playfair Display", serif;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -152,12 +154,17 @@
   /* Gold divider line */
   .gold-divider {
     height: 3px;
-    background: linear-gradient(90deg, transparent, oklch(0.72 0.12 75), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      oklch(0.72 0.12 75),
+      transparent
+    );
   }
 
   /* Section with dark green bg */
   .section-dark {
-    background-color: oklch(0.20 0.06 155);
+    background-color: oklch(0.2 0.06 155);
     color: oklch(0.98 0.015 80);
   }
 
@@ -193,7 +200,9 @@
   .reveal {
     opacity: 0;
     transform: translateY(28px);
-    transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1), transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transition:
+      opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+      transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   .reveal.visible {
@@ -203,12 +212,14 @@
 
   /* Service card hover */
   .service-card {
-    transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+    transition:
+      transform 0.2s cubic-bezier(0.23, 1, 0.32, 1),
+      box-shadow 0.2s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   .service-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
   }
 
   /* CTA button fill animation */
@@ -216,13 +227,15 @@
     position: relative;
     overflow: hidden;
     background-color: oklch(0.72 0.12 75);
-    color: oklch(0.20 0.06 155);
-    font-family: 'Barlow Condensed', sans-serif;
+    color: oklch(0.2 0.06 155);
+    font-family: "Barlow Condensed", sans-serif;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     padding: 0.875rem 2rem;
-    transition: transform 0.16s ease-out, box-shadow 0.16s ease-out;
+    transition:
+      transform 0.16s ease-out,
+      box-shadow 0.16s ease-out;
   }
 
   .btn-gold:hover {
@@ -237,17 +250,20 @@
   .btn-outline-gold {
     border: 2px solid oklch(0.72 0.12 75);
     color: oklch(0.72 0.12 75);
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: "Barlow Condensed", sans-serif;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     padding: 0.875rem 2rem;
-    transition: background-color 0.2s ease-out, color 0.2s ease-out, transform 0.16s ease-out;
+    transition:
+      background-color 0.2s ease-out,
+      color 0.2s ease-out,
+      transform 0.16s ease-out;
   }
 
   .btn-outline-gold:hover {
     background-color: oklch(0.72 0.12 75);
-    color: oklch(0.20 0.06 155);
+    color: oklch(0.2 0.06 155);
     transform: translateY(-2px);
   }
 
