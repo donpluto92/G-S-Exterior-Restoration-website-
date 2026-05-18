@@ -8,8 +8,8 @@ export function useScrollReveal(threshold = 0.15) {
     if (!el) return;
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
           }
@@ -20,7 +20,7 @@ export function useScrollReveal(threshold = 0.15) {
 
     // Observe the element itself and all .reveal children
     const reveals = el.querySelectorAll(".reveal");
-    reveals.forEach((r) => observer.observe(r));
+    reveals.forEach(r => observer.observe(r));
     if (el.classList.contains("reveal")) observer.observe(el);
 
     return () => observer.disconnect();

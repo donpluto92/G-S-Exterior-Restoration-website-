@@ -1,6 +1,7 @@
 import ServiceLayout from "@/components/ServiceLayout";
 
-const SIDING_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/siding-clean-dk8VDGPUe5sPbznsNs5D65.webp";
+const SIDING_IMG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/siding-clean-dk8VDGPUe5sPbznsNs5D65.webp";
 
 export default function SidingWashing() {
   return (
@@ -24,35 +25,43 @@ export default function SidingWashing() {
         {
           step: "01",
           title: "Inspection & Quote",
-          description: "We assess the siding material, staining type, and overall condition to recommend the right cleaning solution and pressure level.",
+          description:
+            "We assess the siding material, staining type, and overall condition to recommend the right cleaning solution and pressure level.",
         },
         {
           step: "02",
           title: "Soft Wash Application",
-          description: "We apply a biodegradable cleaning solution that kills mold, mildew, and algae at the root — then rinse with low pressure to safely remove all residue without forcing water behind panels.",
+          description:
+            "We apply a biodegradable cleaning solution that kills mold, mildew, and algae at the root — then rinse with low pressure to safely remove all residue without forcing water behind panels.",
         },
         {
           step: "03",
           title: "Final Rinse & Review",
-          description: "We rinse the entire exterior and review the results with you to ensure every section is clean and you're fully satisfied.",
+          description:
+            "We rinse the entire exterior and review the results with you to ensure every section is clean and you're fully satisfied.",
         },
       ]}
       faqs={[
         {
-          question: "What's the difference between pressure washing and soft washing for siding?",
-          answer: "Pressure washing uses high-force water to blast away dirt, which can damage vinyl siding, force water behind panels, and strip paint. Soft washing uses low pressure combined with a cleaning solution that kills organic growth at the root — it's safer and more effective for siding.",
+          question:
+            "What's the difference between pressure washing and soft washing for siding?",
+          answer:
+            "Pressure washing uses high-force water to blast away dirt, which can damage vinyl siding, force water behind panels, and strip paint. Soft washing uses low pressure combined with a cleaning solution that kills organic growth at the root — it's safer and more effective for siding.",
         },
         {
           question: "Will the cleaning solution harm my plants or lawn?",
-          answer: "We use biodegradable cleaning solutions and take care to pre-wet surrounding landscaping before and after washing. We haven't had issues with plant damage using our current process.",
+          answer:
+            "We use biodegradable cleaning solutions and take care to pre-wet surrounding landscaping before and after washing. We haven't had issues with plant damage using our current process.",
         },
         {
           question: "How long does house washing take?",
-          answer: "Most single-story homes take 2–3 hours. Two-story homes or larger properties may take 3–5 hours. We'll give you a time estimate during the free quote.",
+          answer:
+            "Most single-story homes take 2–3 hours. Two-story homes or larger properties may take 3–5 hours. We'll give you a time estimate during the free quote.",
         },
         {
           question: "How often should I have my siding washed?",
-          answer: "Every 1–2 years is typical for most homes in Missouri. Homes with heavy tree coverage, north-facing walls, or high humidity may benefit from annual cleaning.",
+          answer:
+            "Every 1–2 years is typical for most homes in Missouri. Homes with heavy tree coverage, north-facing walls, or high humidity may benefit from annual cleaning.",
         },
       ]}
       relatedServices={[

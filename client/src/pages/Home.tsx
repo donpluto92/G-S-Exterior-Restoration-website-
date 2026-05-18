@@ -25,10 +25,14 @@ import {
 import { Link } from "wouter";
 
 // Image URLs from generated assets
-const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/hero-pressure-wash-5H7By3vYupAzNxdmLxcsg7.webp";
-const DRIVEWAY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/driveway-clean-miGtpBbYzGprrMxfiHWwZF.webp";
-const DECK_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/deck-clean-gknHjniPv6K2enyENyo566.webp";
-const SIDING_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/siding-clean-dk8VDGPUe5sPbznsNs5D65.webp";
+const HERO_IMG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/hero-pressure-wash-5H7By3vYupAzNxdmLxcsg7.webp";
+const DRIVEWAY_IMG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/driveway-clean-miGtpBbYzGprrMxfiHWwZF.webp";
+const DECK_IMG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/deck-clean-gknHjniPv6K2enyENyo566.webp";
+const SIDING_IMG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/siding-clean-dk8VDGPUe5sPbznsNs5D65.webp";
 const VEHICLE_IMG = "/images/vehicle-wash.jpg";
 
 // Scroll reveal hook inline
@@ -38,8 +42,8 @@ function useReveal() {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             const reveals = entry.target.querySelectorAll(".reveal");
             reveals.forEach((r, i) => {
@@ -155,7 +159,10 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "oklch(0.98 0.015 80)" }}>
+    <div
+      className="min-h-screen"
+      style={{ backgroundColor: "oklch(0.98 0.015 80)" }}
+    >
       <Navbar />
 
       {/* ── HERO ── */}
@@ -226,15 +233,23 @@ export default function HomePage() {
 
             <p
               className="text-lg sm:text-xl leading-relaxed mb-10 max-w-xl"
-              style={{ color: "oklch(0.88 0.02 80)", fontFamily: "'Barlow', sans-serif" }}
+              style={{
+                color: "oklch(0.88 0.02 80)",
+                fontFamily: "'Barlow', sans-serif",
+              }}
             >
               G&S Exterior Restoration delivers professional pressure washing
-              for driveways, decks, siding, and vehicles. Fully insured.
-              Free estimates. Results you can see from the street.
+              for driveways, decks, siding, and vehicles. Fully insured. Free
+              estimates. Results you can see from the street.
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <a href="https://calendar.app.google/YmtAenZ1D6f8BQ8h9" target="_blank" rel="noopener noreferrer" className="btn-gold rounded-sm">
+              <a
+                href="https://calendar.app.google/YmtAenZ1D6f8BQ8h9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-gold rounded-sm"
+              >
                 <Clock size={16} className="inline mr-2" />
                 Book a Free Estimate
               </a>
@@ -257,7 +272,10 @@ export default function HomePage() {
         >
           <span
             className="text-xs tracking-widest uppercase"
-            style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 600 }}
+            style={{
+              fontFamily: "'Barlow Condensed', sans-serif",
+              fontWeight: 600,
+            }}
           >
             Scroll
           </span>
@@ -332,10 +350,13 @@ export default function HomePage() {
             </h2>
             <p
               className="reveal text-base max-w-xl mx-auto"
-              style={{ color: "oklch(0.45 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
+              style={{
+                color: "oklch(0.45 0.04 155)",
+                fontFamily: "'Barlow', sans-serif",
+              }}
             >
-              Every service includes a free estimate. We use the right
-              equipment and technique for each surface — no guesswork, no damage.
+              Every service includes a free estimate. We use the right equipment
+              and technique for each surface — no guesswork, no damage.
             </p>
           </div>
 
@@ -367,7 +388,10 @@ export default function HomePage() {
                           "linear-gradient(135deg, oklch(0.28 0.07 155), oklch(0.20 0.06 155))",
                       }}
                     >
-                      <service.icon size={48} style={{ color: "oklch(0.72 0.12 75)" }} />
+                      <service.icon
+                        size={48}
+                        style={{ color: "oklch(0.72 0.12 75)" }}
+                      />
                     </div>
                   )}
                   {service.tag && (
@@ -387,7 +411,10 @@ export default function HomePage() {
                 {/* Content */}
                 <div className="p-5 flex flex-col flex-1">
                   <div className="flex items-center gap-2 mb-3">
-                    <service.icon size={18} style={{ color: "oklch(0.72 0.12 75)" }} />
+                    <service.icon
+                      size={18}
+                      style={{ color: "oklch(0.72 0.12 75)" }}
+                    />
                     <h3
                       className="font-bold text-base"
                       style={{
@@ -402,7 +429,10 @@ export default function HomePage() {
                   </div>
                   <p
                     className="text-sm leading-relaxed flex-1"
-                    style={{ color: "oklch(0.45 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
+                    style={{
+                      color: "oklch(0.45 0.04 155)",
+                      fontFamily: "'Barlow', sans-serif",
+                    }}
                   >
                     {service.description}
                   </p>
@@ -413,11 +443,13 @@ export default function HomePage() {
                         fontFamily: "'Barlow Condensed', sans-serif",
                         color: "oklch(0.28 0.07 155)",
                       }}
-                      onMouseEnter={(e) =>
-                        ((e.currentTarget as HTMLElement).style.color = "oklch(0.72 0.12 75)")
+                      onMouseEnter={e =>
+                        ((e.currentTarget as HTMLElement).style.color =
+                          "oklch(0.72 0.12 75)")
                       }
-                      onMouseLeave={(e) =>
-                        ((e.currentTarget as HTMLElement).style.color = "oklch(0.28 0.07 155)")
+                      onMouseLeave={e =>
+                        ((e.currentTarget as HTMLElement).style.color =
+                          "oklch(0.28 0.07 155)")
                       }
                     >
                       Learn More →
@@ -446,8 +478,10 @@ export default function HomePage() {
               }}
             >
               All Services Include a{" "}
-              <span style={{ color: "oklch(0.55 0.10 75)" }}>Free Estimate</span>
-              {" "}— No Obligation
+              <span style={{ color: "oklch(0.55 0.10 75)" }}>
+                Free Estimate
+              </span>{" "}
+              — No Obligation
             </p>
           </div>
         </div>
@@ -499,9 +533,9 @@ export default function HomePage() {
                 }}
               >
                 G&S Exterior Restoration is a fully insured pressure washing
-                business proudly serving Mexico, MO and the surrounding communities.
-                We specialize in driveway cleaning, siding washing, deck cleaning,
-                patio cleaning, vehicle washing, and more.
+                business proudly serving Mexico, MO and the surrounding
+                communities. We specialize in driveway cleaning, siding washing,
+                deck cleaning, patio cleaning, vehicle washing, and more.
               </p>
               <p
                 className="reveal text-base leading-relaxed mb-8"
@@ -513,9 +547,9 @@ export default function HomePage() {
                 We know how much of a difference clean concrete, siding, and
                 outdoor spaces can make. Our exterior cleaning services are
                 designed to improve curb appeal, refresh the look of your
-                property, and help your home look well maintained year-round.
-                At G&S, we believe in honest work, dependable service, and
-                results you can see from the street.
+                property, and help your home look well maintained year-round. At
+                G&S, we believe in honest work, dependable service, and results
+                you can see from the street.
               </p>
               <div className="reveal flex flex-wrap gap-4">
                 <a href="tel:3144670332" className="btn-gold rounded-sm">
@@ -535,9 +569,21 @@ export default function HomePage() {
             {/* Right: stat cards */}
             <div className="grid grid-cols-2 gap-4">
               {[
-                { value: "100%", label: "Fully Insured", sub: "Every job, every time" },
-                { value: "$0", label: "Estimate Cost", sub: "Free quotes always" },
-                { value: "24/7", label: "Book Online", sub: "Anytime, any device" },
+                {
+                  value: "100%",
+                  label: "Fully Insured",
+                  sub: "Every job, every time",
+                },
+                {
+                  value: "$0",
+                  label: "Estimate Cost",
+                  sub: "Free quotes always",
+                },
+                {
+                  value: "24/7",
+                  label: "Book Online",
+                  sub: "Anytime, any device",
+                },
                 { value: "MO", label: "Mexico & Beyond", sub: "Proudly local" },
               ].map((stat, i) => (
                 <div
@@ -569,7 +615,10 @@ export default function HomePage() {
                   </div>
                   <div
                     className="text-xs"
-                    style={{ color: "oklch(0.65 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
+                    style={{
+                      color: "oklch(0.65 0.04 155)",
+                      fontFamily: "'Barlow', sans-serif",
+                    }}
                   >
                     {stat.sub}
                   </div>
@@ -601,7 +650,10 @@ export default function HomePage() {
             </div>
             <h2
               className="text-4xl sm:text-5xl font-bold mt-2"
-              style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.98 0.015 80)" }}
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                color: "oklch(0.98 0.015 80)",
+              }}
             >
               What Our Customers Say
             </h2>
@@ -612,19 +664,22 @@ export default function HomePage() {
               {
                 name: "Sarah M.",
                 location: "Mexico, MO",
-                review: "G&S did an incredible job on our driveway. It looks brand new — I couldn't believe the difference. They were on time, professional, and the price was very fair. Will definitely use them again.",
+                review:
+                  "G&S did an incredible job on our driveway. It looks brand new — I couldn't believe the difference. They were on time, professional, and the price was very fair. Will definitely use them again.",
                 service: "Driveway Cleaning",
               },
               {
                 name: "Tom R.",
                 location: "Mexico, MO",
-                review: "Our deck had years of algae and mildew buildup and I was worried it was beyond saving. G&S had it looking like new in a couple of hours. Highly recommend to anyone in the area.",
+                review:
+                  "Our deck had years of algae and mildew buildup and I was worried it was beyond saving. G&S had it looking like new in a couple of hours. Highly recommend to anyone in the area.",
                 service: "Deck Cleaning",
               },
               {
                 name: "Linda K.",
                 location: "Centralia, MO",
-                review: "The siding on our house had black streaks all the way across the front. After G&S washed it, the whole house looked freshly painted. Fantastic work and great communication throughout.",
+                review:
+                  "The siding on our house had black streaks all the way across the front. After G&S washed it, the whole house looked freshly painted. Fantastic work and great communication throughout.",
                 service: "Siding Washing",
               },
             ].map((review, i) => (
@@ -636,10 +691,17 @@ export default function HomePage() {
                   borderColor: "oklch(0.35 0.08 155)",
                 }}
               >
-                <Quote size={28} className="mb-4 opacity-40" style={{ color: "oklch(0.72 0.12 75)" }} />
+                <Quote
+                  size={28}
+                  className="mb-4 opacity-40"
+                  style={{ color: "oklch(0.72 0.12 75)" }}
+                />
                 <p
                   className="text-sm leading-relaxed flex-1 mb-6 italic"
-                  style={{ color: "oklch(0.85 0.02 80)", fontFamily: "'Barlow', sans-serif" }}
+                  style={{
+                    color: "oklch(0.85 0.02 80)",
+                    fontFamily: "'Barlow', sans-serif",
+                  }}
                 >
                   &ldquo;{review.review}&rdquo;
                 </p>
@@ -647,33 +709,51 @@ export default function HomePage() {
                   <div>
                     <div
                       className="font-bold text-sm"
-                      style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, color: "oklch(0.98 0.015 80)" }}
+                      style={{
+                        fontFamily: "'Barlow Condensed', sans-serif",
+                        fontWeight: 700,
+                        color: "oklch(0.98 0.015 80)",
+                      }}
                     >
                       {review.name}
                     </div>
                     <div
                       className="text-xs"
-                      style={{ color: "oklch(0.65 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
+                      style={{
+                        color: "oklch(0.65 0.04 155)",
+                        fontFamily: "'Barlow', sans-serif",
+                      }}
                     >
                       {review.location}
                     </div>
                   </div>
                   <div className="flex gap-0.5">
                     {[...Array(5)].map((_, j) => (
-                      <Star key={j} size={14} fill="oklch(0.72 0.12 75)" style={{ color: "oklch(0.72 0.12 75)" }} />
+                      <Star
+                        key={j}
+                        size={14}
+                        fill="oklch(0.72 0.12 75)"
+                        style={{ color: "oklch(0.72 0.12 75)" }}
+                      />
                     ))}
                   </div>
                 </div>
                 <div
                   className="mt-3 pt-3 border-t text-xs"
-                  style={{ borderColor: "oklch(0.35 0.08 155)", color: "oklch(0.55 0.04 155)", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase" }}
+                  style={{
+                    borderColor: "oklch(0.35 0.08 155)",
+                    color: "oklch(0.55 0.04 155)",
+                    fontFamily: "'Barlow Condensed', sans-serif",
+                    fontWeight: 600,
+                    letterSpacing: "0.05em",
+                    textTransform: "uppercase",
+                  }}
                 >
                   {review.service}
                 </div>
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
@@ -723,7 +803,10 @@ export default function HomePage() {
                   className="w-10 h-10 rounded-full flex items-center justify-center mb-4"
                   style={{ backgroundColor: "oklch(0.72 0.12 75 / 0.15)" }}
                 >
-                  <CheckCircle size={20} style={{ color: "oklch(0.55 0.10 75)" }} />
+                  <CheckCircle
+                    size={20}
+                    style={{ color: "oklch(0.55 0.10 75)" }}
+                  />
                 </div>
                 <h3
                   className="font-bold text-base mb-2"
@@ -738,7 +821,10 @@ export default function HomePage() {
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "oklch(0.45 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
+                  style={{
+                    color: "oklch(0.45 0.04 155)",
+                    fontFamily: "'Barlow', sans-serif",
+                  }}
                 >
                   {item.description}
                 </p>
@@ -793,9 +879,9 @@ export default function HomePage() {
                   fontFamily: "'Barlow', sans-serif",
                 }}
               >
-                Call, text, email, or book online — we're available 24/7.
-                We'll get back to you quickly with a no-obligation estimate
-                for your project.
+                Call, text, email, or book online — we're available 24/7. We'll
+                get back to you quickly with a no-obligation estimate for your
+                project.
               </p>
 
               <div className="reveal flex flex-col gap-6">
@@ -870,7 +956,10 @@ export default function HomePage() {
                     className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
                     style={{ backgroundColor: "oklch(0.72 0.12 75 / 0.15)" }}
                   >
-                    <MapPin size={20} style={{ color: "oklch(0.72 0.12 75)" }} />
+                    <MapPin
+                      size={20}
+                      style={{ color: "oklch(0.72 0.12 75)" }}
+                    />
                   </div>
                   <div>
                     <div
@@ -898,87 +987,118 @@ export default function HomePage() {
             </div>
 
             {/* Right: Google Calendar booking */}
-          <div
-            className="reveal rounded-xl p-8 border flex flex-col"
-            style={{
-              backgroundColor: "oklch(0.20 0.06 155)",
-              borderColor: "oklch(0.35 0.08 155)",
-            }}
-          >
-            <h3
-              className="text-2xl font-bold mb-3"
+            <div
+              className="reveal rounded-xl p-8 border flex flex-col"
               style={{
-                fontFamily: "'Playfair Display', serif",
-                color: "oklch(0.98 0.015 80)",
+                backgroundColor: "oklch(0.20 0.06 155)",
+                borderColor: "oklch(0.35 0.08 155)",
               }}
             >
-              Book Your Free Estimate
-            </h3>
-            <p
-              className="text-sm mb-6 leading-relaxed"
-              style={{ color: "oklch(0.75 0.025 80)", fontFamily: "'Barlow', sans-serif" }}
-            >
-              Pick a time that works for you and it goes straight to our calendar.
-              We'll confirm and show up ready to work.
-            </p>
-
-            {/* Booking steps */}
-            <div className="flex flex-col gap-4 mb-8">
-              {[
-                { step: "01", label: "Choose a date & time", sub: "Pick any available slot on our calendar" },
-                { step: "02", label: "Add your details", sub: "Name, address, and service needed" },
-                { step: "03", label: "We confirm & show up", sub: "You'll get a confirmation — we handle the rest" },
-              ].map((item) => (
-                <div key={item.step} className="flex items-start gap-4">
-                  <div
-                    className="text-2xl font-bold leading-none flex-shrink-0 w-10"
-                    style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.72 0.12 75 / 0.4)" }}
-                  >
-                    {item.step}
-                  </div>
-                  <div>
-                    <div
-                      className="text-sm font-bold"
-                      style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, color: "oklch(0.98 0.015 80)" }}
-                    >
-                      {item.label}
-                    </div>
-                    <div
-                      className="text-xs mt-0.5"
-                      style={{ color: "oklch(0.65 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
-                    >
-                      {item.sub}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <a
-              href="https://calendar.app.google/YmtAenZ1D6f8BQ8h9"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-gold rounded-sm text-center block"
-            >
-              <Clock size={15} className="inline mr-2" />
-              Schedule on Google Calendar
-            </a>
-
-            <div
-              className="mt-4 pt-4 border-t text-center"
-              style={{ borderColor: "oklch(0.35 0.08 155)" }}
-            >
-              <p
-                className="text-xs"
-                style={{ color: "oklch(0.55 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
+              <h3
+                className="text-2xl font-bold mb-3"
+                style={{
+                  fontFamily: "'Playfair Display', serif",
+                  color: "oklch(0.98 0.015 80)",
+                }}
               >
-                Prefer to call or text?{" "}
-                <a href="tel:3144670332" style={{ color: "oklch(0.72 0.12 75)" }}>
-                  (314) 467-0332
-                </a>
+                Book Your Free Estimate
+              </h3>
+              <p
+                className="text-sm mb-6 leading-relaxed"
+                style={{
+                  color: "oklch(0.75 0.025 80)",
+                  fontFamily: "'Barlow', sans-serif",
+                }}
+              >
+                Pick a time that works for you and it goes straight to our
+                calendar. We'll confirm and show up ready to work.
               </p>
+
+              {/* Booking steps */}
+              <div className="flex flex-col gap-4 mb-8">
+                {[
+                  {
+                    step: "01",
+                    label: "Choose a date & time",
+                    sub: "Pick any available slot on our calendar",
+                  },
+                  {
+                    step: "02",
+                    label: "Add your details",
+                    sub: "Name, address, and service needed",
+                  },
+                  {
+                    step: "03",
+                    label: "We confirm & show up",
+                    sub: "You'll get a confirmation — we handle the rest",
+                  },
+                ].map(item => (
+                  <div key={item.step} className="flex items-start gap-4">
+                    <div
+                      className="text-2xl font-bold leading-none flex-shrink-0 w-10"
+                      style={{
+                        fontFamily: "'Playfair Display', serif",
+                        color: "oklch(0.72 0.12 75 / 0.4)",
+                      }}
+                    >
+                      {item.step}
+                    </div>
+                    <div>
+                      <div
+                        className="text-sm font-bold"
+                        style={{
+                          fontFamily: "'Barlow Condensed', sans-serif",
+                          fontWeight: 700,
+                          color: "oklch(0.98 0.015 80)",
+                        }}
+                      >
+                        {item.label}
+                      </div>
+                      <div
+                        className="text-xs mt-0.5"
+                        style={{
+                          color: "oklch(0.65 0.04 155)",
+                          fontFamily: "'Barlow', sans-serif",
+                        }}
+                      >
+                        {item.sub}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <a
+                href="https://calendar.app.google/YmtAenZ1D6f8BQ8h9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-gold rounded-sm text-center block"
+              >
+                <Clock size={15} className="inline mr-2" />
+                Schedule on Google Calendar
+              </a>
+
+              <div
+                className="mt-4 pt-4 border-t text-center"
+                style={{ borderColor: "oklch(0.35 0.08 155)" }}
+              >
+                <p
+                  className="text-xs"
+                  style={{
+                    color: "oklch(0.55 0.04 155)",
+                    fontFamily: "'Barlow', sans-serif",
+                  }}
+                >
+                  Prefer to call or text?{" "}
+                  <a
+                    href="tel:3144670332"
+                    style={{ color: "oklch(0.72 0.12 75)" }}
+                  >
+                    (314) 467-0332
+                  </a>
+                </p>
+              </div>
             </div>
-          </div>
           </div>
         </div>
       </section>
@@ -1016,11 +1136,13 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-200"
                 style={{ backgroundColor: "oklch(0.28 0.07 155)" }}
-                onMouseEnter={(e) =>
-                  ((e.currentTarget as HTMLElement).style.backgroundColor = "oklch(0.72 0.12 75)")
+                onMouseEnter={e =>
+                  ((e.currentTarget as HTMLElement).style.backgroundColor =
+                    "oklch(0.72 0.12 75)")
                 }
-                onMouseLeave={(e) =>
-                  ((e.currentTarget as HTMLElement).style.backgroundColor = "oklch(0.28 0.07 155)")
+                onMouseLeave={e =>
+                  ((e.currentTarget as HTMLElement).style.backgroundColor =
+                    "oklch(0.28 0.07 155)")
                 }
                 aria-label="Facebook"
               >
@@ -1032,15 +1154,20 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-200"
                 style={{ backgroundColor: "oklch(0.28 0.07 155)" }}
-                onMouseEnter={(e) =>
-                  ((e.currentTarget as HTMLElement).style.backgroundColor = "oklch(0.72 0.12 75)")
+                onMouseEnter={e =>
+                  ((e.currentTarget as HTMLElement).style.backgroundColor =
+                    "oklch(0.72 0.12 75)")
                 }
-                onMouseLeave={(e) =>
-                  ((e.currentTarget as HTMLElement).style.backgroundColor = "oklch(0.28 0.07 155)")
+                onMouseLeave={e =>
+                  ((e.currentTarget as HTMLElement).style.backgroundColor =
+                    "oklch(0.28 0.07 155)")
                 }
                 aria-label="Instagram"
               >
-                <Instagram size={16} style={{ color: "oklch(0.98 0.015 80)" }} />
+                <Instagram
+                  size={16}
+                  style={{ color: "oklch(0.98 0.015 80)" }}
+                />
               </a>
             </div>
 

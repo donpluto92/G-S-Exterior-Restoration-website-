@@ -10,6 +10,7 @@ import DeckCleaning from "./pages/DeckCleaning";
 import SidingWashing from "./pages/SidingWashing";
 import VehicleWashing from "./pages/VehicleWashing";
 import ServiceAreas from "./pages/ServiceAreas";
+import { Analytics } from "@vercel/analytics/react";
 
 function Router() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Router />
+          <Analytics />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
