@@ -241,39 +241,19 @@ export default function ServiceLayout({
         </div>
       </section>
 
-      {/* CTA */}
+      {/* CTA with Estimate Widget */}
       <section className="py-20" style={{ backgroundColor: "oklch(0.20 0.06 155)" }}>
-        <div className="container text-center">
-          <h2
-            className="text-3xl sm:text-4xl font-bold mb-4"
-            style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.98 0.015 80)" }}
-          >
-            Ready for a{" "}
-            <span className="italic" style={{ color: "oklch(0.82 0.10 75)" }}>
-              Free Estimate?
-            </span>
-          </h2>
-          <p
-            className="text-base mb-8 max-w-lg mx-auto"
-            style={{ color: "oklch(0.80 0.025 80)", fontFamily: "'Barlow', sans-serif" }}
-          >
-            Book online in seconds or give us a call. We serve Mexico, MO and
-            all surrounding communities.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <a
-              href="https://calendar.app.google/YmtAenZ1D6f8BQ8h9"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-gold rounded-sm"
-            >
-              <Clock size={15} className="inline mr-2" />
-              Book on Google Calendar
-            </a>
-            <a href="tel:3144670332" className="btn-outline-gold rounded-sm">
-              <Phone size={15} className="inline mr-2" />
-              (314) 467-0332
-            </a>
+        <div className="container">
+          <div style={{ maxWidth: "720px", margin: "0 auto" }}>
+            <iframe
+              src="https://gsestimate-fdxeg6d2.manus.space/widget"
+              width="100%"
+              height="800"
+              frameBorder="0"
+              style={{ border: "none", borderRadius: "12px", display: "block" }}
+              title="G&S Exterior Restoration — Free Estimate"
+              allow="camera"
+            />
           </div>
         </div>
       </section>
