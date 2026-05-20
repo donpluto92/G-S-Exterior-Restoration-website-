@@ -63,7 +63,7 @@ export default function Navbar() {
               style={{
                 fontFamily: "'Barlow Condensed', sans-serif",
                 fontWeight: 600,
-                color: "oklch(0.93 0.02 80)",
+                color: "oklch(0.82 0.10 75)",
                 opacity: 0.85,
               }}
             >
@@ -109,7 +109,7 @@ export default function Navbar() {
               style={{
                 fontFamily: "'Barlow Condensed', sans-serif",
                 fontWeight: 600,
-                color: "oklch(0.93 0.02 80)",
+                color: "oklch(0.82 0.10 75)",
                 borderColor: "oklch(0.35 0.08 155)",
               }}
             >
