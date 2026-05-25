@@ -32,8 +32,8 @@ export default function Navbar() {
     <header
       className={`relative z-50 transition-all duration-300 ${
         scrolled
-          ? "py-1 shadow-2xl"
-          : "py-2"
+          ? "py-0 shadow-2xl"
+          : "py-1"
       }`}
       style={{
         backgroundColor: scrolled ? "oklch(0.20 0.06 155)" : "transparent",
