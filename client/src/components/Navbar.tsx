@@ -32,8 +32,8 @@ export default function Navbar() {
     <header
       className={`relative z-50 transition-all duration-300 ${
         scrolled
-          ? "py-2 shadow-2xl"
-          : "py-4"
+          ? "py-1 shadow-2xl"
+          : "py-2"
       }`}
       style={{
         backgroundColor: scrolled ? "oklch(0.20 0.06 155)" : "transparent",
@@ -49,7 +49,7 @@ export default function Navbar() {
           <img
             src="/images/gs-logo.png"
             alt="G&S Exterior Restoration LLC"
-            className="h-40 w-auto object-contain"
+            className="h-32 w-auto object-contain"
           />
         </button>
 
