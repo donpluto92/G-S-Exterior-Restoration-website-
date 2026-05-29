@@ -59,7 +59,7 @@ export default function Navbar() {
             <button
               key={link.label}
               onClick={() => scrollTo(link.href)}
-              className="text-sm tracking-widest uppercase transition-colors duration-200 hover:opacity-100"
+              className="text-base tracking-widest uppercase transition-colors duration-200 hover:opacity-100"
               style={{
                 fontFamily: "'Barlow Condensed', sans-serif",
                 fontWeight: 600,
@@ -105,7 +105,7 @@ export default function Navbar() {
             <button
               key={link.label}
               onClick={() => scrollTo(link.href)}
-              className="text-left text-base tracking-widest uppercase py-2 border-b"
+              className="text-left text-lg tracking-widest uppercase py-2 border-b"
               style={{
                 fontFamily: "'Barlow Condensed', sans-serif",
                 fontWeight: 600,
