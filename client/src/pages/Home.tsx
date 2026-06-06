@@ -228,10 +228,7 @@ export default function HomePage() {
               className="text-lg sm:text-xl leading-relaxed mb-10 max-w-xl"
               style={{ color: "oklch(0.88 0.02 80)", fontFamily: "'Barlow', sans-serif" }}
             >
-              G&S Exterior Restoration delivers professional pressure washing
-              for driveways, decks, siding, and vehicles. Fully insured.
-              Free estimates. Use our instant estimator or book directly.
-              Results you can see from the street.
+              We've been restoring homes and businesses across Mexico, Missouri for years. Whether your driveway needs cleaning, your deck has algae buildup, your siding looks weathered, or your vehicle needs a refresh—we handle it all with care. Fully insured, fully professional, and always honest about what we can do for you.
             </p>
 
             <div className="flex flex-wrap gap-4">
