@@ -350,6 +350,7 @@ export default function HomePage() {
                   transitionDelay: `${i * 80}ms`,
                   borderColor: "oklch(0.88 0.025 80)",
                   backgroundColor: "#fff",
+                  boxShadow: "0 4px 12px rgba(26, 58, 42, 0.08)",
                 }}
               >
                 {/* Image or gradient fallback */}
@@ -635,6 +636,7 @@ export default function HomePage() {
                 style={{
                   backgroundColor: "oklch(0.28 0.07 155)",
                   borderColor: "oklch(0.35 0.08 155)",
+                  boxShadow: "0 8px 24px rgba(26, 58, 42, 0.12)",
                 }}
               >
                 <Quote size={28} className="mb-4 opacity-40" style={{ color: "oklch(0.72 0.12 75)" }} />
@@ -673,6 +675,7 @@ export default function HomePage() {
                 </div>
               </div>
             ))}
+          </div>
           </div>
 
         </div>
@@ -718,6 +721,7 @@ export default function HomePage() {
                   transitionDelay: `${i * 80}ms`,
                   backgroundColor: "#fff",
                   borderColor: "oklch(0.88 0.025 80)",
+                  boxShadow: "0 4px 12px rgba(26, 58, 42, 0.08)",
                 }}
               >
                 <div
