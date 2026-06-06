@@ -241,19 +241,41 @@ export default function ServiceLayout({
         </div>
       </section>
 
-      {/* CTA with Estimate Widget */}
+      {/* CTA Section */}
       <section className="py-20" style={{ backgroundColor: "oklch(0.20 0.06 155)" }}>
         <div className="container">
-          <div style={{ maxWidth: "720px", margin: "0 auto" }}>
-            <iframe
-              src="https://gsestimate-fdxeg6d2.manus.space/widget"
-              width="100%"
-              height="800"
-              frameBorder="0"
-              style={{ border: "none", borderRadius: "12px", display: "block" }}
-              title="G&S Exterior Restoration — Free Estimate"
-              allow="camera"
-            />
+          <div className="text-center max-w-2xl mx-auto">
+            <h2
+              className="text-3xl md:text-4xl font-bold mb-6"
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                color: "oklch(0.98 0.015 80)",
+              }}
+            >
+              Ready for an Estimate?
+            </h2>
+            <p
+              className="text-lg mb-8"
+              style={{ color: "oklch(0.88 0.02 80)", fontFamily: "'Barlow', sans-serif" }}
+            >
+              Use our instant estimator on the homepage or book a free consultation directly.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <a
+                href="/#estimator"
+                className="btn-gold rounded-sm"
+              >
+                Get Instant Estimate
+              </a>
+              <a
+                href="https://calendar.app.google/YmtAenZ1D6f8BQ8h9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline-gold rounded-sm"
+              >
+                Book Consultation
+              </a>
+            </div>
           </div>
         </div>
       </section>

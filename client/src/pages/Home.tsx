@@ -230,7 +230,8 @@ export default function HomePage() {
             >
               G&S Exterior Restoration delivers professional pressure washing
               for driveways, decks, siding, and vehicles. Fully insured.
-              Free estimates. Results you can see from the street.
+              Free estimates. Use our instant estimator or book directly.
+              Results you can see from the street.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -979,6 +980,96 @@ export default function HomePage() {
               </p>
             </div>
           </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── INSTANT ESTIMATOR ── */}
+      <section
+        id="estimator"
+        style={{ backgroundColor: "oklch(0.98 0.015 80)" }}
+        className="py-20 border-t"
+      >
+        <div className="container">
+          <div className="max-w-4xl mx-auto">
+            {/* Header */}
+            <div className="text-center mb-12">
+              <h2
+                className="text-4xl md:text-5xl font-bold mb-4"
+                style={{
+                  fontFamily: "'Playfair Display', serif",
+                  color: "oklch(0.15 0.05 155)",
+                }}
+              >
+                Get Your Instant Estimate
+              </h2>
+              <p
+                className="text-lg"
+                style={{ color: "oklch(0.35 0.08 155)", fontFamily: "'Barlow', sans-serif" }}
+              >
+                Upload photos and get an instant estimate. Our system analyzes your surfaces and provides accurate pricing in seconds.
+              </p>
+            </div>
+
+            {/* Estimator Widget */}
+            <div
+              className="rounded-lg overflow-hidden"
+              style={{
+                backgroundColor: "oklch(0.20 0.06 155)",
+                border: "1px solid oklch(0.35 0.08 155)",
+              }}
+            >
+              <iframe
+                src="https://gsestimate-fdxeg6d2.manus.space/widget"
+                width="100%"
+                height="800"
+                frameBorder="0"
+                style={{ border: "none", borderRadius: "12px" }}
+                title="G&S Exterior Restoration — Instant Estimate"
+                allow="camera"
+              />
+            </div>
+
+            {/* Info Below Widget */}
+            <div
+              className="mt-12 p-8 rounded-lg border"
+              style={{
+                backgroundColor: "oklch(0.95 0.01 80)",
+                borderColor: "oklch(0.35 0.08 155)",
+              }}
+            >
+              <h3
+                className="text-2xl font-bold mb-4"
+                style={{
+                  fontFamily: "'Playfair Display', serif",
+                  color: "oklch(0.15 0.05 155)",
+                }}
+              >
+                How It Works
+              </h3>
+              <ol
+                className="space-y-3 text-base"
+                style={{ color: "oklch(0.35 0.08 155)", fontFamily: "'Barlow', sans-serif" }}
+              >
+                <li><strong>1. Upload Photos:</strong> Take clear photos of the area you want cleaned</li>
+                <li><strong>2. AI Analysis:</strong> Our system analyzes surface type, size, and condition</li>
+                <li><strong>3. Instant Quote:</strong> Get an accurate estimate immediately</li>
+                <li><strong>4. Book or Contact:</strong> Schedule your service or reach out with questions</li>
+              </ol>
+            </div>
+
+            {/* CTA */}
+            <div className="text-center mt-8">
+              <p
+                className="text-sm mb-4"
+                style={{ color: "oklch(0.55 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
+              >
+                Questions? Call us at{" "}
+                <a href="tel:3144670332" style={{ color: "oklch(0.72 0.12 75)", fontWeight: "bold" }}>
+                  (314) 467-0332
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </section>
