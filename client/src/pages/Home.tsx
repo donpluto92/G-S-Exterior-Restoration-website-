@@ -63,36 +63,36 @@ const services = [
   {
     icon: Droplets,
     href: "/driveway-cleaning",
-    title: "Driveway Cleaning",
+    title: "Driveway Cleaning Mexico, MO",
     description:
-      "Professional concrete pressure washing to remove dirt, algae, grime, and surface stains. Restore your driveway to like-new condition and dramatically boost curb appeal.",
+      "Professional driveway pressure washing in Mexico, Missouri and Mid-Missouri. Remove dirt, algae, grime, and oil stains from concrete. Free estimates. Fully insured.",
     img: DRIVEWAY_IMG,
     tag: "Most Popular",
   },
   {
     icon: Home,
     href: "/deck-cleaning",
-    title: "Deck Cleaning",
+    title: "Deck Cleaning Mexico, MO",
     description:
-      "Thorough deck washing for wood and composite surfaces. We remove dirt, algae, mildew, and slippery buildup — leaving your outdoor space cleaner, safer, and better looking.",
+      "Expert deck cleaning and pressure washing in Mexico, Missouri. Remove algae, mildew, and weathering from wood and composite decks. Safe, professional service.",
     img: DECK_IMG,
     tag: null,
   },
   {
     icon: Layers,
     href: "/siding-washing",
-    title: "Siding & Exterior Washing",
+    title: "House Washing & Siding Cleaning",
     description:
-      "Safe, effective soft washing that removes mold, mildew, algae, and built-up dirt from vinyl siding and other exterior surfaces — without harsh, unnecessary pressure.",
+      "Professional house washing and siding cleaning in Mid-Missouri. Soft wash service removes mold, mildew, and algae safely from vinyl, brick, and stucco.",
     img: SIDING_IMG,
     tag: null,
   },
   {
     icon: Car,
     href: "/vehicle-washing",
-    title: "Vehicle Washing",
+    title: "Vehicle Pressure Washing",
     description:
-      "Exterior vehicle washing to remove road grime, dirt, salt, and everyday buildup. Keep your cars, trucks, and other vehicles looking clean and well maintained.",
+      "Professional vehicle washing for cars and trucks in Mexico, MO. Remove road salt, grime, and buildup. Keep your fleet looking professional.",
     img: VEHICLE_IMG,
     tag: null,
   },
@@ -197,14 +197,14 @@ export default function HomePage() {
             >
               <MapPin size={13} style={{ color: "oklch(0.72 0.12 75)" }} />
               <span
-                className="text-xs tracking-widest uppercase"
+                className="text-xs sm:text-sm tracking-widest uppercase font-bold"
                 style={{
                   fontFamily: "'Barlow Condensed', sans-serif",
                   fontWeight: 600,
                   color: "oklch(0.82 0.10 75)",
                 }}
               >
-                Mexico, MO &amp; Surrounding Areas
+                Driveway • Deck • Siding • Vehicle Washing
               </span>
             </div>
 
@@ -215,12 +215,12 @@ export default function HomePage() {
                 color: "oklch(0.98 0.015 80)",
               }}
             >
-              Restore Your
+              Professional Pressure Washing in
               <span
                 className="block italic"
                 style={{ color: "oklch(0.82 0.10 75)" }}
               >
-                Curb Appeal.
+                Mexico, Missouri
               </span>
             </h1>
 
@@ -326,14 +326,13 @@ export default function HomePage() {
                 color: "oklch(0.20 0.06 155)",
               }}
             >
-              Our Services
+              Pressure Washing &amp; Exterior Cleaning
             </h2>
             <p
               className="reveal text-base max-w-xl mx-auto"
               style={{ color: "oklch(0.45 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
             >
-              Every service includes a free estimate. We use the right
-              equipment and technique for each surface — no guesswork, no damage.
+              Professional pressure washing and soft washing services in Mexico, MO and Mid-Missouri. Free estimates on all services. Fully insured and certified.
             </p>
           </div>
 
