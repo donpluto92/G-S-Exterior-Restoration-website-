@@ -1030,6 +1030,16 @@ export default function HomePage() {
               />
             </div>
 
+            {/* Disclaimer */}
+            <div
+              className="mt-6 text-center text-xs"
+              style={{ color: "oklch(0.55 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
+            >
+              <p>
+                <strong>Disclaimer:</strong> The estimate provided by this tool is an approximation based on the information and photos you provide. It is not a final estimate. Actual pricing may vary based on on-site inspection, surface condition, accessibility, and other factors. Please contact us for a detailed, binding quote.
+              </p>
+            </div>
+
             {/* Info Below Widget */}
             <div
               className="mt-12 p-8 rounded-lg border"
