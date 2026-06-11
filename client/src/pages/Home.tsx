@@ -63,36 +63,36 @@ const services = [
   {
     icon: Droplets,
     href: "/driveway-cleaning",
-    title: "Driveway Cleaning Mexico, MO",
+    title: "Driveway Cleaning",
     description:
-      "Professional driveway pressure washing in Mexico, Missouri and Mid-Missouri. Remove dirt, algae, grime, and oil stains from concrete. Free estimates. Fully insured.",
+      "Professional concrete pressure washing to remove dirt, algae, grime, and surface stains. Restore your driveway to like-new condition and dramatically boost curb appeal.",
     img: DRIVEWAY_IMG,
     tag: "Most Popular",
   },
   {
     icon: Home,
     href: "/deck-cleaning",
-    title: "Deck Cleaning Mexico, MO",
+    title: "Deck Cleaning",
     description:
-      "Expert deck cleaning and pressure washing in Mexico, Missouri. Remove algae, mildew, and weathering from wood and composite decks. Safe, professional service.",
+      "Thorough deck washing for wood and composite surfaces. We remove dirt, algae, mildew, and slippery buildup — leaving your outdoor space cleaner, safer, and better looking.",
     img: DECK_IMG,
     tag: null,
   },
   {
     icon: Layers,
     href: "/siding-washing",
-    title: "House Washing & Siding Cleaning",
+    title: "Siding & Exterior Washing",
     description:
-      "Professional house washing and siding cleaning in Mid-Missouri. Soft wash service removes mold, mildew, and algae safely from vinyl, brick, and stucco.",
+      "Safe, effective soft washing that removes mold, mildew, algae, and built-up dirt from vinyl siding and other exterior surfaces — without harsh, unnecessary pressure.",
     img: SIDING_IMG,
     tag: null,
   },
   {
     icon: Car,
     href: "/vehicle-washing",
-    title: "Vehicle Pressure Washing",
+    title: "Vehicle Washing",
     description:
-      "Professional vehicle washing for cars and trucks in Mexico, MO. Remove road salt, grime, and buildup. Keep your fleet looking professional.",
+      "Exterior vehicle washing to remove road grime, dirt, salt, and everyday buildup. Keep your cars, trucks, and other vehicles looking clean and well maintained.",
     img: VEHICLE_IMG,
     tag: null,
   },
@@ -197,14 +197,14 @@ export default function HomePage() {
             >
               <MapPin size={13} style={{ color: "oklch(0.72 0.12 75)" }} />
               <span
-                className="text-xs sm:text-sm tracking-widest uppercase font-bold"
+                className="text-xs tracking-widest uppercase"
                 style={{
                   fontFamily: "'Barlow Condensed', sans-serif",
                   fontWeight: 600,
                   color: "oklch(0.82 0.10 75)",
                 }}
               >
-                Driveway • Deck • Siding • Vehicle Washing
+                Mexico, MO &amp; Surrounding Areas
               </span>
             </div>
 
@@ -215,12 +215,12 @@ export default function HomePage() {
                 color: "oklch(0.98 0.015 80)",
               }}
             >
-              Professional Pressure Washing in
+              Restore Your
               <span
                 className="block italic"
                 style={{ color: "oklch(0.82 0.10 75)" }}
               >
-                Mexico, Missouri
+                Curb Appeal.
               </span>
             </h1>
 
@@ -228,7 +228,10 @@ export default function HomePage() {
               className="text-lg sm:text-xl leading-relaxed mb-10 max-w-xl"
               style={{ color: "oklch(0.88 0.02 80)", fontFamily: "'Barlow', sans-serif" }}
             >
-              We've been restoring homes and businesses across Mexico, Missouri for years. Whether your driveway needs cleaning, your deck has algae buildup, your siding looks weathered, or your vehicle needs a refresh—we handle it all with care. Fully insured, fully professional, and always honest about what we can do for you.
+              G&S Exterior Restoration delivers professional pressure washing
+              for driveways, decks, siding, and vehicles. Fully insured.
+              Free estimates. Use our instant estimator or book directly.
+              Results you can see from the street.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -326,13 +329,14 @@ export default function HomePage() {
                 color: "oklch(0.20 0.06 155)",
               }}
             >
-              Pressure Washing &amp; Exterior Cleaning
+              Our Services
             </h2>
             <p
               className="reveal text-base max-w-xl mx-auto"
               style={{ color: "oklch(0.45 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
             >
-              Professional pressure washing and soft washing services in Mexico, MO and Mid-Missouri. Free estimates on all services. Fully insured and certified.
+              Every service includes a free estimate. We use the right
+              equipment and technique for each surface — no guesswork, no damage.
             </p>
           </div>
 
@@ -346,7 +350,6 @@ export default function HomePage() {
                   transitionDelay: `${i * 80}ms`,
                   borderColor: "oklch(0.88 0.025 80)",
                   backgroundColor: "#fff",
-                  boxShadow: "0 4px 12px rgba(26, 58, 42, 0.08)",
                 }}
               >
                 {/* Image or gradient fallback */}
@@ -632,7 +635,6 @@ export default function HomePage() {
                 style={{
                   backgroundColor: "oklch(0.28 0.07 155)",
                   borderColor: "oklch(0.35 0.08 155)",
-                  boxShadow: "0 8px 24px rgba(26, 58, 42, 0.12)",
                 }}
               >
                 <Quote size={28} className="mb-4 opacity-40" style={{ color: "oklch(0.72 0.12 75)" }} />
@@ -671,7 +673,6 @@ export default function HomePage() {
                 </div>
               </div>
             ))}
-          </div>
           </div>
 
         </div>
@@ -717,7 +718,6 @@ export default function HomePage() {
                   transitionDelay: `${i * 80}ms`,
                   backgroundColor: "#fff",
                   borderColor: "oklch(0.88 0.025 80)",
-                  boxShadow: "0 4px 12px rgba(26, 58, 42, 0.08)",
                 }}
               >
                 <div
@@ -1028,16 +1028,6 @@ export default function HomePage() {
                 title="G&S Exterior Restoration — Instant Estimate"
                 allow="camera"
               />
-            </div>
-
-            {/* Disclaimer */}
-            <div
-              className="mt-6 text-center text-xs"
-              style={{ color: "oklch(0.55 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
-            >
-              <p>
-                <strong>Disclaimer:</strong> The estimate provided by this tool is an approximation based on the information and photos you provide. It is not a final estimate. Actual pricing may vary based on on-site inspection, surface condition, accessibility, and other factors. Please contact us for a detailed, binding quote.
-              </p>
             </div>
 
             {/* Info Below Widget */}
