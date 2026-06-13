@@ -147,7 +147,7 @@ export default function ChatBot() {
 
             {/* Messages */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
-              {messages.map((msg) => (
+              {messages.map(msg => (
                 <div
                   key={msg.id}
                   className={`flex ${
@@ -184,7 +184,9 @@ export default function ChatBot() {
                   {FAQ_DATA.map((faq, idx) => (
                     <button
                       key={idx}
-                      onClick={() => handleQuestionClick(faq.question, faq.answer)}
+                      onClick={() =>
+                        handleQuestionClick(faq.question, faq.answer)
+                      }
                       className="w-full text-left text-xs py-2 px-3 rounded transition-colors"
                       style={{
                         backgroundColor: "oklch(0.25 0.06 155)",
@@ -192,11 +194,11 @@ export default function ChatBot() {
                         fontFamily: "'Barlow', sans-serif",
                         border: "1px solid oklch(0.35 0.08 155)",
                       }}
-                      onMouseEnter={(e) => {
+                      onMouseEnter={e => {
                         (e.currentTarget as HTMLElement).style.backgroundColor =
                           "oklch(0.30 0.07 155)";
                       }}
-                      onMouseLeave={(e) => {
+                      onMouseLeave={e => {
                         (e.currentTarget as HTMLElement).style.backgroundColor =
                           "oklch(0.25 0.06 155)";
                       }}
@@ -215,10 +217,10 @@ export default function ChatBot() {
                       color: "oklch(0.15 0.05 155)",
                       fontFamily: "'Barlow Condensed', sans-serif",
                     }}
-                    onMouseEnter={(e) => {
+                    onMouseEnter={e => {
                       (e.currentTarget as HTMLElement).style.opacity = "0.9";
                     }}
-                    onMouseLeave={(e) => {
+                    onMouseLeave={e => {
                       (e.currentTarget as HTMLElement).style.opacity = "1";
                     }}
                   >
@@ -235,10 +237,10 @@ export default function ChatBot() {
                       fontFamily: "'Barlow Condensed', sans-serif",
                       border: "1px solid oklch(0.82 0.10 75)",
                     }}
-                    onMouseEnter={(e) => {
+                    onMouseEnter={e => {
                       (e.currentTarget as HTMLElement).style.opacity = "0.8";
                     }}
-                    onMouseLeave={(e) => {
+                    onMouseLeave={e => {
                       (e.currentTarget as HTMLElement).style.opacity = "1";
                     }}
                   >
@@ -251,10 +253,10 @@ export default function ChatBot() {
                       color: "oklch(0.55 0.04 155)",
                       fontFamily: "'Barlow', sans-serif",
                     }}
-                    onMouseEnter={(e) => {
+                    onMouseEnter={e => {
                       (e.currentTarget as HTMLElement).style.opacity = "0.7";
                     }}
-                    onMouseLeave={(e) => {
+                    onMouseLeave={e => {
                       (e.currentTarget as HTMLElement).style.opacity = "1";
                     }}
                   >

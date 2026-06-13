@@ -32,9 +32,7 @@ export default function Navbar() {
   return (
     <header
       className={`relative z-50 transition-all duration-300 ${
-        scrolled
-          ? "py-0 shadow-2xl"
-          : "py-1"
+        scrolled ? "py-0 shadow-2xl" : "py-1"
       }`}
       style={{
         backgroundColor: scrolled ? "oklch(0.20 0.06 155)" : "transparent",
@@ -56,7 +54,7 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
+          {navLinks.map(link => (
             <button
               key={link.label}
               onClick={() => scrollTo(link.href)}
@@ -102,7 +100,7 @@ export default function Navbar() {
         style={{ backgroundColor: "oklch(0.20 0.06 155)" }}
       >
         <div className="container py-4 flex flex-col gap-4">
-          {navLinks.map((link) => (
+          {navLinks.map(link => (
             <button
               key={link.label}
               onClick={() => scrollTo(link.href)}

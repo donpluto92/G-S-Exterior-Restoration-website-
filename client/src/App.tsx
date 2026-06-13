@@ -11,6 +11,7 @@ import DeckCleaning from "./pages/DeckCleaning";
 import SidingWashing from "./pages/SidingWashing";
 import VehicleWashing from "./pages/VehicleWashing";
 import ServiceAreas from "./pages/ServiceAreas";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function Router() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Toaster />
           <Router />
           <ChatBot />
+          <SpeedInsights />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

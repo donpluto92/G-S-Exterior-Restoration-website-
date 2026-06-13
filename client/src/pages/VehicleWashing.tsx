@@ -24,35 +24,42 @@ export default function VehicleWashing() {
         {
           step: "01",
           title: "Pre-Rinse",
-          description: "We pre-rinse the entire vehicle to loosen surface dirt and road grime before applying any cleaning solution.",
+          description:
+            "We pre-rinse the entire vehicle to loosen surface dirt and road grime before applying any cleaning solution.",
         },
         {
           step: "02",
           title: "Exterior Wash",
-          description: "We wash the exterior using appropriate pressure and technique for vehicle paint — removing dirt, salt, and buildup from all panels, wheels, and lower body areas.",
+          description:
+            "We wash the exterior using appropriate pressure and technique for vehicle paint — removing dirt, salt, and buildup from all panels, wheels, and lower body areas.",
         },
         {
           step: "03",
           title: "Final Rinse & Inspection",
-          description: "We do a thorough final rinse and inspect the vehicle with you to make sure every panel is clean and you're satisfied with the results.",
+          description:
+            "We do a thorough final rinse and inspect the vehicle with you to make sure every panel is clean and you're satisfied with the results.",
         },
       ]}
       faqs={[
         {
           question: "Will pressure washing damage my car's paint?",
-          answer: "No — we use pressure levels and nozzle distances that are safe for automotive paint. We never use high-pressure wands at close range on vehicle panels.",
+          answer:
+            "No — we use pressure levels and nozzle distances that are safe for automotive paint. We never use high-pressure wands at close range on vehicle panels.",
         },
         {
           question: "Do you come to my location?",
-          answer: "Yes. We bring all the equipment we need and can wash your vehicle at your home, driveway, or property. No need to take it anywhere.",
+          answer:
+            "Yes. We bring all the equipment we need and can wash your vehicle at your home, driveway, or property. No need to take it anywhere.",
         },
         {
           question: "What types of vehicles do you wash?",
-          answer: "We wash cars, trucks, SUVs, vans, and other standard vehicles. Contact us if you have a specialty vehicle or equipment you'd like cleaned and we'll let you know if we can accommodate it.",
+          answer:
+            "We wash cars, trucks, SUVs, vans, and other standard vehicles. Contact us if you have a specialty vehicle or equipment you'd like cleaned and we'll let you know if we can accommodate it.",
         },
         {
           question: "Is this an interior detail service too?",
-          answer: "No — we focus on exterior washing only. We don't offer interior detailing at this time.",
+          answer:
+            "No — we focus on exterior washing only. We don't offer interior detailing at this time.",
         },
       ]}
       relatedServices={[
