@@ -529,7 +529,7 @@ export default function HomePage() {
                 { value: "MO", label: "Mexico & Beyond", sub: "Proudly local" },
               ].map((stat, i) => (
               <div
-                key={item.title}
+                key={stat.label}
                 className="reveal rounded-lg p-6 border"
                 style={{
                   transitionDelay: `${i * 80}ms`,
