@@ -63,36 +63,36 @@ const services = [
   {
     icon: Droplets,
     href: "/driveway-cleaning",
-    title: "Driveway Cleaning",
+    title: "Driveway Cleaning Mexico, MO",
     description:
-      "Professional concrete pressure washing to remove dirt, algae, grime, and surface stains. Restore your driveway to like-new condition and dramatically boost curb appeal.",
+      "Professional pressure washing for concrete driveways in Mexico, MO and Mid-Missouri. We remove dirt, algae, oil stains, and grime to restore your driveway to like-new condition and dramatically boost curb appeal.",
     img: DRIVEWAY_IMG,
     tag: "Most Popular",
   },
   {
     icon: Home,
     href: "/deck-cleaning",
-    title: "Deck Cleaning",
+    title: "Deck Cleaning Mexico, MO",
     description:
-      "Thorough deck washing for wood and composite surfaces. We remove dirt, algae, mildew, and slippery buildup — leaving your outdoor space cleaner, safer, and better looking.",
+      "Professional deck washing for wood and composite surfaces in Mexico, MO. We remove dirt, algae, mildew, and slippery buildup — leaving your outdoor space cleaner, safer, and better looking.",
     img: DECK_IMG,
     tag: null,
   },
   {
     icon: Layers,
     href: "/siding-washing",
-    title: "Siding & Exterior Washing",
+    title: "Siding Washing Mexico, MO",
     description:
-      "Safe, effective soft washing that removes mold, mildew, algae, and built-up dirt from vinyl siding and other exterior surfaces — without harsh, unnecessary pressure.",
+      "Safe, effective soft washing for vinyl siding and exterior surfaces in Mexico, MO. We remove mold, mildew, algae, and built-up dirt without harsh, unnecessary pressure.",
     img: SIDING_IMG,
     tag: null,
   },
   {
     icon: Car,
     href: "/vehicle-washing",
-    title: "Vehicle Washing",
+    title: "Vehicle Washing Mexico, MO",
     description:
-      "Exterior vehicle washing to remove road grime, dirt, salt, and everyday buildup. Keep your cars, trucks, and other vehicles looking clean and well maintained.",
+      "Professional exterior vehicle washing in Mexico, MO to remove road grime, dirt, salt, and everyday buildup. Keep your cars, trucks, and vehicles looking clean and well maintained.",
     img: VEHICLE_IMG,
     tag: null,
   },
@@ -215,12 +215,12 @@ export default function HomePage() {
                 color: "oklch(0.98 0.015 80)",
               }}
             >
-              Restore Your
+              Professional Pressure Washing
               <span
                 className="block italic"
                 style={{ color: "oklch(0.82 0.10 75)" }}
               >
-                Curb Appeal.
+                in Mexico, Missouri.
               </span>
             </h1>
 
@@ -228,10 +228,7 @@ export default function HomePage() {
               className="text-lg sm:text-xl leading-relaxed mb-10 max-w-xl"
               style={{ color: "oklch(0.88 0.02 80)", fontFamily: "'Barlow', sans-serif" }}
             >
-              G&S Exterior Restoration delivers professional pressure washing
-              for driveways, decks, siding, and vehicles. Fully insured.
-              Free estimates. Use our instant estimator or book directly.
-              Results you can see from the street.
+              G&S Exterior Restoration is your trusted local pressure washing company serving Mexico, MO and all of Mid-Missouri. We specialize in professional driveway cleaning, deck washing, siding restoration, and vehicle washing. Every job is fully insured, backed by free estimates, and guaranteed to deliver results you can see from the street. Whether you're in Audrain County or the surrounding communities, we bring professional-grade equipment and years of expertise to restore your property's curb appeal.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -499,10 +496,7 @@ export default function HomePage() {
                   fontFamily: "'Barlow', sans-serif",
                 }}
               >
-                G&S Exterior Restoration is a fully insured pressure washing
-                business proudly serving Mexico, MO and the surrounding communities.
-                We specialize in driveway cleaning, siding washing, deck cleaning,
-                patio cleaning, vehicle washing, and more.
+                G&S Exterior Restoration is a fully insured professional pressure washing company proudly serving Mexico, MO and all of Mid-Missouri. We specialize in driveway pressure washing, professional siding washing, deck cleaning, patio cleaning, vehicle washing, and comprehensive exterior restoration services. With years of experience in the pressure washing industry and a commitment to quality, we've become the trusted choice for homeowners and property managers throughout Audrain County and surrounding communities who demand professional results.
               </p>
               <p
                 className="reveal text-base leading-relaxed mb-8"
@@ -511,12 +505,7 @@ export default function HomePage() {
                   fontFamily: "'Barlow', sans-serif",
                 }}
               >
-                We know how much of a difference clean concrete, siding, and
-                outdoor spaces can make. Our exterior cleaning services are
-                designed to improve curb appeal, refresh the look of your
-                property, and help your home look well maintained year-round.
-                At G&S, we believe in honest work, dependable service, and
-                results you can see from the street.
+                We understand how much of a difference professional pressure washing makes to your property. Our exterior cleaning services are designed to remove years of dirt, algae, mold, and grime — improving curb appeal, refreshing your property's appearance, and helping your home or business look well maintained year-round. At G&S, we believe in honest work, dependable service, and delivering pressure washing results you can see from the street. Whether it's concrete driveway cleaning, soft washing for delicate siding, or professional vehicle washing, we bring professional-grade equipment and expertise to every job.
               </p>
               <div className="reveal flex flex-wrap gap-4">
                 <a href="tel:3144670332" className="btn-gold rounded-sm">
