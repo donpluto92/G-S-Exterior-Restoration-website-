@@ -1019,6 +1019,22 @@ export default function HomePage() {
               />
             </div>
 
+            {/* Disclaimer */}
+            <div
+              className="mt-6 p-4 rounded-lg border"
+              style={{
+                backgroundColor: "oklch(0.98 0.015 80)",
+                borderColor: "oklch(0.72 0.12 75 / 0.3)",
+              }}
+            >
+              <p
+                className="text-sm"
+                style={{ color: "oklch(0.35 0.08 155)", fontFamily: "'Barlow', sans-serif" }}
+              >
+                <strong>Disclaimer:</strong> This is an approximate estimate only. Final pricing may vary based on on-site assessment.
+              </p>
+            </div>
+
             {/* Info Below Widget */}
             <div
               className="mt-12 p-8 rounded-lg border"
