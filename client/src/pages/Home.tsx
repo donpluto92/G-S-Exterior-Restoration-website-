@@ -345,8 +345,6 @@ export default function HomePage() {
                 className="reveal service-card rounded-lg overflow-hidden border flex flex-col"
                 style={{
                   transitionDelay: `${i * 80}ms`,
-                  borderColor: "oklch(0.88 0.025 80)",
-                  backgroundColor: "#fff",
                 }}
               >
                 {/* Image or gradient fallback */}
@@ -530,14 +528,15 @@ export default function HomePage() {
                 { value: "24/7", label: "Book Online", sub: "Anytime, any device" },
                 { value: "MO", label: "Mexico & Beyond", sub: "Proudly local" },
               ].map((stat, i) => (
-                <div
-                  key={stat.label}
-                  className="reveal rounded-lg p-6 border"
-                  style={{
-                    transitionDelay: `${i * 80}ms`,
-                    backgroundColor: "oklch(0.28 0.07 155)",
-                    borderColor: "oklch(0.35 0.08 155)",
-                  }}
+              <div
+                key={item.title}
+                className="reveal rounded-lg p-6 border"
+                style={{
+                  transitionDelay: `${i * 80}ms`,
+                  backgroundColor: "oklch(0.28 0.07 155)",
+                  borderColor: "oklch(0.35 0.08 155)",
+                  boxShadow: "0 8px 24px rgba(26, 58, 42, 0.12), 0 2px 8px rgba(201, 168, 76, 0.08)",
+                }}
                 >
                   <div
                     className="text-4xl font-bold mb-1"
@@ -624,6 +623,7 @@ export default function HomePage() {
                 style={{
                   backgroundColor: "oklch(0.28 0.07 155)",
                   borderColor: "oklch(0.35 0.08 155)",
+                  boxShadow: "0 8px 24px rgba(26, 58, 42, 0.12), 0 2px 8px rgba(201, 168, 76, 0.08)",
                 }}
               >
                 <Quote size={28} className="mb-4 opacity-40" style={{ color: "oklch(0.72 0.12 75)" }} />
@@ -707,6 +707,8 @@ export default function HomePage() {
                   transitionDelay: `${i * 80}ms`,
                   backgroundColor: "#fff",
                   borderColor: "oklch(0.88 0.025 80)",
+                  boxShadow: "0 8px 24px rgba(26, 58, 42, 0.08), 0 2px 8px rgba(201, 168, 76, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.5)",
+                  background: "linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 248, 240, 0.5))",
                 }}
               >
                 <div

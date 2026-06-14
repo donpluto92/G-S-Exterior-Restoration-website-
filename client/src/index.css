@@ -221,14 +221,16 @@
   /* Service card hover */
   .service-card {
     transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.3s ease-out;
-    box-shadow: 0 4px 12px rgba(26, 58, 42, 0.08);
-    border: 1px solid rgba(201, 168, 76, 0.15);
+    box-shadow: 0 8px 24px rgba(26, 58, 42, 0.12), 0 2px 8px rgba(201, 168, 76, 0.08);
+    border: 1px solid rgba(201, 168, 76, 0.25);
+    background: linear-gradient(135deg, rgba(255, 248, 240, 0.5), rgba(255, 248, 240, 0.3));
   }
 
   .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 24px 48px rgba(26, 58, 42, 0.15), 0 0 1px rgba(201, 168, 76, 0.3);
-    border-color: rgba(201, 168, 76, 0.4);
+    transform: translateY(-12px);
+    box-shadow: 0 32px 64px rgba(26, 58, 42, 0.2), 0 8px 24px rgba(201, 168, 76, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border-color: rgba(201, 168, 76, 0.6);
+    background: linear-gradient(135deg, rgba(255, 248, 240, 0.7), rgba(255, 248, 240, 0.5));
   }
 
   /* CTA button fill animation */
@@ -243,18 +245,18 @@
     text-transform: uppercase;
     padding: 0.875rem 2rem;
     transition: transform 0.16s ease-out, box-shadow 0.2s ease-out, background 0.2s ease-out;
-    box-shadow: 0 4px 16px rgba(201, 168, 76, 0.25);
+    box-shadow: 0 6px 20px rgba(201, 168, 76, 0.35), 0 2px 4px rgba(26, 58, 42, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 
   .btn-gold:hover {
-    box-shadow: 0 12px 32px rgba(201, 168, 76, 0.35), 0 0 20px rgba(201, 168, 76, 0.15);
-    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(201, 168, 76, 0.45), 0 0 24px rgba(201, 168, 76, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transform: translateY(-4px);
     background: linear-gradient(135deg, oklch(0.76 0.13 76), oklch(0.72 0.12 75));
   }
 
   .btn-gold:active {
     transform: scale(0.96);
-    box-shadow: 0 2px 8px rgba(201, 168, 76, 0.2);
+    box-shadow: 0 4px 12px rgba(201, 168, 76, 0.25), inset 0 1px 0 rgba(0, 0, 0, 0.1);
   }
 
   .btn-outline-gold {
@@ -267,16 +269,18 @@
     padding: 0.875rem 2rem;
     transition: background-color 0.2s ease-out, color 0.2s ease-out, transform 0.16s ease-out, box-shadow 0.2s ease-out;
     background-color: transparent;
+    box-shadow: 0 4px 12px rgba(201, 168, 76, 0.15);
   }
 
   .btn-outline-gold:hover {
     background: linear-gradient(135deg, oklch(0.72 0.12 75), oklch(0.68 0.11 72));
     color: oklch(0.20 0.06 155);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(201, 168, 76, 0.25);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(201, 168, 76, 0.35), 0 0 20px rgba(201, 168, 76, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 
   .btn-outline-gold:active {
     transform: scale(0.96);
+    box-shadow: 0 4px 12px rgba(201, 168, 76, 0.2);
   }
 }
