@@ -402,22 +402,21 @@ export default function HomePage() {
                   >
                     {service.description}
                   </p>
-                  <Link href={service.href}>
-                    <a
-                      className="mt-4 text-xs font-bold tracking-widest uppercase flex items-center gap-1 transition-colors duration-200"
-                      style={{
-                        fontFamily: "'Barlow Condensed', sans-serif",
-                        color: "oklch(0.28 0.07 155)",
-                      }}
-                      onMouseEnter={(e) =>
-                        ((e.currentTarget as HTMLElement).style.color = "oklch(0.72 0.12 75)")
-                      }
-                      onMouseLeave={(e) =>
-                        ((e.currentTarget as HTMLElement).style.color = "oklch(0.28 0.07 155)")
-                      }
-                    >
-                      Learn More →
-                    </a>
+                  <Link
+                    href={service.href}
+                    className="mt-4 text-xs font-bold tracking-widest uppercase flex items-center gap-1 transition-colors duration-200"
+                    style={{
+                      fontFamily: "'Barlow Condensed', sans-serif",
+                      color: "oklch(0.28 0.07 155)",
+                    }}
+                    onMouseEnter={(e) =>
+                      ((e.currentTarget as HTMLElement).style.color = "oklch(0.72 0.12 75)")
+                    }
+                    onMouseLeave={(e) =>
+                      ((e.currentTarget as HTMLElement).style.color = "oklch(0.28 0.07 155)")
+                    }
+                  >
+                    Learn More →
                   </Link>
                 </div>
               </div>
