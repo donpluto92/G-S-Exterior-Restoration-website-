@@ -5,6 +5,7 @@
 */
 import { useEffect, useRef } from "react";
 import Navbar from "@/components/Navbar";
+import { useLanguage } from "@/contexts/LanguageContext";
 import {
   Phone,
   Mail,
@@ -63,36 +64,32 @@ const services = [
   {
     icon: Droplets,
     href: "/driveway-cleaning",
-    title: "Driveway Cleaning Mexico, MO",
-    description:
-      "Professional pressure washing for concrete driveways in Mexico, MO and Mid-Missouri. We remove dirt, algae, oil stains, and grime to restore your driveway to like-new condition and dramatically boost curb appeal.",
+    titleKey: "drivewayTitle",
+    descKey: "drivewayDesc",
     img: DRIVEWAY_IMG,
     tag: "Most Popular",
   },
   {
     icon: Home,
     href: "/deck-cleaning",
-    title: "Deck Cleaning Mexico, MO",
-    description:
-      "Professional deck washing for wood and composite surfaces in Mexico, MO. We remove dirt, algae, mildew, and slippery buildup — leaving your outdoor space cleaner, safer, and better looking.",
+    titleKey: "deckTitle",
+    descKey: "deckDesc",
     img: DECK_IMG,
     tag: null,
   },
   {
     icon: Layers,
     href: "/siding-washing",
-    title: "Siding Washing Mexico, MO",
-    description:
-      "Safe, effective soft washing for vinyl siding and exterior surfaces in Mexico, MO. We remove mold, mildew, algae, and built-up dirt without harsh, unnecessary pressure.",
+    titleKey: "sidingTitle",
+    descKey: "sidingDesc",
     img: SIDING_IMG,
     tag: null,
   },
   {
     icon: Car,
     href: "/vehicle-washing",
-    title: "Vehicle Washing Mexico, MO",
-    description:
-      "Professional exterior vehicle washing in Mexico, MO to remove road grime, dirt, salt, and everyday buildup. Keep your cars, trucks, and vehicles looking clean and well maintained.",
+    titleKey: "vehicleTitle",
+    descKey: "vehicleDesc",
     img: VEHICLE_IMG,
     tag: null,
   },
@@ -129,6 +126,7 @@ const whyUs = [
 ];
 
 export default function HomePage() {
+  const { t } = useLanguage();
   const heroRef = useRef<HTMLDivElement>(null);
   const trustRef = useReveal();
   const servicesRef = useReveal();
@@ -204,7 +202,7 @@ export default function HomePage() {
                   color: "oklch(0.82 0.10 75)",
                 }}
               >
-                Mexico, MO &amp; Surrounding Areas
+                {t('mexicoMOAreas')}
               </span>
             </div>
 
@@ -215,12 +213,12 @@ export default function HomePage() {
                 color: "oklch(0.98 0.015 80)",
               }}
             >
-              Professional Pressure Washing
+              {t('heroTitle')}
               <span
                 className="block italic"
                 style={{ color: "oklch(0.82 0.10 75)" }}
               >
-                in Mexico, Missouri.
+                {t('heroSubtitle')}
               </span>
             </h1>
 
@@ -228,19 +226,19 @@ export default function HomePage() {
               className="text-lg sm:text-xl leading-relaxed mb-10 max-w-xl"
               style={{ color: "oklch(0.88 0.02 80)", fontFamily: "'Barlow', sans-serif" }}
             >
-              G&S Exterior Restoration is your trusted local pressure washing company serving Mexico, MO and all of Mid-Missouri. We specialize in professional driveway cleaning, deck washing, siding restoration, and vehicle washing. Every job is fully insured, backed by free estimates, and guaranteed to deliver results you can see from the street. Whether you're in Audrain County or the surrounding communities, we bring professional-grade equipment and years of expertise to restore your property's curb appeal.
+              {t('heroDesc')}
             </p>
 
             <div className="flex flex-wrap gap-4">
               <a href="https://calendar.app.google/YmtAenZ1D6f8BQ8h9" target="_blank" rel="noopener noreferrer" className="btn-gold rounded-sm">
                 <Clock size={16} className="inline mr-2" />
-                Book a Free Estimate
+                {t('bookEstimate')}
               </a>
               <button
                 onClick={() => scrollTo("#services")}
                 className="btn-outline-gold rounded-sm"
               >
-                View Our Services
+                {t('viewServices')}
               </button>
             </div>
           </div>
@@ -317,7 +315,7 @@ export default function HomePage() {
                 border: "1px solid oklch(0.72 0.12 75 / 0.3)",
               }}
             >
-              What We Do
+              {t('whatWeDo')}
             </div>
             <h2
               className="reveal text-4xl sm:text-5xl font-bold mt-2 mb-4"
@@ -326,14 +324,13 @@ export default function HomePage() {
                 color: "oklch(0.20 0.06 155)",
               }}
             >
-              Our Services
+              {t('ourServices')}
             </h2>
             <p
               className="reveal text-base max-w-xl mx-auto"
               style={{ color: "oklch(0.45 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
             >
-              Every service includes a free estimate. We use the right
-              equipment and technique for each surface — no guesswork, no damage.
+              {t('servicesDesc')}
             </p>
           </div>
 
@@ -393,14 +390,14 @@ export default function HomePage() {
                         color: "oklch(0.20 0.06 155)",
                       }}
                     >
-                      {service.title}
+                      {t(service.titleKey)}
                     </h3>
                   </div>
                   <p
                     className="text-sm leading-relaxed flex-1"
                     style={{ color: "oklch(0.45 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
                   >
-                    {service.description}
+                    {t(service.descKey)}
                   </p>
                   <Link
                     href={service.href}
@@ -440,9 +437,7 @@ export default function HomePage() {
                 color: "oklch(0.20 0.06 155)",
               }}
             >
-              All Services Include a{" "}
-              <span style={{ color: "oklch(0.55 0.10 75)" }}>Free Estimate</span>
-              {" "}— No Obligation
+              {t('freeEstimate')}
             </p>
           </div>
         </div>
@@ -469,7 +464,7 @@ export default function HomePage() {
                   backgroundColor: "oklch(0.72 0.12 75 / 0.08)",
                 }}
               >
-                About Us
+                {t('aboutUs')}
               </div>
               <h2
                 className="reveal text-4xl sm:text-5xl font-bold leading-tight mb-6"
@@ -478,13 +473,7 @@ export default function HomePage() {
                   color: "oklch(0.98 0.015 80)",
                 }}
               >
-                Honest Work.
-                <span
-                  className="block italic"
-                  style={{ color: "oklch(0.82 0.10 75)" }}
-                >
-                  Dependable Service.
-                </span>
+                {t('honestWork')}
               </h2>
               <p
                 className="reveal text-base leading-relaxed mb-4"
@@ -493,28 +482,19 @@ export default function HomePage() {
                   fontFamily: "'Barlow', sans-serif",
                 }}
               >
-                G&S Exterior Restoration is a fully insured professional pressure washing company proudly serving Mexico, MO and all of Mid-Missouri. We specialize in driveway pressure washing, professional siding washing, deck cleaning, patio cleaning, vehicle washing, and comprehensive exterior restoration services. With years of experience in the pressure washing industry and a commitment to quality, we've become the trusted choice for homeowners and property managers throughout Audrain County and surrounding communities who demand professional results.
-              </p>
-              <p
-                className="reveal text-base leading-relaxed mb-8"
-                style={{
-                  color: "oklch(0.80 0.025 80)",
-                  fontFamily: "'Barlow', sans-serif",
-                }}
-              >
-                We understand how much of a difference professional pressure washing makes to your property. Our exterior cleaning services are designed to remove years of dirt, algae, mold, and grime — improving curb appeal, refreshing your property's appearance, and helping your home or business look well maintained year-round. At G&S, we believe in honest work, dependable service, and delivering pressure washing results you can see from the street. Whether it's concrete driveway cleaning, soft washing for delicate siding, or professional vehicle washing, we bring professional-grade equipment and expertise to every job.
+                {t('aboutDesc')}
               </p>
               <div className="reveal flex flex-wrap gap-4">
                 <a href="tel:3144670332" className="btn-gold rounded-sm">
                   <Phone size={15} className="inline mr-2" />
-                  Call Us Today
+                  {t('callUsToday')}
                 </a>
                 <a
                   href="mailto:contact@gsrestoration.net"
                   className="btn-outline-gold rounded-sm"
                 >
                   <Mail size={15} className="inline mr-2" />
-                  Send an Email
+                  {t('sendEmail')}
                 </a>
               </div>
             </div>
@@ -522,13 +502,13 @@ export default function HomePage() {
             {/* Right: stat cards */}
             <div className="grid grid-cols-2 gap-4">
               {[
-                { value: "100%", label: "Fully Insured", sub: "Every job, every time" },
-                { value: "$0", label: "Estimate Cost", sub: "Free quotes always" },
-                { value: "24/7", label: "Book Online", sub: "Anytime, any device" },
-                { value: "MO", label: "Mexico & Beyond", sub: "Proudly local" },
+                { value: "100%", labelKey: "fullyInsured", subKey: "everyJobEveryTime" },
+                { value: "$0", labelKey: "estimateCost", subKey: "freeQuotes" },
+                { value: "24/7", labelKey: "bookOnline", subKey: "anytimeAnyDevice" },
+                { value: "MO", labelKey: "mexicoAndBeyond", subKey: "proudlyLocal" },
               ].map((stat, i) => (
               <div
-                key={stat.label}
+                key={stat.labelKey}
                 className="reveal rounded-lg p-6 border"
                 style={{
                   transitionDelay: `${i * 80}ms`,
@@ -553,13 +533,13 @@ export default function HomePage() {
                       color: "oklch(0.98 0.015 80)",
                     }}
                   >
-                    {stat.label}
+                    {t(stat.labelKey)}
                   </div>
                   <div
                     className="text-xs"
                     style={{ color: "oklch(0.65 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
                   >
-                    {stat.sub}
+                    {t(stat.subKey)}
                   </div>
                 </div>
               ))}
@@ -585,13 +565,13 @@ export default function HomePage() {
                 backgroundColor: "oklch(0.72 0.12 75 / 0.08)",
               }}
             >
-              Customer Reviews
+              {t('customerReviews')}
             </div>
             <h2
               className="text-4xl sm:text-5xl font-bold mt-2"
               style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.98 0.015 80)" }}
             >
-              What Our Customers Say
+              {t('whatOurCustomersSay')}
             </h2>
           </div>
 

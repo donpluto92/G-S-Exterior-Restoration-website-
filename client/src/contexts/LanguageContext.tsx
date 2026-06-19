@@ -120,6 +120,9 @@ const translations = {
     instantQuote: 'Instant Quote: Get an accurate estimate immediately',
     bookOrContact: 'Book or Contact: Schedule your service or reach out with questions',
     questions: 'Questions? Call us at',
+    callUsToday: 'Call Us Today',
+    sendEmail: 'Send an Email',
+    learnMore: 'Learn More →',
   },
   es: {
     home: 'INICIO',
@@ -194,5 +197,8 @@ const translations = {
     instantQuote: 'Presupuesto Instantáneo: Obtenga una estimación precisa inmediatamente',
     bookOrContact: 'Reservar o Contactar: Programe su servicio o comuníquese con preguntas',
     questions: '¿Preguntas? Llámenos al',
+    callUsToday: 'Llámenos Hoy',
+    sendEmail: 'Enviar un Correo Electrónico',
+    learnMore: 'Aprende Más →',
   },
 };
