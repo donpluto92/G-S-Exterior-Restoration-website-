@@ -4,6 +4,7 @@
 */
 import { useState, useEffect } from "react";
 import { Phone, Menu, X } from "lucide-react";
+import { LanguageToggle } from "./LanguageToggle";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -73,15 +74,18 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* CTA Phone */}
-        <a
-          href="tel:3144670332"
-          className="hidden md:flex items-center gap-2 btn-gold rounded"
-          style={{ fontSize: "1.05rem" }}
-        >
-          <Phone size={15} />
-          (314) 467-0332
-        </a>
+        {/* Language Toggle + CTA Phone */}
+        <div className="hidden md:flex items-center gap-4">
+          <LanguageToggle />
+          <a
+            href="tel:3144670332"
+            className="flex items-center gap-2 btn-gold rounded"
+            style={{ fontSize: "1.05rem" }}
+          >
+            <Phone size={15} />
+            (314) 467-0332
+          </a>
+        </div>
 
         {/* Mobile hamburger */}
         <button
@@ -117,6 +121,9 @@ export default function Navbar() {
               {link.label}
             </button>
           ))}
+          <div className="py-2">
+            <LanguageToggle />
+          </div>
           <a
             href="tel:3144670332"
             className="btn-gold rounded text-center mt-2"
