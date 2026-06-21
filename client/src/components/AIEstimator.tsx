@@ -130,7 +130,11 @@ export default function AIEstimator() {
     : "0.00";
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className="w-full py-16 px-4" style={{
+      background: 'linear-gradient(180deg, oklch(0.28 0.07 155) 0%, oklch(0.25 0.065 155) 50%, oklch(0.28 0.07 155) 100%)',
+      position: 'relative'
+    }}>
+      <div className="w-full max-w-2xl mx-auto">
       {/* Step 1: Service Selection */}
       {step === "service" && (
         <Card className="p-8">
@@ -393,6 +397,7 @@ export default function AIEstimator() {
           </Button>
         </Card>
       )}
+      </div>
     </div>
   );
 }
