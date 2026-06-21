@@ -724,14 +724,14 @@ export default function HomePage() {
       <section
         id="estimator"
         className="py-24"
-        style={{ backgroundColor: "oklch(0.95 0.02 155)" }}
+        style={{ backgroundColor: "oklch(0.28 0.07 155)" }}
       >
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: "oklch(0.28 0.07 155)" }}>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: "oklch(0.98 0.015 80)" }}>
               Get Your Instant Estimate
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: "oklch(0.98 0.015 80)" }}>
               Upload photos and let our AI analyze your project. Get an instant estimate in minutes — no obligation, no pressure.
             </p>
           </div>
