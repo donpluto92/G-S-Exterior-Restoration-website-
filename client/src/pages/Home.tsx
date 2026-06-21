@@ -468,7 +468,7 @@ export default function HomePage() {
                 {t('aboutUs')}
               </div>
               <h2
-                className="reveal text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6"
+                className="reveal text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6 whitespace-nowrap overflow-hidden text-ellipsis"
                 style={{
                   fontFamily: "'Playfair Display', serif",
                   color: "oklch(0.98 0.015 80)",
