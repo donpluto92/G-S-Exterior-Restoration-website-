@@ -5,6 +5,7 @@
 */
 import { useEffect, useRef } from "react";
 import Navbar from "@/components/Navbar";
+import AIEstimator from "@/components/AIEstimator";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
   Phone,
@@ -716,6 +717,25 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── AI ESTIMATOR ── */}
+      <section
+        id="estimator"
+        className="py-24"
+        style={{ backgroundColor: "oklch(0.95 0.02 155)" }}
+      >
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: "oklch(0.28 0.07 155)" }}>
+              Get Your Instant Estimate
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Upload photos and let our AI analyze your project. Get an instant estimate in minutes — no obligation, no pressure.
+            </p>
+          </div>
+          <AIEstimator />
         </div>
       </section>
 
