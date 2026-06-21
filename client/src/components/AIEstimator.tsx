@@ -17,7 +17,7 @@ interface PhotoAnalysis {
 export default function AIEstimator() {
   const [step, setStep] = useState<Step>("service");
   const [serviceType, setServiceType] = useState<
-    "driveway" | "deck" | "siding" | "vehicle" | ""
+    "driveway" | "deck" | "siding" | "vehicle" | "patio" | "walkway" | ""
   >("");
   const [photos, setPhotos] = useState<File[]>([]);
   const [photoUrls, setPhotoUrls] = useState<string[]>([]);
@@ -84,7 +84,7 @@ export default function AIEstimator() {
     try {
       const result = await analyzePhotosMutation.mutateAsync({
         photoUrls,
-        serviceType: serviceType as "driveway" | "deck" | "siding" | "vehicle",
+        serviceType: serviceType as "driveway" | "deck" | "siding" | "vehicle" | "patio" | "walkway",
       });
 
       setAnalysis(result);
@@ -102,29 +102,24 @@ export default function AIEstimator() {
       return;
     }
 
-    if (!analysis) {
-      toast.error("No estimate available");
-      return;
-    }
-
     setIsSubmitting(true);
     try {
       await submitEstimateMutation.mutateAsync({
-        fullName: formData.fullName,
-        email: formData.email,
-        phone: formData.phone,
-        propertyAddress: formData.propertyAddress,
-        serviceType: serviceType as "driveway" | "deck" | "siding" | "vehicle",
-        estimatedSquareFeet: analysis.estimatedSquareFeet,
-        estimatedPrice: analysis.estimatedPrice,
+        serviceType: serviceType as "driveway" | "deck" | "siding" | "vehicle" | "patio" | "walkway",
         photoUrls,
+        estimatedPrice: analysis?.estimatedPrice || 0,
+        estimatedSquareFeet: analysis?.estimatedSquareFeet,
+        customerName: formData.fullName,
+        customerEmail: formData.email,
+        customerPhone: formData.phone,
+        propertyAddress: formData.propertyAddress,
         notes: formData.notes,
       });
 
       setStep("success");
       toast.success("Estimate submitted successfully!");
     } catch (error) {
-      toast.error("Failed to submit estimate");
+      toast.error("Failed to submit estimate. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -146,6 +141,8 @@ export default function AIEstimator() {
               { id: "deck", label: "Deck Cleaning" },
               { id: "siding", label: "Siding Washing" },
               { id: "vehicle", label: "Vehicle Washing" },
+              { id: "patio", label: "Patio Cleaning" },
+              { id: "walkway", label: "Walkway Cleaning" },
             ].map((service) => (
               <button
                 key={service.id}
@@ -234,6 +231,7 @@ export default function AIEstimator() {
             <Button
               onClick={handleAnalyzePhotos}
               disabled={isAnalyzing || photoUrls.length === 0}
+              className="flex-1"
             >
               {isAnalyzing ? (
                 <>
@@ -260,85 +258,106 @@ export default function AIEstimator() {
             <p className="text-gray-600">
               Estimated price for your {serviceType} cleaning
             </p>
-            {analysis.estimatedSquareFeet && (
-              <p className="text-sm text-gray-500 mt-2">
-                Estimated size: {analysis.estimatedSquareFeet} sq ft
-              </p>
-            )}
-            <p className="text-sm text-gray-500">
-              Condition: {analysis.condition}
-            </p>
           </div>
 
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-            <p className="text-sm text-gray-700">{analysis.notes}</p>
-          </div>
-
-          <h3 className="font-semibold mb-4">Your Information</h3>
           <div className="space-y-4 mb-6">
-            <input
-              type="text"
-              placeholder="Full Name *"
-              value={formData.fullName}
-              onChange={(e) =>
-                setFormData({ ...formData, fullName: e.target.value })
-              }
-              className="w-full px-4 py-2 border rounded-lg"
-            />
-            <input
-              type="email"
-              placeholder="Email *"
-              value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
-              className="w-full px-4 py-2 border rounded-lg"
-            />
-            <input
-              type="tel"
-              placeholder="Phone *"
-              value={formData.phone}
-              onChange={(e) =>
-                setFormData({ ...formData, phone: e.target.value })
-              }
-              className="w-full px-4 py-2 border rounded-lg"
-            />
-            <input
-              type="text"
-              placeholder="Property Address"
-              value={formData.propertyAddress}
-              onChange={(e) =>
-                setFormData({ ...formData, propertyAddress: e.target.value })
-              }
-              className="w-full px-4 py-2 border rounded-lg"
-            />
-            <textarea
-              placeholder="Additional notes (optional)"
-              value={formData.notes}
-              onChange={(e) =>
-                setFormData({ ...formData, notes: e.target.value })
-              }
-              className="w-full px-4 py-2 border rounded-lg"
-              rows={3}
-            />
+            <div>
+              <label className="block text-sm font-semibold mb-2">Full Name *</label>
+              <input
+                type="text"
+                value={formData.fullName}
+                onChange={(e) =>
+                  setFormData({ ...formData, fullName: e.target.value })
+                }
+                className="w-full px-4 py-2 border rounded-lg"
+                placeholder="John Smith"
+              />
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-semibold mb-2">
+                  Email *
+                </label>
+                <input
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                  className="w-full px-4 py-2 border rounded-lg"
+                  placeholder="john@example.com"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold mb-2">
+                  Phone *
+                </label>
+                <input
+                  type="tel"
+                  value={formData.phone}
+                  onChange={(e) =>
+                    setFormData({ ...formData, phone: e.target.value })
+                  }
+                  className="w-full px-4 py-2 border rounded-lg"
+                  placeholder="(573) 555-0100"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-semibold mb-2">
+                Property Address
+              </label>
+              <input
+                type="text"
+                value={formData.propertyAddress}
+                onChange={(e) =>
+                  setFormData({ ...formData, propertyAddress: e.target.value })
+                }
+                className="w-full px-4 py-2 border rounded-lg"
+                placeholder="123 Main St, Mexico, MO 65265"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-semibold mb-2">
+                Additional Notes
+              </label>
+              <textarea
+                value={formData.notes}
+                onChange={(e) =>
+                  setFormData({ ...formData, notes: e.target.value })
+                }
+                className="w-full px-4 py-2 border rounded-lg"
+                rows={3}
+                placeholder="Any special requests or details..."
+              />
+            </div>
           </div>
 
           <div className="flex gap-3">
             <Button
               variant="outline"
-              onClick={() => setStep("photos")}
-              disabled={isSubmitting}
+              onClick={() => {
+                setStep("photos");
+                setAnalysis(null);
+              }}
             >
               Back
             </Button>
-            <Button onClick={handleSubmit} disabled={isSubmitting}>
+            <Button
+              onClick={handleSubmit}
+              disabled={isSubmitting}
+              className="flex-1"
+            >
               {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 animate-spin" size={16} />
                   Submitting...
                 </>
               ) : (
-                "Submit Estimate"
+                "Submit Estimate Request"
               )}
             </Button>
           </div>
@@ -351,8 +370,8 @@ export default function AIEstimator() {
           <CheckCircle className="mx-auto mb-4 text-green-600" size={48} />
           <h2 className="text-2xl font-bold mb-2">Estimate Submitted!</h2>
           <p className="text-gray-600 mb-6">
-            Thank you! We've received your estimate request. We'll review your
-            photos and contact you within 24 hours with a detailed quote.
+            Thank you for submitting your estimate request. We'll review your
+            photos and send you a detailed estimate via email within 24 hours.
           </p>
           <Button
             onClick={() => {
