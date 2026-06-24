@@ -62,10 +62,11 @@ Respond in JSON format:
           ],
         });
 
+        const messageContent = response.choices[0]?.message.content;
         const analysisText =
-          response.choices[0]?.message.content?.[0]?.type === "text"
-            ? response.choices[0].message.content[0].text
-            : "";
+          typeof messageContent === "string"
+            ? messageContent
+            : messageContent?.find((part) => part.type === "text")?.text ?? "";
 
         // Parse the JSON response
         const jsonMatch = analysisText.match(/\{[\s\S]*\}/);
@@ -127,7 +128,7 @@ Respond in JSON format:
     .mutation(async ({ input }) => {
       try {
         // Save to database
-        const submission = await createEstimatorSubmission({
+        await createEstimatorSubmission({
           fullName: input.fullName,
           email: input.email,
           phone: input.phone,
@@ -154,7 +155,6 @@ Respond in JSON format:
 
         return {
           success: true,
-          submissionId: submission.insertId,
         };
       } catch (error) {
         console.error("Estimator submission error:", error);
