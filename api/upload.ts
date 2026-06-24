@@ -1,6 +1,5 @@
 import Busboy from "busboy";
 import { nanoid } from "nanoid";
-import { storagePut } from "../server/storage";
 
 export const config = {
   api: {
@@ -14,6 +13,62 @@ type UploadedFile = {
   mimeType: string;
   size: number;
 };
+
+function getForgeConfig() {
+  const forgeUrl = process.env.BUILT_IN_FORGE_API_URL;
+  const forgeKey = process.env.BUILT_IN_FORGE_API_KEY;
+
+  if (!forgeUrl || !forgeKey) {
+    throw new Error(
+      "Storage config missing: set BUILT_IN_FORGE_API_URL and BUILT_IN_FORGE_API_KEY",
+    );
+  }
+
+  return { forgeUrl: forgeUrl.replace(/\/+$/, ""), forgeKey };
+}
+
+function appendHashSuffix(relKey: string): string {
+  const hash = crypto.randomUUID().replace(/-/g, "").slice(0, 8);
+  const lastDot = relKey.lastIndexOf(".");
+  if (lastDot === -1) return `${relKey}_${hash}`;
+  return `${relKey.slice(0, lastDot)}_${hash}${relKey.slice(lastDot)}`;
+}
+
+async function storagePut(
+  relKey: string,
+  data: Buffer,
+  contentType = "application/octet-stream",
+): Promise<{ key: string; url: string }> {
+  const { forgeUrl, forgeKey } = getForgeConfig();
+  const key = appendHashSuffix(relKey.replace(/^\/+/, ""));
+
+  const presignUrl = new URL("v1/storage/presign/put", forgeUrl + "/");
+  presignUrl.searchParams.set("path", key);
+
+  const presignResp = await fetch(presignUrl, {
+    headers: { Authorization: `Bearer ${forgeKey}` },
+  });
+
+  if (!presignResp.ok) {
+    const msg = await presignResp.text().catch(() => presignResp.statusText);
+    throw new Error(`Storage presign failed (${presignResp.status}): ${msg}`);
+  }
+
+  const { url: s3Url } = (await presignResp.json()) as { url: string };
+  if (!s3Url) throw new Error("Forge returned empty presign URL");
+
+  const uploadResp = await fetch(s3Url, {
+    method: "PUT",
+    headers: { "Content-Type": contentType },
+    body: new Blob([data as any], { type: contentType }),
+  });
+
+  if (!uploadResp.ok) {
+    throw new Error(`Storage upload to S3 failed (${uploadResp.status})`);
+  }
+
+  return { key, url: `/api/manus-storage/${key}` };
+}
 
 function parseUpload(req: any): Promise<UploadedFile> {
   return new Promise((resolve, reject) => {

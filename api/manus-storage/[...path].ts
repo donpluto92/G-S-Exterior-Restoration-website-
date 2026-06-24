@@ -1,9 +1,40 @@
-import { storageGetSignedUrl } from "../../server/storage";
-
 function getPath(req: any) {
   const path = req.query?.path;
   if (Array.isArray(path)) return path.join("/");
   return path || "";
+}
+
+function getForgeConfig() {
+  const forgeUrl = process.env.BUILT_IN_FORGE_API_URL;
+  const forgeKey = process.env.BUILT_IN_FORGE_API_KEY;
+
+  if (!forgeUrl || !forgeKey) {
+    throw new Error(
+      "Storage config missing: set BUILT_IN_FORGE_API_URL and BUILT_IN_FORGE_API_KEY",
+    );
+  }
+
+  return { forgeUrl: forgeUrl.replace(/\/+$/, ""), forgeKey };
+}
+
+async function storageGetSignedUrl(relKey: string): Promise<string> {
+  const { forgeUrl, forgeKey } = getForgeConfig();
+  const key = relKey.replace(/^\/+/, "");
+
+  const getUrl = new URL("v1/storage/presign/get", forgeUrl + "/");
+  getUrl.searchParams.set("path", key);
+
+  const resp = await fetch(getUrl, {
+    headers: { Authorization: `Bearer ${forgeKey}` },
+  });
+
+  if (!resp.ok) {
+    const msg = await resp.text().catch(() => resp.statusText);
+    throw new Error(`Storage signed URL failed (${resp.status}): ${msg}`);
+  }
+
+  const { url } = (await resp.json()) as { url: string };
+  return url;
 }
 
 export default async function handler(req: any, res: any) {
