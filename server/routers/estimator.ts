@@ -7,7 +7,7 @@ import { sendEstimatorEmail } from "../_core/email";
 const serviceTypeSchema = z.enum(["driveway", "deck", "siding", "vehicle", "patio", "walkway"]);
 const photoUrlSchema = z.string().min(1);
 type RequestLike = {
-  headers: Record<string, string | string[] | undefined>;
+  headers?: Record<string, string | string[] | undefined>;
   protocol?: string;
 };
 
@@ -16,10 +16,11 @@ function firstHeaderValue(value: string | string[] | undefined) {
 }
 
 function getRequestOrigin(req: RequestLike) {
-  const forwardedProto = firstHeaderValue(req.headers["x-forwarded-proto"]);
-  const forwardedHost = firstHeaderValue(req.headers["x-forwarded-host"]);
+  const headers = req.headers ?? {};
+  const forwardedProto = firstHeaderValue(headers["x-forwarded-proto"]);
+  const forwardedHost = firstHeaderValue(headers["x-forwarded-host"]);
   const protocol = forwardedProto?.split(",")[0]?.trim() || req.protocol || "https";
-  const host = forwardedHost?.split(",")[0]?.trim() || req.headers.host;
+  const host = forwardedHost?.split(",")[0]?.trim() || headers.host;
 
   if (!host) {
     throw new Error("Could not resolve request host for uploaded photos");
