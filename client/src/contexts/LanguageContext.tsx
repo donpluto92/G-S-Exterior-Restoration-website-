@@ -122,7 +122,6 @@ const translations = {
     questions: 'Questions? Call us at',
     callUsToday: 'Call Us Today',
     sendEmail: 'Send an Email',
-    learnMore: 'Learn More →',
   },
   es: {
     home: 'INICIO',
@@ -199,6 +198,5 @@ const translations = {
     questions: '¿Preguntas? Llámenos al',
     callUsToday: 'Llámenos Hoy',
     sendEmail: 'Enviar un Correo Electrónico',
-    learnMore: 'Aprende Más →',
   },
 };

@@ -339,7 +339,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, i) => (
               <div
-                key={service.title}
+                key={service.titleKey}
                 className="reveal service-card rounded-lg overflow-hidden border flex flex-col"
                 style={{
                   transitionDelay: `${i * 80}ms`,
@@ -350,7 +350,7 @@ export default function HomePage() {
                   {service.img ? (
                     <img
                       src={service.img}
-                      alt={service.title}
+                      alt={t(service.titleKey)}
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                     />
                   ) : (
