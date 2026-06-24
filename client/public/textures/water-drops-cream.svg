@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="430" viewBox="0 0 620 430">
+  <defs>
+    <filter id="s" x="-40%" y="-40%" width="180%" height="200%">
+      <feDropShadow dx="2" dy="5" stdDeviation="2.6" flood-color="#274b37" flood-opacity=".20"/>
+    </filter>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".50"/>
+      <stop offset=".45" stop-color="#ffffff" stop-opacity=".23"/>
+      <stop offset="1" stop-color="#315a42" stop-opacity=".12"/>
+    </linearGradient>
+    <linearGradient id="streak" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".18"/>
+      <stop offset=".45" stop-color="#4c735b" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#4c735b" stop-opacity="0"/>
+    </linearGradient>
+    <path id="drop" d="M0,-12 C8,-3 12,6 8,14 C5,21 -5,21 -8,14 C-12,6 -8,-3 0,-12Z"/>
+  </defs>
+  <rect width="620" height="430" fill="none"/>
+  <g opacity=".95">
+    <rect x="63" y="80" width="3" height="44" rx="2" fill="url(#streak)"/>
+    <g transform="translate(64 72) scale(1.2 1.55) rotate(-5)" filter="url(#s)"><use href="#drop" fill="url(#g)" stroke="#ffffff" stroke-opacity=".38" stroke-width=".65"/><ellipse cx="-3" cy="-5" rx="2.2" ry="1.2" fill="#fff" opacity=".82"/></g>
+    <rect x="188" y="303" width="2.5" height="36" rx="2" fill="url(#streak)"/>
+    <g transform="translate(189 296) scale(.95 1.35) rotate(4)" filter="url(#s)"><use href="#drop" fill="url(#g)" stroke="#ffffff" stroke-opacity=".34" stroke-width=".6"/><ellipse cx="-2.6" cy="-5" rx="1.8" ry="1" fill="#fff" opacity=".75"/></g>
+    <rect x="326" y="120" width="3.5" height="58" rx="2" fill="url(#streak)"/>
+    <g transform="translate(328 110) scale(1.25 1.8) rotate(7)" filter="url(#s)"><use href="#drop" fill="url(#g)" stroke="#ffffff" stroke-opacity=".35" stroke-width=".65"/><ellipse cx="-3.2" cy="-5.4" rx="2.2" ry="1.2" fill="#fff" opacity=".78"/></g>
+    <rect x="500" y="258" width="2.6" height="42" rx="2" fill="url(#streak)"/>
+    <g transform="translate(501 250) scale(1 1.45) rotate(-7)" filter="url(#s)"><use href="#drop" fill="url(#g)" stroke="#ffffff" stroke-opacity=".34" stroke-width=".6"/><ellipse cx="-2.6" cy="-5" rx="1.9" ry="1" fill="#fff" opacity=".75"/></g>
+    <rect x="556" y="75" width="2.3" height="32" rx="2" fill="url(#streak)"/>
+    <g transform="translate(557 69) scale(.85 1.2) rotate(3)" filter="url(#s)"><use href="#drop" fill="url(#g)" stroke="#ffffff" stroke-opacity=".34" stroke-width=".55"/><ellipse cx="-2.4" cy="-5" rx="1.6" ry=".9" fill="#fff" opacity=".72"/></g>
+    <rect x="95" y="366" width="2.4" height="34" rx="2" fill="url(#streak)"/>
+    <g transform="translate(96 359) scale(.9 1.25) rotate(-3)" filter="url(#s)"><use href="#drop" fill="url(#g)" stroke="#ffffff" stroke-opacity=".32" stroke-width=".55"/><ellipse cx="-2.3" cy="-4.8" rx="1.6" ry=".9" fill="#fff" opacity=".7"/></g>
+  </g>
+</svg>
