@@ -3,8 +3,32 @@ import { publicProcedure, router } from "../_core/trpc";
 import { createEstimatorSubmission } from "../db";
 import { invokeLLM } from "../_core/llm";
 import { sendEstimatorEmail } from "../_core/email";
+import type { Request } from "express";
 
 const serviceTypeSchema = z.enum(["driveway", "deck", "siding", "vehicle", "patio", "walkway"]);
+const photoUrlSchema = z.string().min(1);
+
+function firstHeaderValue(value: string | string[] | undefined) {
+  return Array.isArray(value) ? value[0] : value;
+}
+
+function getRequestOrigin(req: Request) {
+  const forwardedProto = firstHeaderValue(req.headers["x-forwarded-proto"]);
+  const forwardedHost = firstHeaderValue(req.headers["x-forwarded-host"]);
+  const protocol = forwardedProto?.split(",")[0]?.trim() || req.protocol || "https";
+  const host = forwardedHost?.split(",")[0]?.trim() || req.headers.host;
+
+  if (!host) {
+    throw new Error("Could not resolve request host for uploaded photos");
+  }
+
+  return `${protocol}://${host}`;
+}
+
+function resolvePublicPhotoUrls(photoUrls: string[], req: Request) {
+  const origin = getRequestOrigin(req);
+  return photoUrls.map((url) => new URL(url, origin).toString());
+}
 
 // Pricing matrix for Mexico, MO area (per sq ft except vehicle flat rate)
 const PRICING_MATRIX = {
@@ -20,12 +44,14 @@ export const estimatorRouter = router({
   analyzePhotos: publicProcedure
     .input(
       z.object({
-        photoUrls: z.array(z.string().url()),
+        photoUrls: z.array(photoUrlSchema),
         serviceType: serviceTypeSchema,
       })
     )
-    .mutation(async ({ input }) => {
+    .mutation(async ({ input, ctx }) => {
       try {
+        const publicPhotoUrls = resolvePublicPhotoUrls(input.photoUrls, ctx.req);
+
         // Use LLM to analyze photos and estimate square footage
         const analysisPrompt = `You are an expert exterior restoration estimator for G&S Exterior Restoration in Mexico, Missouri.
 
@@ -50,7 +76,7 @@ Respond in JSON format:
                   type: "text",
                   text: analysisPrompt,
                 },
-                ...input.photoUrls.map((url) => ({
+                ...publicPhotoUrls.map((url) => ({
                   type: "image_url" as const,
                   image_url: {
                     url,
@@ -121,12 +147,14 @@ Respond in JSON format:
         serviceType: serviceTypeSchema,
         estimatedSquareFeet: z.number().optional(),
         estimatedPrice: z.number(),
-        photoUrls: z.array(z.string().url()),
+        photoUrls: z.array(photoUrlSchema),
         notes: z.string().optional(),
       })
     )
-    .mutation(async ({ input }) => {
+    .mutation(async ({ input, ctx }) => {
       try {
+        const publicPhotoUrls = resolvePublicPhotoUrls(input.photoUrls, ctx.req);
+
         // Save to database
         await createEstimatorSubmission({
           fullName: input.fullName,
@@ -136,7 +164,7 @@ Respond in JSON format:
           serviceType: input.serviceType,
           estimatedSquareFeet: input.estimatedSquareFeet,
           estimatedPrice: input.estimatedPrice,
-          photoUrls: JSON.stringify(input.photoUrls),
+          photoUrls: JSON.stringify(publicPhotoUrls),
           notes: input.notes,
         });
 
@@ -149,7 +177,7 @@ Respond in JSON format:
           serviceType: input.serviceType,
           estimatedSquareFeet: input.estimatedSquareFeet,
           estimatedPrice: input.estimatedPrice,
-          photoUrls: input.photoUrls,
+          photoUrls: publicPhotoUrls,
           notes: input.notes,
         });
 
