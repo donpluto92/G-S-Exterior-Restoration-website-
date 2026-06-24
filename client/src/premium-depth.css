@@ -5,7 +5,7 @@
   --gs-shadow-deep: 0 28px 58px rgba(12, 33, 23, 0.28), 0 12px 22px rgba(12, 33, 23, 0.18);
   --gs-shadow-card: 0 22px 42px rgba(12, 33, 23, 0.24), 0 7px 14px rgba(12, 33, 23, 0.16), 0 2px 0 rgba(255, 255, 255, 0.55) inset, 0 -6px 14px rgba(12, 33, 23, 0.12) inset;
   --gs-gold-rim: rgba(201, 168, 76, 0.72);
-  --gs-cream-glass: rgba(255, 248, 240, 0.88);
+  --gs-cream-glass: rgba(252, 239, 211, 0.9);
 }
 
 /* Make the cream and green backgrounds feel like real surfaces instead of flat panels. */
@@ -26,27 +26,41 @@
   z-index: 2;
 }
 
-/* Water beads on cream sections */
+/* Warmer cream surface with faint depth and tiny water-bead highlights. */
 #services::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.72;
+  opacity: 0.95;
   background-image:
-    radial-gradient(circle at 8% 16%, rgba(255,255,255,0.95) 0 2px, rgba(99,132,109,0.24) 2.5px, transparent 5px),
-    radial-gradient(circle at 18% 72%, rgba(255,255,255,0.86) 0 1.6px, rgba(99,132,109,0.18) 2px, transparent 4.5px),
-    radial-gradient(circle at 34% 28%, rgba(255,255,255,0.88) 0 2.2px, rgba(99,132,109,0.16) 2.8px, transparent 5.5px),
-    radial-gradient(circle at 51% 82%, rgba(255,255,255,0.88) 0 1.8px, rgba(99,132,109,0.18) 2.4px, transparent 5px),
-    radial-gradient(circle at 71% 24%, rgba(255,255,255,0.92) 0 2px, rgba(99,132,109,0.18) 2.5px, transparent 5px),
-    radial-gradient(circle at 90% 62%, rgba(255,255,255,0.85) 0 1.7px, rgba(99,132,109,0.18) 2.2px, transparent 5px),
-    linear-gradient(135deg, rgba(255,255,255,0.45), transparent 38%, rgba(201,168,76,0.08));
-  background-size: 360px 260px, 420px 310px, 520px 360px, 470px 330px, 390px 290px, 560px 390px, 100% 100%;
-  filter: drop-shadow(0 2px 2px rgba(25, 62, 43, 0.16));
+    /* bead highlights */
+    radial-gradient(circle at 8% 16%, rgba(255,255,255,0.96) 0 1.1px, rgba(255,255,255,0.55) 1.2px 2px, transparent 2.2px),
+    radial-gradient(circle at 18% 72%, rgba(255,255,255,0.9) 0 1px, rgba(255,255,255,0.44) 1.1px 1.8px, transparent 2px),
+    radial-gradient(circle at 34% 28%, rgba(255,255,255,0.92) 0 1.2px, rgba(255,255,255,0.48) 1.3px 2.2px, transparent 2.4px),
+    radial-gradient(circle at 51% 82%, rgba(255,255,255,0.88) 0 1px, rgba(255,255,255,0.45) 1.1px 1.9px, transparent 2.2px),
+    radial-gradient(circle at 71% 24%, rgba(255,255,255,0.95) 0 1.1px, rgba(255,255,255,0.5) 1.3px 2.1px, transparent 2.3px),
+    radial-gradient(circle at 90% 62%, rgba(255,255,255,0.88) 0 1px, rgba(255,255,255,0.42) 1.1px 1.9px, transparent 2.2px),
+    /* bead bodies */
+    radial-gradient(circle at 8% 16%, rgba(255,255,255,0.28) 0 4px, rgba(95,126,105,0.16) 4.4px, rgba(33,70,49,0.14) 5.4px, transparent 7.2px),
+    radial-gradient(circle at 18% 72%, rgba(255,255,255,0.22) 0 3.4px, rgba(95,126,105,0.13) 3.8px, rgba(33,70,49,0.12) 4.8px, transparent 6.4px),
+    radial-gradient(circle at 34% 28%, rgba(255,255,255,0.25) 0 4.5px, rgba(95,126,105,0.13) 4.9px, rgba(33,70,49,0.12) 6px, transparent 7.8px),
+    radial-gradient(circle at 51% 82%, rgba(255,255,255,0.23) 0 3.8px, rgba(95,126,105,0.14) 4.2px, rgba(33,70,49,0.12) 5.2px, transparent 6.8px),
+    radial-gradient(circle at 71% 24%, rgba(255,255,255,0.26) 0 4.2px, rgba(95,126,105,0.14) 4.7px, rgba(33,70,49,0.12) 5.8px, transparent 7.5px),
+    radial-gradient(circle at 90% 62%, rgba(255,255,255,0.22) 0 3.6px, rgba(95,126,105,0.13) 4px, rgba(33,70,49,0.11) 5px, transparent 6.6px),
+    /* cast shadows under beads */
+    radial-gradient(ellipse at 8.8% 17.2%, rgba(35,69,49,0.16) 0 4px, transparent 8px),
+    radial-gradient(ellipse at 18.8% 73.2%, rgba(35,69,49,0.13) 0 3.5px, transparent 7px),
+    radial-gradient(ellipse at 34.8% 29.2%, rgba(35,69,49,0.13) 0 4.5px, transparent 8.4px),
+    radial-gradient(ellipse at 51.8% 83.2%, rgba(35,69,49,0.13) 0 3.7px, transparent 7.4px),
+    radial-gradient(ellipse at 71.8% 25.2%, rgba(35,69,49,0.14) 0 4px, transparent 8px),
+    radial-gradient(ellipse at 90.8% 63.2%, rgba(35,69,49,0.12) 0 3.5px, transparent 7px),
+    linear-gradient(135deg, rgba(255,255,255,0.26), transparent 34%, rgba(201,168,76,0.10));
+  background-size: 360px 260px, 420px 310px, 520px 360px, 470px 330px, 390px 290px, 560px 390px, 360px 260px, 420px 310px, 520px 360px, 470px 330px, 390px 290px, 560px 390px, 360px 260px, 420px 310px, 520px 360px, 470px 330px, 390px 290px, 560px 390px, 100% 100%;
 }
 
-/* Water beads on green sections */
+/* Water beads on green sections: smaller 3D droplets with lower opacity. */
 #about::before,
 #estimator::before,
 #contact::before {
@@ -55,23 +69,34 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.42;
+  opacity: 0.52;
   background-image:
-    radial-gradient(circle at 7% 18%, rgba(255,255,255,0.42) 0 2px, rgba(255,255,255,0.10) 2.6px, transparent 6px),
-    radial-gradient(circle at 22% 68%, rgba(255,255,255,0.34) 0 1.8px, rgba(255,255,255,0.09) 2.5px, transparent 5.5px),
-    radial-gradient(circle at 45% 22%, rgba(255,255,255,0.38) 0 2.2px, rgba(255,255,255,0.10) 2.8px, transparent 6px),
-    radial-gradient(circle at 68% 78%, rgba(255,255,255,0.32) 0 1.7px, rgba(255,255,255,0.08) 2.3px, transparent 5.2px),
-    radial-gradient(circle at 88% 35%, rgba(255,255,255,0.36) 0 2px, rgba(255,255,255,0.08) 2.6px, transparent 5.6px),
+    radial-gradient(circle at 7% 18%, rgba(255,255,255,0.72) 0 1px, rgba(255,255,255,0.25) 1.2px 2px, transparent 2.2px),
+    radial-gradient(circle at 22% 68%, rgba(255,255,255,0.62) 0 0.9px, rgba(255,255,255,0.20) 1.1px 1.8px, transparent 2px),
+    radial-gradient(circle at 45% 22%, rgba(255,255,255,0.68) 0 1px, rgba(255,255,255,0.22) 1.2px 2px, transparent 2.2px),
+    radial-gradient(circle at 68% 78%, rgba(255,255,255,0.56) 0 0.9px, rgba(255,255,255,0.18) 1px 1.7px, transparent 2px),
+    radial-gradient(circle at 88% 35%, rgba(255,255,255,0.64) 0 1px, rgba(255,255,255,0.21) 1.2px 1.9px, transparent 2.2px),
+    radial-gradient(circle at 7% 18%, rgba(255,255,255,0.12) 0 4px, rgba(255,255,255,0.055) 4.5px, rgba(0,0,0,0.12) 5.4px, transparent 7px),
+    radial-gradient(circle at 22% 68%, rgba(255,255,255,0.10) 0 3.5px, rgba(255,255,255,0.045) 4px, rgba(0,0,0,0.11) 5px, transparent 6.6px),
+    radial-gradient(circle at 45% 22%, rgba(255,255,255,0.11) 0 4.2px, rgba(255,255,255,0.05) 4.7px, rgba(0,0,0,0.12) 5.7px, transparent 7.2px),
+    radial-gradient(circle at 68% 78%, rgba(255,255,255,0.09) 0 3.6px, rgba(255,255,255,0.04) 4px, rgba(0,0,0,0.10) 5px, transparent 6.5px),
+    radial-gradient(circle at 88% 35%, rgba(255,255,255,0.10) 0 4px, rgba(255,255,255,0.046) 4.5px, rgba(0,0,0,0.11) 5.5px, transparent 7px),
+    radial-gradient(ellipse at 7.9% 19.1%, rgba(0,0,0,0.18) 0 4px, transparent 8px),
+    radial-gradient(ellipse at 22.9% 69.1%, rgba(0,0,0,0.15) 0 3.5px, transparent 7.2px),
+    radial-gradient(ellipse at 45.9% 23.1%, rgba(0,0,0,0.16) 0 4px, transparent 8px),
+    radial-gradient(ellipse at 68.9% 79.1%, rgba(0,0,0,0.14) 0 3.5px, transparent 7px),
+    radial-gradient(ellipse at 88.9% 36.1%, rgba(0,0,0,0.15) 0 3.8px, transparent 7.8px),
     linear-gradient(180deg, rgba(255,255,255,0.05), transparent 42%, rgba(0,0,0,0.12));
-  background-size: 420px 300px, 500px 370px, 560px 420px, 460px 340px, 620px 440px, 100% 100%;
-  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.22));
+  background-size: 420px 300px, 500px 370px, 560px 420px, 460px 340px, 620px 440px, 420px 300px, 500px 370px, 560px 420px, 460px 340px, 620px 440px, 420px 300px, 500px 370px, 560px 420px, 460px 340px, 620px 440px, 100% 100%;
 }
 
 /* Richer separation where cream meets green */
 #services {
   background:
-    radial-gradient(ellipse at 50% -15%, rgba(255,255,255,0.95), transparent 52%),
-    linear-gradient(180deg, oklch(0.99 0.012 82) 0%, oklch(0.94 0.026 83) 100%) !important;
+    radial-gradient(ellipse at 50% -12%, rgba(255,251,239,0.92), transparent 48%),
+    radial-gradient(ellipse at 12% 18%, rgba(255,244,218,0.56), transparent 45%),
+    radial-gradient(ellipse at 88% 8%, rgba(226,196,126,0.18), transparent 42%),
+    linear-gradient(180deg, oklch(0.965 0.032 82) 0%, oklch(0.915 0.045 82) 100%) !important;
   box-shadow: inset 0 -18px 38px rgba(26, 58, 42, 0.14);
 }
 
@@ -92,7 +117,7 @@
 /* Raised service cards with a thicker physical edge. */
 .service-card {
   border: 1px solid var(--gs-gold-rim) !important;
-  background: linear-gradient(145deg, rgba(255, 252, 244, 0.96), rgba(244, 234, 207, 0.9)) !important;
+  background: linear-gradient(145deg, rgba(255, 249, 235, 0.98), rgba(238, 222, 184, 0.92)) !important;
   box-shadow: var(--gs-shadow-card), 0 0 0 1px rgba(255,255,255,0.34) inset !important;
   transform: translateZ(0);
 }
@@ -177,8 +202,8 @@
   #about::before,
   #estimator::before,
   #contact::before {
-    opacity: 0.38;
-    background-size: 280px 210px, 330px 250px, 390px 290px, 350px 260px, 410px 310px, 100% 100%;
+    opacity: 0.36;
+    background-size: 280px 210px, 330px 250px, 390px 290px, 350px 260px, 410px 310px, 280px 210px, 330px 250px, 390px 290px, 350px 260px, 410px 310px, 280px 210px, 330px 250px, 390px 290px, 350px 260px, 410px 310px, 100% 100%;
   }
 
   .service-card:hover,
