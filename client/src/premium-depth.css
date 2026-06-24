@@ -1,5 +1,5 @@
 /* Premium depth layer for G&S Exterior Restoration
-   Adds raised trade-brand surfaces, beveled edges, and subtle water beads. */
+   Adds raised trade-brand surfaces, beveled edges, and running teardrop water texture. */
 
 :root {
   --gs-shadow-deep: 0 28px 58px rgba(12, 33, 23, 0.28), 0 12px 22px rgba(12, 33, 23, 0.18);
@@ -26,41 +26,24 @@
   z-index: 2;
 }
 
-/* Warmer cream surface with faint depth and tiny water-bead highlights. */
+/* Running teardrop texture on cream sections. */
 #services::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.95;
+  opacity: 0.92;
   background-image:
-    /* bead highlights */
-    radial-gradient(circle at 8% 16%, rgba(255,255,255,0.96) 0 1.1px, rgba(255,255,255,0.55) 1.2px 2px, transparent 2.2px),
-    radial-gradient(circle at 18% 72%, rgba(255,255,255,0.9) 0 1px, rgba(255,255,255,0.44) 1.1px 1.8px, transparent 2px),
-    radial-gradient(circle at 34% 28%, rgba(255,255,255,0.92) 0 1.2px, rgba(255,255,255,0.48) 1.3px 2.2px, transparent 2.4px),
-    radial-gradient(circle at 51% 82%, rgba(255,255,255,0.88) 0 1px, rgba(255,255,255,0.45) 1.1px 1.9px, transparent 2.2px),
-    radial-gradient(circle at 71% 24%, rgba(255,255,255,0.95) 0 1.1px, rgba(255,255,255,0.5) 1.3px 2.1px, transparent 2.3px),
-    radial-gradient(circle at 90% 62%, rgba(255,255,255,0.88) 0 1px, rgba(255,255,255,0.42) 1.1px 1.9px, transparent 2.2px),
-    /* bead bodies */
-    radial-gradient(circle at 8% 16%, rgba(255,255,255,0.28) 0 4px, rgba(95,126,105,0.16) 4.4px, rgba(33,70,49,0.14) 5.4px, transparent 7.2px),
-    radial-gradient(circle at 18% 72%, rgba(255,255,255,0.22) 0 3.4px, rgba(95,126,105,0.13) 3.8px, rgba(33,70,49,0.12) 4.8px, transparent 6.4px),
-    radial-gradient(circle at 34% 28%, rgba(255,255,255,0.25) 0 4.5px, rgba(95,126,105,0.13) 4.9px, rgba(33,70,49,0.12) 6px, transparent 7.8px),
-    radial-gradient(circle at 51% 82%, rgba(255,255,255,0.23) 0 3.8px, rgba(95,126,105,0.14) 4.2px, rgba(33,70,49,0.12) 5.2px, transparent 6.8px),
-    radial-gradient(circle at 71% 24%, rgba(255,255,255,0.26) 0 4.2px, rgba(95,126,105,0.14) 4.7px, rgba(33,70,49,0.12) 5.8px, transparent 7.5px),
-    radial-gradient(circle at 90% 62%, rgba(255,255,255,0.22) 0 3.6px, rgba(95,126,105,0.13) 4px, rgba(33,70,49,0.11) 5px, transparent 6.6px),
-    /* cast shadows under beads */
-    radial-gradient(ellipse at 8.8% 17.2%, rgba(35,69,49,0.16) 0 4px, transparent 8px),
-    radial-gradient(ellipse at 18.8% 73.2%, rgba(35,69,49,0.13) 0 3.5px, transparent 7px),
-    radial-gradient(ellipse at 34.8% 29.2%, rgba(35,69,49,0.13) 0 4.5px, transparent 8.4px),
-    radial-gradient(ellipse at 51.8% 83.2%, rgba(35,69,49,0.13) 0 3.7px, transparent 7.4px),
-    radial-gradient(ellipse at 71.8% 25.2%, rgba(35,69,49,0.14) 0 4px, transparent 8px),
-    radial-gradient(ellipse at 90.8% 63.2%, rgba(35,69,49,0.12) 0 3.5px, transparent 7px),
-    linear-gradient(135deg, rgba(255,255,255,0.26), transparent 34%, rgba(201,168,76,0.10));
-  background-size: 360px 260px, 420px 310px, 520px 360px, 470px 330px, 390px 290px, 560px 390px, 360px 260px, 420px 310px, 520px 360px, 470px 330px, 390px 290px, 560px 390px, 360px 260px, 420px 310px, 520px 360px, 470px 330px, 390px 290px, 560px 390px, 100% 100%;
+    url("/textures/water-drops-cream.svg"),
+    radial-gradient(ellipse at 50% -12%, rgba(255,251,239,0.70), transparent 46%),
+    linear-gradient(135deg, rgba(255,255,255,0.22), transparent 34%, rgba(201,168,76,0.10));
+  background-size: 620px 430px, 100% 100%, 100% 100%;
+  background-repeat: repeat, no-repeat, no-repeat;
+  background-position: center top, center, center;
 }
 
-/* Water beads on green sections: smaller 3D droplets with lower opacity. */
+/* Running teardrop texture on green sections. */
 #about::before,
 #estimator::before,
 #contact::before {
@@ -69,25 +52,13 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.52;
+  opacity: 0.46;
   background-image:
-    radial-gradient(circle at 7% 18%, rgba(255,255,255,0.72) 0 1px, rgba(255,255,255,0.25) 1.2px 2px, transparent 2.2px),
-    radial-gradient(circle at 22% 68%, rgba(255,255,255,0.62) 0 0.9px, rgba(255,255,255,0.20) 1.1px 1.8px, transparent 2px),
-    radial-gradient(circle at 45% 22%, rgba(255,255,255,0.68) 0 1px, rgba(255,255,255,0.22) 1.2px 2px, transparent 2.2px),
-    radial-gradient(circle at 68% 78%, rgba(255,255,255,0.56) 0 0.9px, rgba(255,255,255,0.18) 1px 1.7px, transparent 2px),
-    radial-gradient(circle at 88% 35%, rgba(255,255,255,0.64) 0 1px, rgba(255,255,255,0.21) 1.2px 1.9px, transparent 2.2px),
-    radial-gradient(circle at 7% 18%, rgba(255,255,255,0.12) 0 4px, rgba(255,255,255,0.055) 4.5px, rgba(0,0,0,0.12) 5.4px, transparent 7px),
-    radial-gradient(circle at 22% 68%, rgba(255,255,255,0.10) 0 3.5px, rgba(255,255,255,0.045) 4px, rgba(0,0,0,0.11) 5px, transparent 6.6px),
-    radial-gradient(circle at 45% 22%, rgba(255,255,255,0.11) 0 4.2px, rgba(255,255,255,0.05) 4.7px, rgba(0,0,0,0.12) 5.7px, transparent 7.2px),
-    radial-gradient(circle at 68% 78%, rgba(255,255,255,0.09) 0 3.6px, rgba(255,255,255,0.04) 4px, rgba(0,0,0,0.10) 5px, transparent 6.5px),
-    radial-gradient(circle at 88% 35%, rgba(255,255,255,0.10) 0 4px, rgba(255,255,255,0.046) 4.5px, rgba(0,0,0,0.11) 5.5px, transparent 7px),
-    radial-gradient(ellipse at 7.9% 19.1%, rgba(0,0,0,0.18) 0 4px, transparent 8px),
-    radial-gradient(ellipse at 22.9% 69.1%, rgba(0,0,0,0.15) 0 3.5px, transparent 7.2px),
-    radial-gradient(ellipse at 45.9% 23.1%, rgba(0,0,0,0.16) 0 4px, transparent 8px),
-    radial-gradient(ellipse at 68.9% 79.1%, rgba(0,0,0,0.14) 0 3.5px, transparent 7px),
-    radial-gradient(ellipse at 88.9% 36.1%, rgba(0,0,0,0.15) 0 3.8px, transparent 7.8px),
+    url("/textures/water-drops-green.svg"),
     linear-gradient(180deg, rgba(255,255,255,0.05), transparent 42%, rgba(0,0,0,0.12));
-  background-size: 420px 300px, 500px 370px, 560px 420px, 460px 340px, 620px 440px, 420px 300px, 500px 370px, 560px 420px, 460px 340px, 620px 440px, 420px 300px, 500px 370px, 560px 420px, 460px 340px, 620px 440px, 100% 100%;
+  background-size: 620px 430px, 100% 100%;
+  background-repeat: repeat, no-repeat;
+  background-position: center top, center;
 }
 
 /* Richer separation where cream meets green */
@@ -198,12 +169,16 @@
 }
 
 @media (max-width: 767px) {
-  #services::before,
+  #services::before {
+    opacity: 0.44;
+    background-size: 500px 347px, 100% 100%, 100% 100%;
+  }
+
   #about::before,
   #estimator::before,
   #contact::before {
-    opacity: 0.36;
-    background-size: 280px 210px, 330px 250px, 390px 290px, 350px 260px, 410px 310px, 280px 210px, 330px 250px, 390px 290px, 350px 260px, 410px 310px, 280px 210px, 330px 250px, 390px 290px, 350px 260px, 410px 310px, 100% 100%;
+    opacity: 0.30;
+    background-size: 500px 347px, 100% 100%;
   }
 
   .service-card:hover,
