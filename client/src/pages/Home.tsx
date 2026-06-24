@@ -1004,7 +1004,7 @@ export default function HomePage() {
             {/* Social */}
             <div className="flex items-center gap-4">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/profile.php?id=61584880772273"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-200"
@@ -1020,7 +1020,7 @@ export default function HomePage() {
                 <Facebook size={16} style={{ color: "oklch(0.98 0.015 80)" }} />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://instagram.com/gandrestoration"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-200"
