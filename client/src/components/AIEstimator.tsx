@@ -2,10 +2,11 @@ import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Upload, Loader2, CheckCircle, AlertCircle } from "lucide-react";
+import { Upload, Loader2, CheckCircle } from "lucide-react";
 import { toast } from "sonner";
 
 type Step = "service" | "photos" | "info" | "estimate" | "success";
+type ServiceType = "driveway" | "deck" | "siding" | "vehicle" | "patio" | "walkway";
 
 interface PhotoAnalysis {
   estimatedSquareFeet?: number;
@@ -16,9 +17,7 @@ interface PhotoAnalysis {
 
 export default function AIEstimator() {
   const [step, setStep] = useState<Step>("service");
-  const [serviceType, setServiceType] = useState<
-    "driveway" | "deck" | "siding" | "vehicle" | "patio" | "walkway" | ""
-  >("");
+  const [serviceType, setServiceType] = useState<ServiceType | "">("");
   const [photos, setPhotos] = useState<File[]>([]);
   const [photoUrls, setPhotoUrls] = useState<string[]>([]);
   const [analysis, setAnalysis] = useState<PhotoAnalysis | null>(null);
@@ -84,7 +83,7 @@ export default function AIEstimator() {
     try {
       const result = await analyzePhotosMutation.mutateAsync({
         photoUrls,
-        serviceType: serviceType as "driveway" | "deck" | "siding" | "vehicle" | "patio" | "walkway",
+        serviceType: serviceType as ServiceType,
       });
 
       setAnalysis(result);
@@ -97,7 +96,7 @@ export default function AIEstimator() {
   };
 
   const handleSubmit = async () => {
-    if (!formData.fullName || !formData.email || !formData.phone) {
+    if (!formData.fullName || !formData.email || !formData.phone || !formData.propertyAddress) {
       toast.error("Please fill in all required fields");
       return;
     }
@@ -105,13 +104,13 @@ export default function AIEstimator() {
     setIsSubmitting(true);
     try {
       await submitEstimateMutation.mutateAsync({
-        serviceType: serviceType as "driveway" | "deck" | "siding" | "vehicle" | "patio" | "walkway",
+        serviceType: serviceType as ServiceType,
         photoUrls,
         estimatedPrice: analysis?.estimatedPrice || 0,
         estimatedSquareFeet: analysis?.estimatedSquareFeet,
-        customerName: formData.fullName,
-        customerEmail: formData.email,
-        customerPhone: formData.phone,
+        fullName: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
         propertyAddress: formData.propertyAddress,
         notes: formData.notes,
       });
@@ -151,7 +150,7 @@ export default function AIEstimator() {
               <button
                 key={service.id}
                 onClick={() => {
-                  setServiceType(service.id as typeof serviceType);
+                  setServiceType(service.id as ServiceType);
                   setStep("photos");
                 }}
                 className={`p-4 rounded-lg border-2 transition-all ${
@@ -311,7 +310,7 @@ export default function AIEstimator() {
 
             <div>
               <label className="block text-sm font-semibold mb-2">
-                Property Address
+                Property Address *
               </label>
               <input
                 type="text"
