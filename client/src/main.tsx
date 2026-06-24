@@ -7,6 +7,7 @@ import { getLoginUrl } from "./const";
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./index.css";
+import "./premium-depth.css";
 
 const queryClient = new QueryClient();
 
