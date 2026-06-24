@@ -3,16 +3,19 @@ import { publicProcedure, router } from "../_core/trpc";
 import { createEstimatorSubmission } from "../db";
 import { invokeLLM } from "../_core/llm";
 import { sendEstimatorEmail } from "../_core/email";
-import type { Request } from "express";
 
 const serviceTypeSchema = z.enum(["driveway", "deck", "siding", "vehicle", "patio", "walkway"]);
 const photoUrlSchema = z.string().min(1);
+type RequestLike = {
+  headers: Record<string, string | string[] | undefined>;
+  protocol?: string;
+};
 
 function firstHeaderValue(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] : value;
 }
 
-function getRequestOrigin(req: Request) {
+function getRequestOrigin(req: RequestLike) {
   const forwardedProto = firstHeaderValue(req.headers["x-forwarded-proto"]);
   const forwardedHost = firstHeaderValue(req.headers["x-forwarded-host"]);
   const protocol = forwardedProto?.split(",")[0]?.trim() || req.protocol || "https";
@@ -25,7 +28,7 @@ function getRequestOrigin(req: Request) {
   return `${protocol}://${host}`;
 }
 
-function resolvePublicPhotoUrls(photoUrls: string[], req: Request) {
+function resolvePublicPhotoUrls(photoUrls: string[], req: RequestLike) {
   const origin = getRequestOrigin(req);
   return photoUrls.map((url) => new URL(url, origin).toString());
 }

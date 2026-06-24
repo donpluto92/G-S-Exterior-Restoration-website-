@@ -1,18 +1,27 @@
-import express from "express";
-import { createExpressMiddleware } from "@trpc/server/adapters/express";
-import { appRouter } from "../../server/routers";
-import { createContext } from "../../server/_core/context";
+import { nodeHTTPRequestHandler } from "@trpc/server/adapters/node-http";
+import { router } from "../../server/_core/trpc";
+import { estimatorRouter } from "../../server/routers/estimator";
 
-const app = express();
+const apiRouter = router({
+  estimator: estimatorRouter,
+});
 
-app.use(express.json({ limit: "50mb" }));
-app.use(express.urlencoded({ limit: "50mb", extended: true }));
-app.use(
-  "/api/trpc",
-  createExpressMiddleware({
-    router: appRouter,
-    createContext,
-  })
-);
+function getPath(req: any) {
+  const trpcPath = req.query?.trpc;
+  if (Array.isArray(trpcPath)) return trpcPath.join("/");
+  return trpcPath || "";
+}
 
-export default app;
+export default async function handler(req: any, res: any) {
+  return nodeHTTPRequestHandler({
+    req,
+    res,
+    path: getPath(req),
+    router: apiRouter,
+    createContext: () => ({
+      req,
+      res,
+      user: null,
+    }),
+  });
+}
