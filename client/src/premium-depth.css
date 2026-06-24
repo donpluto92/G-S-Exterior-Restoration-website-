@@ -1,5 +1,5 @@
 /* Premium depth layer for G&S Exterior Restoration
-   Adds raised trade-brand surfaces, beveled edges, and running teardrop water texture. */
+   Adds raised trade-brand surfaces, beveled edges, warmer cream panels, and metallic accents. */
 
 :root {
   --gs-shadow-deep: 0 28px 58px rgba(12, 33, 23, 0.28), 0 12px 22px rgba(12, 33, 23, 0.18);
@@ -24,41 +24,6 @@
 #contact > .container {
   position: relative;
   z-index: 2;
-}
-
-/* Running teardrop texture on cream sections. */
-#services::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.92;
-  background-image:
-    url("/textures/water-drops-cream.svg"),
-    radial-gradient(ellipse at 50% -12%, rgba(255,251,239,0.70), transparent 46%),
-    linear-gradient(135deg, rgba(255,255,255,0.22), transparent 34%, rgba(201,168,76,0.10));
-  background-size: 620px 430px, 100% 100%, 100% 100%;
-  background-repeat: repeat, no-repeat, no-repeat;
-  background-position: center top, center, center;
-}
-
-/* Running teardrop texture on green sections. */
-#about::before,
-#estimator::before,
-#contact::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.46;
-  background-image:
-    url("/textures/water-drops-green.svg"),
-    linear-gradient(180deg, rgba(255,255,255,0.05), transparent 42%, rgba(0,0,0,0.12));
-  background-size: 620px 430px, 100% 100%;
-  background-repeat: repeat, no-repeat;
-  background-position: center top, center;
 }
 
 /* Richer separation where cream meets green */
@@ -169,18 +134,6 @@
 }
 
 @media (max-width: 767px) {
-  #services::before {
-    opacity: 0.44;
-    background-size: 500px 347px, 100% 100%, 100% 100%;
-  }
-
-  #about::before,
-  #estimator::before,
-  #contact::before {
-    opacity: 0.30;
-    background-size: 500px 347px, 100% 100%;
-  }
-
   .service-card:hover,
   #about .grid.grid-cols-2 > div:hover,
   #contact .rounded-lg:hover,
