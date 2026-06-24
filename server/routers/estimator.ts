@@ -4,12 +4,16 @@ import { createEstimatorSubmission } from "../db";
 import { invokeLLM } from "../_core/llm";
 import { sendEstimatorEmail } from "../_core/email";
 
-// Pricing matrix for Mexico, MO area (per sq ft)
+const serviceTypeSchema = z.enum(["driveway", "deck", "siding", "vehicle", "patio", "walkway"]);
+
+// Pricing matrix for Mexico, MO area (per sq ft except vehicle flat rate)
 const PRICING_MATRIX = {
   driveway: { min: 0.15, max: 0.35, avg: 0.25 },
   deck: { min: 0.20, max: 0.40, avg: 0.30 },
   siding: { min: 0.10, max: 0.25, avg: 0.18 },
   vehicle: { min: 50, max: 150, avg: 100 }, // flat rate
+  patio: { min: 0.15, max: 0.35, avg: 0.25 },
+  walkway: { min: 0.15, max: 0.30, avg: 0.22 },
 };
 
 export const estimatorRouter = router({
@@ -17,7 +21,7 @@ export const estimatorRouter = router({
     .input(
       z.object({
         photoUrls: z.array(z.string().url()),
-        serviceType: z.enum(["driveway", "deck", "siding", "vehicle"]),
+        serviceType: serviceTypeSchema,
       })
     )
     .mutation(async ({ input }) => {
@@ -72,7 +76,7 @@ Respond in JSON format:
         const analysis = JSON.parse(jsonMatch[0]);
 
         // Calculate estimate price based on square footage and condition
-        const pricing = PRICING_MATRIX[input.serviceType as keyof typeof PRICING_MATRIX];
+        const pricing = PRICING_MATRIX[input.serviceType];
         let pricePerUnit = pricing.avg;
 
         // Adjust price based on condition
@@ -113,7 +117,7 @@ Respond in JSON format:
         email: z.string().email(),
         phone: z.string().min(10),
         propertyAddress: z.string().min(5),
-        serviceType: z.enum(["driveway", "deck", "siding", "vehicle"]),
+        serviceType: serviceTypeSchema,
         estimatedSquareFeet: z.number().optional(),
         estimatedPrice: z.number(),
         photoUrls: z.array(z.string().url()),
