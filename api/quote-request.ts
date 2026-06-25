@@ -131,8 +131,8 @@ async function saveSubmission(fields: Required<Pick<QuoteFields, "serviceType" |
 }
 
 async function sendEmail(fields: Required<Pick<QuoteFields, "serviceType" | "fullName" | "email" | "phone" | "propertyAddress">> & QuoteFields, photos: UploadedPhoto[]) {
-  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    throw new Error("Email config missing: set SMTP_HOST, SMTP_USER, and SMTP_PASS");
+  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS || !process.env.QUOTE_RECIPIENT) {
+    throw new Error("Email config missing: set SMTP_HOST, SMTP_USER, SMTP_PASS, and QUOTE_RECIPIENT");
   }
 
   const serviceLabel = serviceLabels[fields.serviceType] || fields.serviceType;
@@ -173,7 +173,7 @@ This is an automated message from the G&S Exterior Restoration quote request for
 
   await transporter.sendMail({
     from: process.env.SMTP_FROM || "noreply@gsrestoration.net",
-    to: "npe2026@hotmail.com",
+    to: process.env.QUOTE_RECIPIENT,
     subject: `New Quote Request: ${serviceLabel} - ${fields.fullName}`,
     text: emailContent,
     replyTo: fields.email,
