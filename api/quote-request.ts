@@ -131,6 +131,10 @@ async function saveSubmission(fields: Required<Pick<QuoteFields, "serviceType" |
 }
 
 async function sendEmail(fields: Required<Pick<QuoteFields, "serviceType" | "fullName" | "email" | "phone" | "propertyAddress">> & QuoteFields, photos: UploadedPhoto[]) {
+  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    throw new Error("Email config missing: set SMTP_HOST, SMTP_USER, and SMTP_PASS");
+  }
+
   const serviceLabel = serviceLabels[fields.serviceType] || fields.serviceType;
   const emailContent = `
 New Quote Request from G&S Exterior Restoration Website
@@ -201,8 +205,10 @@ export default async function handler(req: any, res: any) {
       notes: fields.notes || "",
     };
 
-    await saveSubmission(requiredFields);
     await sendEmail(requiredFields, photos);
+    await saveSubmission(requiredFields).catch((saveError) => {
+      console.warn("[QuoteRequest] email sent, but database save failed:", saveError);
+    });
 
     res.status(200).json({ success: true });
   } catch (error) {
