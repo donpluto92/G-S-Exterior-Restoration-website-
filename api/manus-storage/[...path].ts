@@ -5,13 +5,11 @@ function getPath(req: any) {
 }
 
 function getForgeConfig() {
-  const forgeUrl = process.env.BUILT_IN_FORGE_API_URL;
+  const forgeUrl = process.env.BUILT_IN_FORGE_API_URL || "https://forge.manus.im";
   const forgeKey = process.env.BUILT_IN_FORGE_API_KEY;
 
-  if (!forgeUrl || !forgeKey) {
-    throw new Error(
-      "Storage config missing: set BUILT_IN_FORGE_API_URL and BUILT_IN_FORGE_API_KEY",
-    );
+  if (!forgeKey) {
+    throw new Error("Storage config missing: set BUILT_IN_FORGE_API_KEY");
   }
 
   return { forgeUrl: forgeUrl.replace(/\/+$/, ""), forgeKey };
