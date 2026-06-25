@@ -258,14 +258,14 @@ export default function ServiceLayout({
               className="text-lg mb-8"
               style={{ color: "oklch(0.88 0.02 80)", fontFamily: "'Barlow', sans-serif" }}
             >
-              Use our instant estimator on the homepage or book a free consultation directly.
+              Send a fast photo quote request on the homepage or book a free consultation directly.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <a
                 href="/#estimator"
                 className="btn-gold rounded-sm"
               >
-                Get Instant Estimate
+                Request Photo Quote
               </a>
               <a
                 href="https://calendar.app.google/YmtAenZ1D6f8BQ8h9"

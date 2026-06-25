@@ -720,7 +720,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── AI ESTIMATOR ── */}
+      {/* ── PHOTO QUOTE REQUEST ── */}
       <section
         id="estimator"
         className="py-24"
@@ -729,10 +729,10 @@ export default function HomePage() {
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: "oklch(0.98 0.015 80)" }}>
-              Get Your Instant Estimate
+              Request a Fast Photo Quote
             </h2>
             <p className="text-lg max-w-2xl mx-auto" style={{ color: "oklch(0.98 0.015 80)" }}>
-              Upload photos and let our AI analyze your project. Get an instant estimate in minutes — no obligation, no pressure.
+              Upload photos and job details so we can review the project and send back a clear estimate. No obligation, no pressure.
             </p>
           </div>
           <AIEstimator />
