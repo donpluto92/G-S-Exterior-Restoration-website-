@@ -1,15 +1,25 @@
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import type { LucideIcon } from "lucide-react";
 import {
   ArrowLeft,
   Camera,
+  Car,
   CheckCircle,
+  ClipboardList,
   Clock,
+  Droplets,
+  Footprints,
+  Home,
+  Images,
+  Layers,
   Loader2,
   MailCheck,
   MapPin,
+  MessageSquareText,
   Ruler,
+  ShieldCheck,
   Sparkles,
   Upload,
   X,
@@ -19,16 +29,28 @@ import { toast } from "sonner";
 type Step = "service" | "details" | "photos" | "review" | "success";
 type ServiceType = "driveway" | "deck" | "siding" | "vehicle" | "patio" | "walkway";
 
-const services: Array<{ id: ServiceType; label: string; hint: string }> = [
-  { id: "driveway", label: "Driveway Cleaning", hint: "Concrete, black streaks, oil spots" },
-  { id: "deck", label: "Deck Cleaning", hint: "Wood, composite, prep for stain" },
-  { id: "siding", label: "Siding Washing", hint: "House wash, algae, mildew" },
-  { id: "vehicle", label: "Vehicle Washing", hint: "Fleet, work trucks, personal vehicles" },
-  { id: "patio", label: "Patio Cleaning", hint: "Back patios, pads, outdoor spaces" },
-  { id: "walkway", label: "Walkway Cleaning", hint: "Sidewalks, paths, entrances" },
+const services: Array<{ id: ServiceType; label: string; hint: string; icon: LucideIcon }> = [
+  { id: "driveway", label: "Driveway Cleaning", hint: "Concrete, black streaks, oil spots", icon: Droplets },
+  { id: "deck", label: "Deck Cleaning", hint: "Wood, composite, prep for stain", icon: Layers },
+  { id: "siding", label: "Siding Washing", hint: "House wash, algae, mildew", icon: Home },
+  { id: "vehicle", label: "Vehicle Washing", hint: "Fleet, work trucks, personal vehicles", icon: Car },
+  { id: "patio", label: "Patio Cleaning", hint: "Back patios, pads, outdoor spaces", icon: Sparkles },
+  { id: "walkway", label: "Walkway Cleaning", hint: "Sidewalks, paths, entrances", icon: Footprints },
+];
+
+const steps: Array<{ id: "service" | "details" | "send"; label: string; icon: LucideIcon }> = [
+  { id: "service", label: "Service", icon: ClipboardList },
+  { id: "details", label: "Details", icon: Ruler },
+  { id: "send", label: "Send", icon: MailCheck },
 ];
 
 const conditions = ["Light dirt", "Moderate buildup", "Heavy staining", "Not sure"];
+
+const trustCues = [
+  { icon: ShieldCheck, label: "Insured local crew" },
+  { icon: Camera, label: "Photos reviewed by hand" },
+  { icon: MessageSquareText, label: "Clear reply, no pressure" },
+];
 
 export default function AIEstimator() {
   const [step, setStep] = useState<Step>("service");
@@ -119,15 +141,15 @@ export default function AIEstimator() {
 
   return (
     <div
-      className="w-full px-4 py-16"
+      className="estimator-shell w-full px-4 py-16"
       style={{
         background:
           "linear-gradient(180deg, oklch(0.28 0.07 155) 0%, oklch(0.23 0.06 155) 48%, oklch(0.28 0.07 155) 100%)",
       }}
     >
-      <div className="mx-auto w-full max-w-3xl">
-        <div className="mb-6 text-center text-white">
-          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold">
+      <div className="mx-auto w-full max-w-4xl">
+        <div className="mb-7 text-center text-white">
+          <div className="estimator-eyebrow mb-3 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold">
             <Clock size={16} />
             Fast photo quote
           </div>
@@ -138,28 +160,45 @@ export default function AIEstimator() {
             Send the details and a few photos. We review the job and reply with a real
             estimate instead of a generic calculator number.
           </p>
+          <div className="estimator-trust mx-auto mt-5 grid max-w-2xl gap-3 text-left sm:grid-cols-3">
+            {trustCues.map((item) => (
+              <div key={item.label} className="flex items-center gap-2">
+                <item.icon size={17} />
+                <span>{item.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <Card className="overflow-hidden border-white/15 bg-white shadow-2xl">
-          <div className="grid grid-cols-3 border-b bg-slate-50 text-center text-xs font-semibold uppercase tracking-normal text-slate-500">
-            <div className={`py-3 ${step === "service" ? "bg-emerald-50 text-emerald-800" : ""}`}>
-              Service
-            </div>
-            <div
-              className={`py-3 ${
-                step === "details" || step === "photos" ? "bg-emerald-50 text-emerald-800" : ""
-              }`}
-            >
-              Details
-            </div>
-            <div className={`py-3 ${step === "review" ? "bg-emerald-50 text-emerald-800" : ""}`}>
-              Send
-            </div>
+        <Card className="estimator-card overflow-hidden border-white/15 bg-white shadow-2xl">
+          <div className="estimator-stepbar grid grid-cols-3 border-b bg-slate-50 text-center text-xs font-semibold uppercase tracking-normal text-slate-500">
+            {steps.map((stepItem) => {
+              const isActive =
+                stepItem.id === "service"
+                  ? step === "service"
+                  : stepItem.id === "details"
+                    ? step === "details" || step === "photos"
+                    : step === "review";
+              return (
+                <div
+                  key={stepItem.id}
+                  className={`estimator-step py-3 ${isActive ? "is-active" : ""}`}
+                >
+                  <span className="estimator-step-label">
+                    <stepItem.icon size={15} />
+                    {stepItem.label}
+                  </span>
+                </div>
+              );
+            })}
           </div>
 
           {step === "service" && (
-            <div className="p-6 md:p-8">
-              <h3 className="mb-2 text-2xl font-bold text-slate-950">What needs cleaned?</h3>
+            <div className="estimator-form-panel p-6 md:p-8">
+              <h3 className="estimator-slide-title mb-2 text-2xl font-bold text-slate-950">
+                <ClipboardList size={22} />
+                What needs cleaned?
+              </h3>
               <p className="mb-6 text-sm text-slate-600">
                 Choose the closest match. You can add special notes before sending.
               </p>
@@ -171,8 +210,11 @@ export default function AIEstimator() {
                       setServiceType(service.id);
                       setStep("details");
                     }}
-                    className="rounded-lg border border-slate-200 p-4 text-left transition hover:border-emerald-600 hover:bg-emerald-50"
+                    className="estimator-service-option rounded-lg border border-slate-200 p-4 text-left transition hover:border-emerald-600 hover:bg-emerald-50"
                   >
+                    <span className="estimator-service-icon" aria-hidden="true">
+                      <service.icon size={20} />
+                    </span>
                     <span className="block font-bold text-slate-950">{service.label}</span>
                     <span className="mt-1 block text-sm text-slate-600">{service.hint}</span>
                   </button>
@@ -182,13 +224,16 @@ export default function AIEstimator() {
           )}
 
           {step === "details" && (
-            <div className="p-6 md:p-8">
+            <div className="estimator-form-panel p-6 md:p-8">
               <div className="mb-6 flex items-start justify-between gap-4">
                 <div>
                   <p className="text-sm font-semibold text-emerald-700">
                     {selectedService?.label}
                   </p>
-                  <h3 className="text-2xl font-bold text-slate-950">Job details</h3>
+                  <h3 className="estimator-slide-title text-2xl font-bold text-slate-950">
+                    <Ruler size={22} />
+                    Job details
+                  </h3>
                 </div>
                 <Button variant="outline" size="sm" onClick={() => setStep("service")}>
                   <ArrowLeft className="mr-2" size={16} />
@@ -202,7 +247,7 @@ export default function AIEstimator() {
                   <input
                     value={formData.fullName}
                     onChange={(e) => updateField("fullName", e.target.value)}
-                    className="w-full rounded-lg border border-slate-300 px-4 py-3"
+                    className="estimator-input w-full rounded-lg border border-slate-300 px-4 py-3"
                     placeholder="John Smith"
                   />
                 </div>
@@ -214,7 +259,7 @@ export default function AIEstimator() {
                       type="email"
                       value={formData.email}
                       onChange={(e) => updateField("email", e.target.value)}
-                      className="w-full rounded-lg border border-slate-300 px-4 py-3"
+                      className="estimator-input w-full rounded-lg border border-slate-300 px-4 py-3"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -224,7 +269,7 @@ export default function AIEstimator() {
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => updateField("phone", e.target.value)}
-                      className="w-full rounded-lg border border-slate-300 px-4 py-3"
+                      className="estimator-input w-full rounded-lg border border-slate-300 px-4 py-3"
                       placeholder="(573) 555-0100"
                     />
                   </div>
@@ -238,7 +283,7 @@ export default function AIEstimator() {
                   <input
                     value={formData.propertyAddress}
                     onChange={(e) => updateField("propertyAddress", e.target.value)}
-                    className="w-full rounded-lg border border-slate-300 px-4 py-3"
+                    className="estimator-input w-full rounded-lg border border-slate-300 px-4 py-3"
                     placeholder="123 Main St, Mexico, MO 65265"
                   />
                 </div>
@@ -252,7 +297,7 @@ export default function AIEstimator() {
                     <input
                       value={formData.approximateSize}
                       onChange={(e) => updateField("approximateSize", e.target.value)}
-                      className="w-full rounded-lg border border-slate-300 px-4 py-3"
+                      className="estimator-input w-full rounded-lg border border-slate-300 px-4 py-3"
                       placeholder="2-car driveway, 20x20 patio..."
                     />
                   </div>
@@ -261,7 +306,7 @@ export default function AIEstimator() {
                     <select
                       value={formData.condition}
                       onChange={(e) => updateField("condition", e.target.value)}
-                      className="w-full rounded-lg border border-slate-300 px-4 py-3"
+                      className="estimator-input estimator-select w-full rounded-lg border border-slate-300 px-4 py-3"
                     >
                       {conditions.map((condition) => (
                         <option key={condition}>{condition}</option>
@@ -275,7 +320,7 @@ export default function AIEstimator() {
                   <input
                     value={formData.timeline}
                     onChange={(e) => updateField("timeline", e.target.value)}
-                    className="w-full rounded-lg border border-slate-300 px-4 py-3"
+                    className="estimator-input w-full rounded-lg border border-slate-300 px-4 py-3"
                     placeholder="This week, before a party, flexible..."
                   />
                 </div>
@@ -288,13 +333,16 @@ export default function AIEstimator() {
           )}
 
           {step === "photos" && (
-            <div className="p-6 md:p-8">
+            <div className="estimator-form-panel p-6 md:p-8">
               <div className="mb-6 flex items-start justify-between gap-4">
                 <div>
                   <p className="text-sm font-semibold text-emerald-700">
                     Photos help tighten the quote
                   </p>
-                  <h3 className="text-2xl font-bold text-slate-950">Add job photos</h3>
+                  <h3 className="estimator-slide-title text-2xl font-bold text-slate-950">
+                    <Images size={22} />
+                    Add job photos
+                  </h3>
                 </div>
                 <Button variant="outline" size="sm" onClick={() => setStep("details")}>
                   <ArrowLeft className="mr-2" size={16} />
@@ -304,7 +352,7 @@ export default function AIEstimator() {
 
               <label
                 htmlFor="photo-upload"
-                className="block cursor-pointer rounded-lg border-2 border-dashed border-slate-300 bg-slate-50 p-8 text-center transition hover:border-emerald-600 hover:bg-emerald-50"
+                className="estimator-upload block cursor-pointer rounded-lg border-2 border-dashed border-slate-300 bg-slate-50 p-8 text-center transition hover:border-emerald-600 hover:bg-emerald-50"
               >
                 <Upload className="mx-auto mb-3 text-emerald-700" size={34} />
                 <span className="block font-bold text-slate-950">Upload clear photos</span>
@@ -346,12 +394,12 @@ export default function AIEstimator() {
               <textarea
                 value={formData.notes}
                 onChange={(e) => updateField("notes", e.target.value)}
-                className="mt-6 w-full rounded-lg border border-slate-300 px-4 py-3"
+                className="estimator-input mt-6 w-full rounded-lg border border-slate-300 px-4 py-3"
                 rows={4}
                 placeholder="Gate codes, water access, problem areas, best time to contact you..."
               />
 
-              <div className="mt-6 flex gap-3">
+              <div className="estimator-button-row mt-6 flex gap-3">
                 <Button variant="outline" onClick={() => setStep("details")}>
                   Back
                 </Button>
@@ -363,7 +411,7 @@ export default function AIEstimator() {
           )}
 
           {step === "review" && (
-            <div className="p-6 md:p-8">
+            <div className="estimator-form-panel p-6 md:p-8">
               <div className="mb-6 flex items-start gap-3 rounded-lg border border-emerald-200 bg-emerald-50 p-4">
                 <Sparkles className="mt-1 text-emerald-700" size={22} />
                 <div>
@@ -375,24 +423,24 @@ export default function AIEstimator() {
               </div>
 
               <div className="grid gap-3 text-sm text-slate-700">
-                <div className="rounded-lg bg-slate-50 p-4">
+                <div className="estimator-summary rounded-lg bg-slate-50 p-4">
                   <span className="font-bold text-slate-950">Service:</span> {selectedService?.label}
                 </div>
-                <div className="rounded-lg bg-slate-50 p-4">
+                <div className="estimator-summary rounded-lg bg-slate-50 p-4">
                   <span className="font-bold text-slate-950">Contact:</span> {formData.fullName} ·{" "}
                   {formData.phone} · {formData.email}
                 </div>
-                <div className="rounded-lg bg-slate-50 p-4">
+                <div className="estimator-summary rounded-lg bg-slate-50 p-4">
                   <span className="font-bold text-slate-950">Address:</span>{" "}
                   {formData.propertyAddress}
                 </div>
-                <div className="rounded-lg bg-slate-50 p-4">
+                <div className="estimator-summary rounded-lg bg-slate-50 p-4">
                   <span className="font-bold text-slate-950">Photos:</span>{" "}
                   {photos.length > 0 ? `${photos.length} attached` : "No photos attached"}
                 </div>
               </div>
 
-              <div className="mt-6 flex gap-3">
+              <div className="estimator-button-row mt-6 flex gap-3">
                 <Button variant="outline" onClick={() => setStep("photos")}>
                   <ArrowLeft className="mr-2" size={16} />
                   Edit
@@ -415,7 +463,7 @@ export default function AIEstimator() {
           )}
 
           {step === "success" && (
-            <div className="p-8 text-center">
+            <div className="estimator-form-panel p-8 text-center">
               <CheckCircle className="mx-auto mb-4 text-emerald-700" size={52} />
               <h3 className="text-2xl font-bold text-slate-950">Request sent</h3>
               <p className="mx-auto mt-3 max-w-lg text-slate-600">
