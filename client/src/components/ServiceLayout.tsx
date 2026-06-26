@@ -98,25 +98,27 @@ export default function ServiceLayout({
           style={{ background: "linear-gradient(to right, oklch(0.15 0.06 155 / 0.95) 40%, oklch(0.15 0.06 155 / 0.6) 100%)" }}
         />
         <div className="container relative z-10">
-          <Link href="/">
-            <a
-              className="inline-flex items-center gap-2 text-xs tracking-widest uppercase mb-6 transition-opacity hover:opacity-100 opacity-70"
-              style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 600, color: "oklch(0.72 0.12 75)" }}
+          <div className="mb-6 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+            <Link href="/">
+              <a
+                className="inline-flex items-center gap-2 text-xs tracking-widest uppercase transition-opacity hover:opacity-100 opacity-70"
+                style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 600, color: "oklch(0.72 0.12 75)" }}
+              >
+                <ArrowLeft size={14} /> Back to Home
+              </a>
+            </Link>
+            <div
+              className="inline-block text-xs tracking-widest uppercase px-3 py-1 rounded-full border"
+              style={{
+                fontFamily: "'Barlow Condensed', sans-serif",
+                fontWeight: 700,
+                color: "oklch(0.72 0.12 75)",
+                borderColor: "oklch(0.72 0.12 75 / 0.4)",
+                backgroundColor: "oklch(0.72 0.12 75 / 0.08)",
+              }}
             >
-              <ArrowLeft size={14} /> Back to Home
-            </a>
-          </Link>
-          <div
-            className="inline-block text-xs tracking-widest uppercase mb-4 px-3 py-1 rounded-full border"
-            style={{
-              fontFamily: "'Barlow Condensed', sans-serif",
-              fontWeight: 700,
-              color: "oklch(0.72 0.12 75)",
-              borderColor: "oklch(0.72 0.12 75 / 0.4)",
-              backgroundColor: "oklch(0.72 0.12 75 / 0.08)",
-            }}
-          >
-            Mexico, MO &amp; Surrounding Areas
+              Mexico, MO &amp; Surrounding Areas
+            </div>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(320px,460px)] gap-10 items-end">
             <div>
