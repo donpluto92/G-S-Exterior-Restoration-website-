@@ -5,7 +5,8 @@
 import { useEffect } from "react";
 import Navbar from "./Navbar";
 import { Phone, Clock, CheckCircle, ArrowLeft } from "lucide-react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
+import { faqSchema, localBusinessSchema, serviceSchema, useSeo } from "@/lib/seo";
 
 interface ServiceLayoutProps {
   title: string;
@@ -35,6 +36,20 @@ export default function ServiceLayout({
     const meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute("content", metaDescription);
   }, [title, metaDescription]);
+
+  const [path] = useLocation();
+
+  useSeo({
+    title: `${title} in Mexico, MO | G&S Exterior Restoration`,
+    description: metaDescription,
+    path,
+    image: heroImg,
+    schema: [
+      localBusinessSchema,
+      serviceSchema(title, metaDescription, path, heroImg),
+      faqSchema(faqs, path),
+    ],
+  });
 
   // Scroll reveal
   useEffect(() => {

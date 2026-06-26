@@ -25,6 +25,7 @@ import {
   Quote,
 } from "lucide-react";
 import { Link } from "wouter";
+import { localBusinessSchema, useSeo, websiteSchema } from "@/lib/seo";
 
 // Image URLs from generated assets
 const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/hero-pressure-wash-5H7By3vYupAzNxdmLxcsg7.webp";
@@ -134,6 +135,15 @@ export default function HomePage() {
   const aboutRef = useReveal();
   const whyRef = useReveal();
   const contactRef = useReveal();
+
+  useSeo({
+    title: "Pressure Washing in Mexico, MO | G&S Exterior Restoration",
+    description:
+      "G&S Exterior Restoration LLC provides pressure washing, soft washing, driveway cleaning, deck cleaning, siding washing, and vehicle washing in Mexico, MO and surrounding Mid-Missouri communities. Free estimates.",
+    path: "/",
+    image: HERO_IMG,
+    schema: [localBusinessSchema, websiteSchema],
+  });
 
   // Parallax on hero
   useEffect(() => {

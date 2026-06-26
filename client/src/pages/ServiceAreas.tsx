@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import { MapPin, Phone, Clock, CheckCircle, ArrowLeft } from "lucide-react";
 import { Link } from "wouter";
+import { localBusinessSchema, useSeo } from "@/lib/seo";
 
 const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/hero-pressure-wash-5H7By3vYupAzNxdmLxcsg7.webp";
 
@@ -15,6 +16,8 @@ const areas = [
   { name: "Vandalia, MO", description: "Serving Vandalia and the surrounding Audrain County area with exterior cleaning services." },
   { name: "Fulton, MO", description: "We travel to Fulton and Callaway County for larger jobs and regular customers." },
   { name: "Columbia, MO", description: "Available for select jobs in the Columbia area. Contact us to discuss your project." },
+  { name: "Kingdom City, MO", description: "Pressure washing and exterior cleaning available for homes, driveways, decks, and nearby properties around Kingdom City." },
+  { name: "Moberly, MO", description: "Available for select pressure washing and soft washing projects in the Moberly area. Reach out for scheduling and availability." },
 ];
 
 const services = [
@@ -30,6 +33,15 @@ export default function ServiceAreas() {
     const meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute("content", "G&S Exterior Restoration serves Mexico, MO and surrounding communities in Audrain County, Centralia, Vandalia, Fulton, and more. Professional pressure washing — free estimates.");
   }, []);
+
+  useSeo({
+    title: "Pressure Washing Service Areas | Mexico, MO & Mid-Missouri",
+    description:
+      "G&S Exterior Restoration serves Mexico, MO, Audrain County, Centralia, Vandalia, Fulton, Columbia, and nearby Mid-Missouri communities with pressure washing and exterior cleaning. Free estimates.",
+    path: "/service-areas",
+    image: HERO_IMG,
+    schema: localBusinessSchema,
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
