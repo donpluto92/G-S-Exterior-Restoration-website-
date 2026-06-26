@@ -135,7 +135,7 @@ export default function AIEstimator() {
             Get a clean, accurate quote without the back-and-forth
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-white/80 md:text-base">
-            Send the details and a few photos. Darren reviews the job and replies with a real
+            Send the details and a few photos. We review the job and reply with a real
             estimate instead of a generic calculator number.
           </p>
         </div>
