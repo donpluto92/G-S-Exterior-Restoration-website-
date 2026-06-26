@@ -9,6 +9,11 @@ export default function SidingWashing() {
       subtitle="Mexico, MO."
       metaDescription="Professional house washing and siding cleaning in Mexico, MO. Safe soft washing removes mold, mildew, algae, and dirt from vinyl siding and exterior surfaces. Free estimates. G&S Exterior Restoration."
       heroImg={SIDING_IMG}
+      heroFeature={{
+        title: "Siding Washing Results",
+        image: "/images/siding-before-after.jpg",
+        alt: "Before and after siding washing result showing algae and dirt removed from white house siding",
+      }}
       intro="Black streaks, green algae, and mildew on your siding make even a well-maintained home look neglected. G&S Exterior Restoration uses safe soft washing techniques to remove mold, mildew, algae, and built-up dirt from vinyl siding and other exterior surfaces — without the harsh pressure that can force water behind panels or damage paint."
       benefits={[
         "Safe soft washing — no harsh pressure that damages siding",

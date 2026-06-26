@@ -18,6 +18,11 @@ interface ServiceLayoutProps {
   process: { step: string; title: string; description: string }[];
   faqs: { question: string; answer: string }[];
   relatedServices: { title: string; href: string }[];
+  heroFeature?: {
+    title: string;
+    image: string;
+    alt: string;
+  };
 }
 
 export default function ServiceLayout({
@@ -30,6 +35,7 @@ export default function ServiceLayout({
   process,
   faqs,
   relatedServices,
+  heroFeature,
 }: ServiceLayoutProps) {
   useEffect(() => {
     document.title = `${title} | G&S Exterior Restoration — Mexico, MO`;
@@ -112,35 +118,67 @@ export default function ServiceLayout({
           >
             Mexico, MO &amp; Surrounding Areas
           </div>
-          <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4 max-w-2xl"
-            style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.98 0.015 80)" }}
-          >
-            {title}
-            <span className="block italic" style={{ color: "oklch(0.82 0.10 75)" }}>
-              {subtitle}
-            </span>
-          </h1>
-          <p
-            className="text-base max-w-xl mb-8 leading-relaxed"
-            style={{ color: "oklch(0.80 0.025 80)", fontFamily: "'Barlow', sans-serif" }}
-          >
-            {intro}
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <a
-              href="https://calendar.app.google/YmtAenZ1D6f8BQ8h9"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-gold rounded-sm"
-            >
-              <Clock size={15} className="inline mr-2" />
-              Book a Free Estimate
-            </a>
-            <a href="tel:3144670332" className="btn-outline-gold rounded-sm">
-              <Phone size={15} className="inline mr-2" />
-              (314) 467-0332
-            </a>
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(320px,460px)] gap-10 items-end">
+            <div>
+              <h1
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4 max-w-2xl"
+                style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.98 0.015 80)" }}
+              >
+                {title}
+                <span className="block italic" style={{ color: "oklch(0.82 0.10 75)" }}>
+                  {subtitle}
+                </span>
+              </h1>
+              <p
+                className="text-base max-w-xl mb-8 leading-relaxed"
+                style={{ color: "oklch(0.80 0.025 80)", fontFamily: "'Barlow', sans-serif" }}
+              >
+                {intro}
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="https://calendar.app.google/YmtAenZ1D6f8BQ8h9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-gold rounded-sm"
+                >
+                  <Clock size={15} className="inline mr-2" />
+                  Book a Free Estimate
+                </a>
+                <a href="tel:3144670332" className="btn-outline-gold rounded-sm">
+                  <Phone size={15} className="inline mr-2" />
+                  (314) 467-0332
+                </a>
+              </div>
+            </div>
+
+            {heroFeature && (
+              <figure
+                className="rounded-lg overflow-hidden border shadow-2xl"
+                style={{
+                  backgroundColor: "oklch(0.12 0.04 155)",
+                  borderColor: "oklch(0.72 0.12 75 / 0.35)",
+                  boxShadow: "0 28px 80px oklch(0.08 0.03 155 / 0.45)",
+                }}
+              >
+                <img
+                  src={heroFeature.image}
+                  alt={heroFeature.alt}
+                  className="w-full aspect-[4/3] object-cover"
+                />
+                <figcaption
+                  className="px-4 py-3 text-xs tracking-widest uppercase border-t"
+                  style={{
+                    fontFamily: "'Barlow Condensed', sans-serif",
+                    fontWeight: 700,
+                    color: "oklch(0.82 0.10 75)",
+                    borderColor: "oklch(0.72 0.12 75 / 0.25)",
+                  }}
+                >
+                  {heroFeature.title}
+                </figcaption>
+              </figure>
+            )}
           </div>
         </div>
       </section>
