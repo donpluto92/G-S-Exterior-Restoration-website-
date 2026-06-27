@@ -348,9 +348,11 @@ export default function HomePage() {
           {/* Services grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, i) => (
-              <div
+              <Link
                 key={service.titleKey}
-                className="reveal service-card rounded-lg overflow-hidden border flex flex-col"
+                href={service.href}
+                aria-label={`Learn more about ${t(service.titleKey)}`}
+                className="reveal service-card rounded-lg overflow-hidden border flex flex-col no-underline"
                 style={{
                   transitionDelay: `${i * 80}ms`,
                 }}
@@ -410,24 +412,17 @@ export default function HomePage() {
                   >
                     {t(service.descKey)}
                   </p>
-                  <Link
-                    href={service.href}
+                  <span
                     className="mt-4 text-xs font-bold tracking-widest uppercase flex items-center gap-1 transition-colors duration-200"
                     style={{
                       fontFamily: "'Barlow Condensed', sans-serif",
                       color: "oklch(0.28 0.07 155)",
                     }}
-                    onMouseEnter={(e) =>
-                      ((e.currentTarget as HTMLElement).style.color = "oklch(0.72 0.12 75)")
-                    }
-                    onMouseLeave={(e) =>
-                      ((e.currentTarget as HTMLElement).style.color = "oklch(0.28 0.07 155)")
-                    }
                   >
                     Learn More →
-                  </Link>
+                  </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
