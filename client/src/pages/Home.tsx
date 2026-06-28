@@ -988,15 +988,9 @@ export default function HomePage() {
       >
         <div className="container">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            {/* Logo */}
             <div className="text-center md:text-left">
-              <img
-                src="/images/gs-logo.png"
-                alt="G&S Exterior Restoration LLC"
-                className="h-16 w-auto object-contain"
-              />
               <div
-                className="text-xs tracking-widest uppercase mt-1"
+                className="text-xs tracking-widest uppercase"
                 style={{
                   fontFamily: "'Barlow Condensed', sans-serif",
                   color: "oklch(0.72 0.12 75)",
