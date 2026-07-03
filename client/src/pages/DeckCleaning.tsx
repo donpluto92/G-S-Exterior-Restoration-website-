@@ -9,6 +9,11 @@ export default function DeckCleaning() {
       subtitle="Mexico, MO."
       metaDescription="Professional deck cleaning services in Mexico, MO. Safe pressure washing for wood and composite decks — removes algae, mildew, and slippery buildup. Free estimates. G&S Exterior Restoration."
       heroImg={DECK_IMG}
+      heroFeature={{
+        title: "Deck Cleaning Results",
+        image: "/images/deck-before-after.png",
+        alt: "Before and after deck cleaning result showing leaves, dirt, and buildup removed from gray composite decking",
+      }}
       intro="A dirty, slippery deck is both an eyesore and a safety hazard. G&S Exterior Restoration cleans wood and composite decks using the right pressure and technique for each surface — removing algae, mildew, dirt, and buildup without damaging the wood fibers or composite material."
       benefits={[
         "Safe cleaning for wood, composite, and Trex decking",
