@@ -29,16 +29,21 @@ import { Link } from "wouter";
 import { localBusinessSchema, useSeo, websiteSchema } from "@/lib/seo";
 
 // Image URLs from generated assets
-const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/hero-pressure-wash-5H7By3vYupAzNxdmLxcsg7.webp";
-const DRIVEWAY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/driveway-clean-miGtpBbYzGprrMxfiHWwZF.webp";
-const DECK_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/deck-clean-gknHjniPv6K2enyENyo566.webp";
-const SIDING_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/siding-clean-dk8VDGPUe5sPbznsNs5D65.webp";
+const HERO_IMG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/hero-pressure-wash-5H7By3vYupAzNxdmLxcsg7.webp";
+const DRIVEWAY_IMG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/driveway-clean-miGtpBbYzGprrMxfiHWwZF.webp";
+const DECK_IMG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/deck-clean-gknHjniPv6K2enyENyo566.webp";
+const SIDING_IMG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/siding-clean-dk8VDGPUe5sPbznsNs5D65.webp";
 const VEHICLE_IMG = "/images/vehicle-wash.jpg";
 
 const projectResults = [
   {
     title: "Siding Cleaning",
-    description: "Organic growth and surface buildup removed from white siding.",
+    description:
+      "Organic growth and surface buildup removed from white siding.",
     image: "/images/siding-growth-before-after.webp",
     alt: "Before and after siding cleaning showing organic growth removed from white siding between two windows",
     width: 1371,
@@ -46,7 +51,8 @@ const projectResults = [
   },
   {
     title: "Composite Deck Cleaning",
-    description: "Leaves, dirt, and surface buildup removed from gray composite decking.",
+    description:
+      "Leaves, dirt, and surface buildup removed from gray composite decking.",
     image: "/images/deck-cleaning-before-after.webp",
     alt: "Before and after composite deck cleaning showing leaves, dirt, and surface buildup removed",
     width: 1200,
@@ -54,7 +60,8 @@ const projectResults = [
   },
   {
     title: "House Siding Wash",
-    description: "Widespread organic growth removed from the rear exterior siding.",
+    description:
+      "Widespread organic growth removed from the rear exterior siding.",
     image: "/images/siding-washing-before-after.webp",
     alt: "Before and after house siding wash showing widespread organic growth removed from white siding",
     width: 1200,
@@ -69,8 +76,8 @@ function useReveal() {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             const reveals = entry.target.querySelectorAll(".reveal");
             reveals.forEach((r, i) => {
@@ -92,27 +99,27 @@ function useReveal() {
 
 const services = [
   {
+    icon: Home,
+    href: "/siding-washing",
+    titleKey: "sidingTitle",
+    descKey: "sidingDesc",
+    img: SIDING_IMG,
+    tag: null,
+  },
+  {
     icon: Droplets,
     href: "/driveway-cleaning",
     titleKey: "drivewayTitle",
     descKey: "drivewayDesc",
     img: DRIVEWAY_IMG,
-    tag: "Most Popular",
-  },
-  {
-    icon: Home,
-    href: "/deck-cleaning",
-    titleKey: "deckTitle",
-    descKey: "deckDesc",
-    img: DECK_IMG,
     tag: null,
   },
   {
     icon: Layers,
-    href: "/siding-washing",
-    titleKey: "sidingTitle",
-    descKey: "sidingDesc",
-    img: SIDING_IMG,
+    href: "/deck-cleaning",
+    titleKey: "deckTitle",
+    descKey: "deckDesc",
+    img: DECK_IMG,
     tag: null,
   },
   {
@@ -126,32 +133,51 @@ const services = [
 ];
 
 const trustItems = [
-  { icon: UserRound, label: "Owner-Operated" },
-  { icon: Star, label: "Free Estimates" },
-  { icon: ShieldCheck, label: "Surface-Specific Methods" },
-  { icon: Camera, label: "Photo Quotes Available" },
+  { icon: UserRound, labelKey: "ownerOperatedTrust" },
+  { icon: Star, labelKey: "freeEstimatesTrust" },
+  { icon: ShieldCheck, labelKey: "surfaceMethodsTrust" },
+  { icon: Camera, labelKey: "photoQuotesTrust" },
+];
+
+const estimateSteps = [
+  {
+    step: "01",
+    titleKey: "chooseEstimateMethod",
+    descKey: "chooseEstimateMethodDesc",
+  },
+  {
+    step: "02",
+    titleKey: "receiveWrittenEstimate",
+    descKey: "receiveWrittenEstimateDesc",
+  },
+  {
+    step: "03",
+    titleKey: "confirmScopeSchedule",
+    descKey: "confirmScopeScheduleDesc",
+  },
+  {
+    step: "04",
+    titleKey: "reviewCompletedWork",
+    descKey: "reviewCompletedWorkDesc",
+  },
 ];
 
 const whyUs = [
   {
-    title: "Honest Pricing",
-    description:
-      "You receive a clear estimate before work is scheduled. If site conditions change the scope, we discuss it with you before proceeding.",
+    titleKey: "honestPricing",
+    descKey: "honestPricingDesc",
   },
   {
-    title: "Local & Direct",
-    description:
-      "G&S is owner-operated in Mexico, Missouri, so you communicate directly with Darren from the estimate through the completed work.",
+    titleKey: "localDependable",
+    descKey: "localDependableDesc",
   },
   {
-    title: "Surface-Aware Cleaning",
-    description:
-      "Pressure, cleaning method, and treatment are selected after considering the material, buildup, access, and existing condition.",
+    titleKey: "safeForProperty",
+    descKey: "safeForPropertyDesc",
   },
   {
-    title: "Realistic Expectations",
-    description:
-      "We explain what cleaning can address and where oxidation, staining, age, or previous damage may limit the final result.",
+    titleKey: "resultsYouCanSee",
+    descKey: "resultsYouCanSeeDesc",
   },
 ];
 
@@ -192,7 +218,10 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "oklch(0.98 0.015 80)" }}>
+    <div
+      className="min-h-screen"
+      style={{ backgroundColor: "oklch(0.98 0.015 80)" }}
+    >
       <Navbar />
 
       {/* ── HERO ── */}
@@ -241,7 +270,7 @@ export default function HomePage() {
                   color: "oklch(0.82 0.10 75)",
                 }}
               >
-                {t('mexicoMOAreas')}
+                {t("mexicoMOAreas")}
               </span>
             </div>
 
@@ -252,33 +281,37 @@ export default function HomePage() {
                 color: "oklch(0.98 0.015 80)",
               }}
             >
-              {t('heroTitle')}
+              {t("heroTitle")}
               <span
                 className="block italic"
                 style={{ color: "oklch(0.82 0.10 75)" }}
               >
-                {t('heroSubtitle')}
+                {t("heroSubtitle")}
               </span>
             </h1>
 
             <p
               className="text-lg sm:text-xl leading-relaxed mb-10 max-w-xl"
-              style={{ color: "oklch(0.88 0.02 80)", fontFamily: "'Barlow', sans-serif" }}
+              style={{
+                color: "oklch(0.88 0.02 80)",
+                fontFamily: "'Barlow', sans-serif",
+              }}
             >
-              {t('heroDesc')}
+              {t("heroDesc")}
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <a href="https://calendar.app.google/YmtAenZ1D6f8BQ8h9" target="_blank" rel="noopener noreferrer" className="btn-gold rounded-sm">
-                <Clock size={16} className="inline mr-2" />
-                {t('bookEstimate')}
-              </a>
               <button
-                onClick={() => scrollTo("#services")}
-                className="btn-outline-gold rounded-sm"
+                onClick={() => scrollTo("#estimator")}
+                className="btn-gold rounded-sm"
               >
-                {t('viewServices')}
+                <Camera size={16} className="inline mr-2" />
+                {t("requestPhotoQuote")}
               </button>
+              <a href="tel:3144670332" className="btn-outline-gold rounded-sm">
+                <Phone size={16} className="inline mr-2" />
+                {t("callOrText")}
+              </a>
             </div>
           </div>
         </div>
@@ -292,7 +325,10 @@ export default function HomePage() {
         >
           <span
             className="text-xs tracking-widest uppercase"
-            style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 600 }}
+            style={{
+              fontFamily: "'Barlow Condensed', sans-serif",
+              fontWeight: 600,
+            }}
           >
             Scroll
           </span>
@@ -304,14 +340,18 @@ export default function HomePage() {
       <section
         id="trust"
         ref={trustRef}
-        style={{ backgroundColor: "oklch(0.72 0.12 75)", borderTop: "1px solid oklch(0.60 0.10 75)", borderBottom: "1px solid oklch(0.60 0.10 75)" }}
+        style={{
+          backgroundColor: "oklch(0.72 0.12 75)",
+          borderTop: "1px solid oklch(0.60 0.10 75)",
+          borderBottom: "1px solid oklch(0.60 0.10 75)",
+        }}
         className="py-5"
       >
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {trustItems.map((item, i) => (
               <div
-                key={item.label}
+                key={item.labelKey}
                 className="reveal flex items-center justify-center gap-3 py-2"
                 style={{ transitionDelay: `${i * 80}ms` }}
               >
@@ -326,7 +366,7 @@ export default function HomePage() {
                     color: "oklch(0.20 0.06 155)",
                   }}
                 >
-                  {item.label}
+                  {t(item.labelKey)}
                 </span>
               </div>
             ))}
@@ -339,7 +379,11 @@ export default function HomePage() {
         id="services"
         ref={servicesRef}
         className="py-24"
-        style={{ backgroundColor: "oklch(0.98 0.015 80)", borderTop: "1px solid oklch(0.92 0.004 286.32)", borderBottom: "1px solid oklch(0.92 0.004 286.32)" }}
+        style={{
+          backgroundColor: "oklch(0.98 0.015 80)",
+          borderTop: "1px solid oklch(0.92 0.004 286.32)",
+          borderBottom: "1px solid oklch(0.92 0.004 286.32)",
+        }}
       >
         <div className="container">
           {/* Header */}
@@ -354,7 +398,7 @@ export default function HomePage() {
                 border: "1px solid oklch(0.72 0.12 75 / 0.3)",
               }}
             >
-              {t('whatWeDo')}
+              {t("whatWeDo")}
             </div>
             <h2
               className="reveal text-4xl sm:text-5xl font-bold mt-2 mb-4"
@@ -363,13 +407,16 @@ export default function HomePage() {
                 color: "oklch(0.20 0.06 155)",
               }}
             >
-              {t('ourServices')}
+              {t("ourServices")}
             </h2>
             <p
               className="reveal text-base max-w-xl mx-auto"
-              style={{ color: "oklch(0.45 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
+              style={{
+                color: "oklch(0.45 0.04 155)",
+                fontFamily: "'Barlow', sans-serif",
+              }}
             >
-              {t('servicesDesc')}
+              {t("servicesDesc")}
             </p>
           </div>
 
@@ -401,7 +448,10 @@ export default function HomePage() {
                           "linear-gradient(135deg, oklch(0.28 0.07 155), oklch(0.20 0.06 155))",
                       }}
                     >
-                      <service.icon size={48} style={{ color: "oklch(0.72 0.12 75)" }} />
+                      <service.icon
+                        size={48}
+                        style={{ color: "oklch(0.72 0.12 75)" }}
+                      />
                     </div>
                   )}
                   {service.tag && (
@@ -421,7 +471,10 @@ export default function HomePage() {
                 {/* Content */}
                 <div className="p-5 flex flex-col flex-1">
                   <div className="flex items-center gap-2 mb-3">
-                    <service.icon size={18} style={{ color: "oklch(0.72 0.12 75)" }} />
+                    <service.icon
+                      size={18}
+                      style={{ color: "oklch(0.72 0.12 75)" }}
+                    />
                     <h3
                       className="font-bold text-base"
                       style={{
@@ -436,7 +489,10 @@ export default function HomePage() {
                   </div>
                   <p
                     className="text-sm leading-relaxed flex-1"
-                    style={{ color: "oklch(0.45 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
+                    style={{
+                      color: "oklch(0.45 0.04 155)",
+                      fontFamily: "'Barlow', sans-serif",
+                    }}
                   >
                     {t(service.descKey)}
                   </p>
@@ -454,25 +510,41 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* Free estimate banner */}
+          {/* Service selection CTA */}
           <div
-            className="reveal mt-12 rounded-lg p-6 text-center border-2"
+            className="reveal mt-12 rounded-lg p-6 border-2 flex flex-col md:flex-row items-center justify-between gap-6"
             style={{
               borderColor: "oklch(0.72 0.12 75)",
               backgroundColor: "oklch(0.72 0.12 75 / 0.06)",
             }}
           >
-            <p
-              className="text-xl font-bold"
-              style={{
-                fontFamily: "'Barlow Condensed', sans-serif",
-                fontWeight: 700,
-                letterSpacing: "0.05em",
-                color: "oklch(0.20 0.06 155)",
-              }}
+            <div className="text-center md:text-left">
+              <h3
+                className="text-xl font-bold mb-1"
+                style={{
+                  fontFamily: "'Playfair Display', serif",
+                  color: "oklch(0.20 0.06 155)",
+                }}
+              >
+                {t("needHelpChoosing")}
+              </h3>
+              <p
+                className="text-sm"
+                style={{
+                  color: "oklch(0.45 0.04 155)",
+                  fontFamily: "'Barlow', sans-serif",
+                }}
+              >
+                {t("serviceSelectionHelp")}
+              </p>
+            </div>
+            <button
+              onClick={() => scrollTo("#estimator")}
+              className="btn-gold rounded-sm flex-shrink-0"
             >
-              {t('freeEstimate')}
-            </p>
+              <Camera size={16} className="inline mr-2" />
+              {t("requestPhotoQuote")}
+            </button>
           </div>
         </div>
       </section>
@@ -482,7 +554,11 @@ export default function HomePage() {
         id="about"
         ref={aboutRef}
         className="py-24"
-        style={{ backgroundColor: "oklch(0.20 0.06 155)", borderTop: "1px solid oklch(0.35 0.08 155)", borderBottom: "1px solid oklch(0.35 0.08 155)" }}
+        style={{
+          backgroundColor: "oklch(0.20 0.06 155)",
+          borderTop: "1px solid oklch(0.35 0.08 155)",
+          borderBottom: "1px solid oklch(0.35 0.08 155)",
+        }}
       >
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -498,7 +574,7 @@ export default function HomePage() {
                   backgroundColor: "oklch(0.72 0.12 75 / 0.08)",
                 }}
               >
-                {t('aboutUs')}
+                {t("aboutUs")}
               </div>
               <h2
                 className="reveal text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6"
@@ -507,7 +583,7 @@ export default function HomePage() {
                   color: "oklch(0.98 0.015 80)",
                 }}
               >
-                {t('honestWork')}
+                {t("honestWork")}
               </h2>
               <p
                 className="reveal text-base leading-relaxed mb-4"
@@ -516,67 +592,81 @@ export default function HomePage() {
                   fontFamily: "'Barlow', sans-serif",
                 }}
               >
-                {t('aboutDesc')}
+                {t("aboutDesc")}
               </p>
               <div className="reveal flex flex-wrap gap-4">
-                <a href="tel:3144670332" className="btn-gold rounded-sm">
-                  <Phone size={15} className="inline mr-2" />
-                  {t('callUsToday')}
-                </a>
+                <button
+                  onClick={() => scrollTo("#estimator")}
+                  className="btn-gold rounded-sm"
+                >
+                  <Camera size={15} className="inline mr-2" />
+                  {t("requestPhotoQuote")}
+                </button>
                 <a
-                  href="mailto:contact@gsrestoration.net"
+                  href="tel:3144670332"
                   className="btn-outline-gold rounded-sm"
                 >
-                  <Mail size={15} className="inline mr-2" />
-                  {t('sendEmail')}
+                  <Phone size={15} className="inline mr-2" />
+                  {t("callOrText")}
                 </a>
               </div>
             </div>
 
-            {/* Right: stat cards */}
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { value: "LOCAL", labelKey: "ownerOperated", subKey: "directOwnerCommunication" },
-                { value: "$0", labelKey: "estimateCost", subKey: "freeQuotes" },
-                { value: "PHOTO", labelKey: "photoQuotes", subKey: "sendPhotosOnline" },
-                { value: "MO", labelKey: "mexicoMissouri", subKey: "locallyBased" },
-              ].map((stat, i) => (
+            {/* Right: estimate-to-completion process */}
+            <div>
               <div
-                key={stat.labelKey}
-                className="reveal rounded-lg p-6 border"
+                className="reveal text-xs tracking-widest uppercase mb-4"
                 style={{
-                  transitionDelay: `${i * 80}ms`,
-                  backgroundColor: "oklch(0.28 0.07 155)",
-                  borderColor: "oklch(0.35 0.08 155)",
-                  boxShadow: "0 8px 24px rgba(26, 58, 42, 0.12), 0 2px 8px rgba(201, 168, 76, 0.08)",
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  fontWeight: 700,
+                  color: "oklch(0.72 0.12 75)",
                 }}
-                >
+              >
+                {t("estimateProcess")}
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {estimateSteps.map((item, i) => (
                   <div
-                    className="text-4xl font-bold mb-1"
+                    key={item.step}
+                    className="reveal rounded-lg p-5 border"
                     style={{
-                      fontFamily: "'Playfair Display', serif",
-                      color: "oklch(0.72 0.12 75)",
+                      transitionDelay: `${i * 80}ms`,
+                      backgroundColor: "oklch(0.28 0.07 155)",
+                      borderColor: "oklch(0.35 0.08 155)",
+                      boxShadow:
+                        "0 8px 24px rgba(26, 58, 42, 0.12), 0 2px 8px rgba(201, 168, 76, 0.08)",
                     }}
                   >
-                    {stat.value}
+                    <div
+                      className="text-3xl font-bold mb-3"
+                      style={{
+                        fontFamily: "'Playfair Display', serif",
+                        color: "oklch(0.72 0.12 75)",
+                      }}
+                    >
+                      {item.step}
+                    </div>
+                    <h3
+                      className="text-sm font-bold uppercase tracking-wide mb-2"
+                      style={{
+                        fontFamily: "'Barlow Condensed', sans-serif",
+                        color: "oklch(0.98 0.015 80)",
+                      }}
+                    >
+                      {t(item.titleKey)}
+                    </h3>
+                    <p
+                      className="text-xs leading-relaxed"
+                      style={{
+                        color: "oklch(0.70 0.03 80)",
+                        fontFamily: "'Barlow', sans-serif",
+                      }}
+                    >
+                      {t(item.descKey)}
+                    </p>
                   </div>
-                  <div
-                    className="text-sm font-bold tracking-wide uppercase mb-1"
-                    style={{
-                      fontFamily: "'Barlow Condensed', sans-serif",
-                      color: "oklch(0.98 0.015 80)",
-                    }}
-                  >
-                    {t(stat.labelKey)}
-                  </div>
-                  <div
-                    className="text-xs"
-                    style={{ color: "oklch(0.65 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
-                  >
-                    {t(stat.subKey)}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -585,7 +675,11 @@ export default function HomePage() {
       {/* ── REAL PROJECT RESULTS ── */}
       <section
         className="py-24"
-        style={{ backgroundColor: "oklch(0.20 0.06 155)", borderTop: "1px solid oklch(0.35 0.08 155)", borderBottom: "1px solid oklch(0.35 0.08 155)" }}
+        style={{
+          backgroundColor: "oklch(0.20 0.06 155)",
+          borderTop: "1px solid oklch(0.35 0.08 155)",
+          borderBottom: "1px solid oklch(0.35 0.08 155)",
+        }}
       >
         <div className="container">
           <div className="text-center mb-14">
@@ -599,25 +693,29 @@ export default function HomePage() {
                 backgroundColor: "oklch(0.72 0.12 75 / 0.08)",
               }}
             >
-              {t('customerReviews')}
+              {t("customerReviews")}
             </div>
             <h2
               className="text-4xl sm:text-5xl font-bold mt-2"
-              style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.98 0.015 80)" }}
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                color: "oklch(0.98 0.015 80)",
+              }}
             >
-              {t('whatOurCustomersSay')}
+              {t("whatOurCustomersSay")}
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {projectResults.map((project) => (
+            {projectResults.map(project => (
               <figure
                 key={project.image}
                 className="rounded-xl overflow-hidden border flex flex-col"
                 style={{
                   backgroundColor: "oklch(0.28 0.07 155)",
                   borderColor: "oklch(0.35 0.08 155)",
-                  boxShadow: "0 8px 24px rgba(26, 58, 42, 0.12), 0 2px 8px rgba(201, 168, 76, 0.08)",
+                  boxShadow:
+                    "0 8px 24px rgba(26, 58, 42, 0.12), 0 2px 8px rgba(201, 168, 76, 0.08)",
                 }}
               >
                 <img
@@ -628,16 +726,25 @@ export default function HomePage() {
                   loading="lazy"
                   className="w-full aspect-square object-cover"
                 />
-                <figcaption className="p-5 border-t" style={{ borderColor: "oklch(0.35 0.08 155)" }}>
+                <figcaption
+                  className="p-5 border-t"
+                  style={{ borderColor: "oklch(0.35 0.08 155)" }}
+                >
                   <h3
                     className="font-bold text-base mb-1"
-                    style={{ fontFamily: "'Barlow Condensed', sans-serif", color: "oklch(0.98 0.015 80)" }}
+                    style={{
+                      fontFamily: "'Barlow Condensed', sans-serif",
+                      color: "oklch(0.98 0.015 80)",
+                    }}
                   >
                     {project.title}
                   </h3>
                   <p
                     className="text-sm leading-relaxed"
-                    style={{ color: "oklch(0.75 0.025 80)", fontFamily: "'Barlow', sans-serif" }}
+                    style={{
+                      color: "oklch(0.75 0.025 80)",
+                      fontFamily: "'Barlow', sans-serif",
+                    }}
                   >
                     {project.description}
                   </p>
@@ -646,6 +753,15 @@ export default function HomePage() {
             ))}
           </div>
 
+          <div className="mt-10 text-center">
+            <button
+              onClick={() => scrollTo("#estimator")}
+              className="btn-gold rounded-sm"
+            >
+              <Camera size={16} className="inline mr-2" />
+              {t("requestPhotoQuote")}
+            </button>
+          </div>
         </div>
       </section>
 
@@ -653,7 +769,11 @@ export default function HomePage() {
       <section
         ref={whyRef}
         className="py-24"
-        style={{ backgroundColor: "oklch(0.93 0.02 80)", borderTop: "1px solid oklch(0.92 0.004 286.32)", borderBottom: "1px solid oklch(0.92 0.004 286.32)" }}
+        style={{
+          backgroundColor: "oklch(0.93 0.02 80)",
+          borderTop: "1px solid oklch(0.92 0.004 286.32)",
+          borderBottom: "1px solid oklch(0.92 0.004 286.32)",
+        }}
       >
         <div className="container">
           <div className="text-center mb-14">
@@ -683,21 +803,26 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {whyUs.map((item, i) => (
               <div
-                key={item.title}
+                key={item.titleKey}
                 className="reveal rounded-lg p-6 border"
                 style={{
                   transitionDelay: `${i * 80}ms`,
                   backgroundColor: "#fff",
                   borderColor: "oklch(0.88 0.025 80)",
-                  boxShadow: "0 8px 24px rgba(26, 58, 42, 0.08), 0 2px 8px rgba(201, 168, 76, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.5)",
-                  background: "linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 248, 240, 0.5))",
+                  boxShadow:
+                    "0 8px 24px rgba(26, 58, 42, 0.08), 0 2px 8px rgba(201, 168, 76, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.5)",
+                  background:
+                    "linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 248, 240, 0.5))",
                 }}
               >
                 <div
                   className="w-10 h-10 rounded-full flex items-center justify-center mb-4"
                   style={{ backgroundColor: "oklch(0.72 0.12 75 / 0.15)" }}
                 >
-                  <CheckCircle size={20} style={{ color: "oklch(0.55 0.10 75)" }} />
+                  <CheckCircle
+                    size={20}
+                    style={{ color: "oklch(0.55 0.10 75)" }}
+                  />
                 </div>
                 <h3
                   className="font-bold text-base mb-2"
@@ -708,13 +833,16 @@ export default function HomePage() {
                     color: "oklch(0.20 0.06 155)",
                   }}
                 >
-                  {item.title}
+                  {t(item.titleKey)}
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "oklch(0.45 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
+                  style={{
+                    color: "oklch(0.45 0.04 155)",
+                    fontFamily: "'Barlow', sans-serif",
+                  }}
                 >
-                  {item.description}
+                  {t(item.descKey)}
                 </p>
               </div>
             ))}
@@ -725,20 +853,10 @@ export default function HomePage() {
       {/* ── PHOTO QUOTE REQUEST ── */}
       <section
         id="estimator"
-        className="py-24"
+        className="py-12"
         style={{ backgroundColor: "oklch(0.28 0.07 155)" }}
       >
-        <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: "oklch(0.98 0.015 80)" }}>
-              Request a Fast Photo Quote
-            </h2>
-            <p className="text-lg max-w-2xl mx-auto" style={{ color: "oklch(0.98 0.015 80)" }}>
-              Upload photos and job details so we can review the project and send back a clear estimate. No obligation, no pressure.
-            </p>
-          </div>
-          <AIEstimator />
-        </div>
+        <AIEstimator />
       </section>
 
       {/* ── CONTACT ── */}
@@ -746,7 +864,11 @@ export default function HomePage() {
         id="contact"
         ref={contactRef}
         className="py-24"
-        style={{ backgroundColor: "oklch(0.20 0.06 155)", borderTop: "1px solid oklch(0.35 0.08 155)", borderBottom: "1px solid oklch(0.35 0.08 155)" }}
+        style={{
+          backgroundColor: "oklch(0.20 0.06 155)",
+          borderTop: "1px solid oklch(0.35 0.08 155)",
+          borderBottom: "1px solid oklch(0.35 0.08 155)",
+        }}
       >
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
@@ -762,7 +884,7 @@ export default function HomePage() {
                   backgroundColor: "oklch(0.72 0.12 75 / 0.08)",
                 }}
               >
-                Get In Touch
+                Other Ways to Reach Us
               </div>
               <h2
                 className="reveal text-4xl sm:text-5xl font-bold leading-tight mb-6"
@@ -771,12 +893,12 @@ export default function HomePage() {
                   color: "oklch(0.98 0.015 80)",
                 }}
               >
-                Ready for a
+                Call, Text, or Schedule
                 <span
                   className="block italic"
                   style={{ color: "oklch(0.82 0.10 75)" }}
                 >
-                  Free Estimate?
+                  an On-Site Estimate
                 </span>
               </h2>
               <p
@@ -786,9 +908,9 @@ export default function HomePage() {
                   fontFamily: "'Barlow', sans-serif",
                 }}
               >
-                Call, text, email, send project photos, or choose a time for an
-                on-site estimate. We'll review the details and reply as soon as
-                possible.
+                The photo-quote form above is the main online estimate option.
+                If the project needs an in-person look, choose an available time
+                or call or text to discuss it first.
               </p>
 
               <div className="reveal flex flex-col gap-6">
@@ -863,7 +985,10 @@ export default function HomePage() {
                     className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
                     style={{ backgroundColor: "oklch(0.72 0.12 75 / 0.15)" }}
                   >
-                    <MapPin size={20} style={{ color: "oklch(0.72 0.12 75)" }} />
+                    <MapPin
+                      size={20}
+                      style={{ color: "oklch(0.72 0.12 75)" }}
+                    />
                   </div>
                   <div>
                     <div
@@ -891,92 +1016,121 @@ export default function HomePage() {
             </div>
 
             {/* Right: Google Calendar booking */}
-          <div
-            className="reveal rounded-xl p-8 border flex flex-col"
-            style={{
-              backgroundColor: "oklch(0.20 0.06 155)",
-              borderColor: "oklch(0.35 0.08 155)",
-            }}
-          >
-            <h3
-              className="text-2xl font-bold mb-3"
+            <div
+              className="reveal rounded-xl p-8 border flex flex-col"
               style={{
-                fontFamily: "'Playfair Display', serif",
-                color: "oklch(0.98 0.015 80)",
+                backgroundColor: "oklch(0.20 0.06 155)",
+                borderColor: "oklch(0.35 0.08 155)",
               }}
             >
-              Book a Free On-Site Estimate
-            </h3>
-            <p
-              className="text-sm mb-6 leading-relaxed"
-              style={{ color: "oklch(0.75 0.025 80)", fontFamily: "'Barlow', sans-serif" }}
-            >
-              Choose an available time for a free on-site estimate. We'll confirm the
-              appointment before arriving.
-            </p>
-
-            {/* Booking steps */}
-            <div className="flex flex-col gap-4 mb-8">
-              {[
-                { step: "01", label: "Choose a date & time", sub: "Pick any available slot on our calendar" },
-                { step: "02", label: "Add your details", sub: "Name, address, and service needed" },
-                { step: "03", label: "We confirm the visit", sub: "You'll receive confirmation before the appointment" },
-              ].map((item) => (
-                <div key={item.step} className="flex items-start gap-4">
-                  <div
-                    className="text-2xl font-bold leading-none flex-shrink-0 w-10"
-                    style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.72 0.12 75 / 0.4)" }}
-                  >
-                    {item.step}
-                  </div>
-                  <div>
-                    <div
-                      className="text-sm font-bold"
-                      style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, color: "oklch(0.98 0.015 80)" }}
-                    >
-                      {item.label}
-                    </div>
-                    <div
-                      className="text-xs mt-0.5"
-                      style={{ color: "oklch(0.65 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
-                    >
-                      {item.sub}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <a
-              href="https://calendar.app.google/YmtAenZ1D6f8BQ8h9"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-gold rounded-sm text-center block"
-            >
-              <Clock size={15} className="inline mr-2" />
-              Schedule on Google Calendar
-            </a>
-
-            <div
-              className="mt-4 pt-4 border-t text-center"
-              style={{ borderColor: "oklch(0.35 0.08 155)" }}
-            >
-              <p
-                className="text-xs"
-                style={{ color: "oklch(0.55 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
+              <h3
+                className="text-2xl font-bold mb-3"
+                style={{
+                  fontFamily: "'Playfair Display', serif",
+                  color: "oklch(0.98 0.015 80)",
+                }}
               >
-                Prefer to call or text?{" "}
-                <a href="tel:3144670332" style={{ color: "oklch(0.72 0.12 75)" }}>
-                  (314) 467-0332
-                </a>
+                Book a Free On-Site Estimate
+              </h3>
+              <p
+                className="text-sm mb-6 leading-relaxed"
+                style={{
+                  color: "oklch(0.75 0.025 80)",
+                  fontFamily: "'Barlow', sans-serif",
+                }}
+              >
+                Choose an available time for a free on-site estimate. We'll
+                confirm the appointment before arriving.
               </p>
+
+              {/* Booking steps */}
+              <div className="flex flex-col gap-4 mb-8">
+                {[
+                  {
+                    step: "01",
+                    label: "Choose a date & time",
+                    sub: "Pick any available slot on our calendar",
+                  },
+                  {
+                    step: "02",
+                    label: "Add your details",
+                    sub: "Name, address, and service needed",
+                  },
+                  {
+                    step: "03",
+                    label: "We confirm the visit",
+                    sub: "You'll receive confirmation before the appointment",
+                  },
+                ].map(item => (
+                  <div key={item.step} className="flex items-start gap-4">
+                    <div
+                      className="text-2xl font-bold leading-none flex-shrink-0 w-10"
+                      style={{
+                        fontFamily: "'Playfair Display', serif",
+                        color: "oklch(0.72 0.12 75 / 0.4)",
+                      }}
+                    >
+                      {item.step}
+                    </div>
+                    <div>
+                      <div
+                        className="text-sm font-bold"
+                        style={{
+                          fontFamily: "'Barlow Condensed', sans-serif",
+                          fontWeight: 700,
+                          color: "oklch(0.98 0.015 80)",
+                        }}
+                      >
+                        {item.label}
+                      </div>
+                      <div
+                        className="text-xs mt-0.5"
+                        style={{
+                          color: "oklch(0.65 0.04 155)",
+                          fontFamily: "'Barlow', sans-serif",
+                        }}
+                      >
+                        {item.sub}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <a
+                href="https://calendar.app.google/YmtAenZ1D6f8BQ8h9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-gold rounded-sm text-center block"
+              >
+                <Clock size={15} className="inline mr-2" />
+                Schedule an On-Site Estimate
+              </a>
+
+              <div
+                className="mt-4 pt-4 border-t text-center"
+                style={{ borderColor: "oklch(0.35 0.08 155)" }}
+              >
+                <p
+                  className="text-xs"
+                  style={{
+                    color: "oklch(0.55 0.04 155)",
+                    fontFamily: "'Barlow', sans-serif",
+                  }}
+                >
+                  Prefer to call or text?{" "}
+                  <a
+                    href="tel:3144670332"
+                    style={{ color: "oklch(0.72 0.12 75)" }}
+                  >
+                    (314) 467-0332
+                  </a>
+                </p>
+              </div>
             </div>
-          </div>
           </div>
         </div>
       </section>
-
-
 
       {/* ── FOOTER ── */}
       <footer
@@ -1005,11 +1159,13 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-200"
                 style={{ backgroundColor: "oklch(0.28 0.07 155)" }}
-                onMouseEnter={(e) =>
-                  ((e.currentTarget as HTMLElement).style.backgroundColor = "oklch(0.72 0.12 75)")
+                onMouseEnter={e =>
+                  ((e.currentTarget as HTMLElement).style.backgroundColor =
+                    "oklch(0.72 0.12 75)")
                 }
-                onMouseLeave={(e) =>
-                  ((e.currentTarget as HTMLElement).style.backgroundColor = "oklch(0.28 0.07 155)")
+                onMouseLeave={e =>
+                  ((e.currentTarget as HTMLElement).style.backgroundColor =
+                    "oklch(0.28 0.07 155)")
                 }
                 aria-label="Facebook"
               >
@@ -1021,15 +1177,20 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-200"
                 style={{ backgroundColor: "oklch(0.28 0.07 155)" }}
-                onMouseEnter={(e) =>
-                  ((e.currentTarget as HTMLElement).style.backgroundColor = "oklch(0.72 0.12 75)")
+                onMouseEnter={e =>
+                  ((e.currentTarget as HTMLElement).style.backgroundColor =
+                    "oklch(0.72 0.12 75)")
                 }
-                onMouseLeave={(e) =>
-                  ((e.currentTarget as HTMLElement).style.backgroundColor = "oklch(0.28 0.07 155)")
+                onMouseLeave={e =>
+                  ((e.currentTarget as HTMLElement).style.backgroundColor =
+                    "oklch(0.28 0.07 155)")
                 }
                 aria-label="Instagram"
               >
-                <Instagram size={16} style={{ color: "oklch(0.98 0.015 80)" }} />
+                <Instagram
+                  size={16}
+                  style={{ color: "oklch(0.98 0.015 80)" }}
+                />
               </a>
             </div>
 
