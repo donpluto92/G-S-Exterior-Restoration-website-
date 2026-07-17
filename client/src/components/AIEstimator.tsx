@@ -47,7 +47,7 @@ const steps: Array<{ id: "service" | "details" | "send"; label: string; icon: Lu
 const conditions = ["Light dirt", "Moderate buildup", "Heavy staining", "Not sure"];
 
 const trustCues = [
-  { icon: ShieldCheck, label: "Insured local crew" },
+  { icon: ShieldCheck, label: "Owner-operated service" },
   { icon: Camera, label: "Photos reviewed by hand" },
   { icon: MessageSquareText, label: "Clear reply, no pressure" },
 ];
@@ -284,7 +284,7 @@ export default function AIEstimator() {
                     value={formData.propertyAddress}
                     onChange={(e) => updateField("propertyAddress", e.target.value)}
                     className="estimator-input w-full rounded-lg border border-slate-300 px-4 py-3"
-                    placeholder="123 Main St, Mexico, MO 65265"
+                    placeholder="123 Main St, Mexico, Missouri 65265"
                   />
                 </div>
 

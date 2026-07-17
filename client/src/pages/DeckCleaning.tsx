@@ -6,24 +6,24 @@ export default function DeckCleaning() {
   return (
     <ServiceLayout
       title="Deck Cleaning"
-      subtitle="Mexico, MO."
-      metaDescription="Professional deck cleaning services in Mexico, MO. Safe pressure washing for wood and composite decks — removes algae, mildew, and slippery buildup. Free estimates. G&S Exterior Restoration."
+      subtitle="Mexico, Missouri."
+      metaDescription="Owner-operated deck cleaning in Mexico, Missouri for wood and composite surfaces with methods selected for the material and condition. Free estimates."
       heroImg={DECK_IMG}
       heroFeature={{
         title: "Deck Cleaning Results",
-        image: "/images/deck-before-after.png",
+        image: "/images/deck-cleaning-before-after.webp",
         alt: "Before and after deck cleaning result showing leaves, dirt, and buildup removed from gray composite decking",
       }}
-      intro="A dirty, slippery deck is both an eyesore and a safety hazard. G&S Exterior Restoration cleans wood and composite decks using the right pressure and technique for each surface — removing algae, mildew, dirt, and buildup without damaging the wood fibers or composite material."
+      intro="Algae, mildew, dirt, and organic buildup can leave a deck looking worn and feeling slick. G&S Exterior Restoration evaluates wood and composite decks before selecting the pressure, treatment, and cleaning approach for the material and its current condition."
       benefits={[
-        "Safe cleaning for wood, composite, and Trex decking",
-        "Removes algae, mildew, mold, and slippery green buildup",
-        "Eliminates dirt, pollen, and weathered gray discoloration",
+        "Cleaning methods selected for wood and composite decking",
+        "Treatment for algae, mildew, mold, and organic buildup",
+        "Cleaning for dirt, pollen, and common surface discoloration",
         "Low-pressure soft wash option for older or delicate wood",
-        "Prepares surface for staining or sealing",
-        "Improves safety by removing slippery organic growth",
+        "Cleaning available as one step in stain or sealer preparation",
+        "Realistic expectations for weathering, wear, and previous coatings",
         "Free estimate — no obligation",
-        "Fully insured service in Mexico, MO and surrounding areas",
+        "Owner-operated service based in Mexico, Missouri",
       ]}
       process={[
         {
@@ -34,22 +34,22 @@ export default function DeckCleaning() {
         {
           step: "02",
           title: "Soft Wash or Pressure Wash",
-          description: "Depending on the material, we either soft wash with a biodegradable cleaning solution or use controlled pressure washing to lift and remove all organic growth and grime.",
+          description: "Depending on the material and condition, we use a lower-pressure wash, an appropriate cleaning treatment, or controlled pressure to address dirt and organic buildup.",
         },
         {
           step: "03",
           title: "Rinse & Walk-Through",
-          description: "We thoroughly rinse the deck and surrounding area, then walk the job with you to confirm you're happy with the results.",
+          description: "We rinse the deck and surrounding work area, then review the completed cleaning and any remaining wear, staining, or coating issues.",
         },
       ]}
       faqs={[
         {
           question: "Is pressure washing safe for composite decking?",
-          answer: "Yes, when done correctly. We use lower pressure settings and appropriate nozzles for composite materials like Trex to avoid surface damage. We never use high-pressure wands directly on composite boards.",
+          answer: "Composite decking requires attention to the manufacturer's guidance, surface condition, pressure, and nozzle distance. We inspect the material first and select a controlled method for the specific deck.",
         },
         {
           question: "Will cleaning my deck prepare it for staining?",
-          answer: "Absolutely — a clean deck is essential before staining or sealing. Our cleaning removes all the grime, mildew, and gray weathering that would prevent stain from penetrating evenly.",
+          answer: "Cleaning is an important preparation step before staining or sealing. Drying time, previous coatings, wood condition, and the coating manufacturer's instructions also need to be considered before application.",
         },
         {
           question: "How long does deck cleaning take?",
@@ -57,7 +57,7 @@ export default function DeckCleaning() {
         },
         {
           question: "How often should I have my deck cleaned?",
-          answer: "Once a year is recommended for most decks in Missouri, especially those with tree coverage. Regular cleaning extends the life of the wood and prevents permanent staining.",
+          answer: "Frequency depends on shade, moisture, tree coverage, deck material, and the type of buildup. We can recommend an interval after inspecting the surface.",
         },
       ]}
       relatedServices={[

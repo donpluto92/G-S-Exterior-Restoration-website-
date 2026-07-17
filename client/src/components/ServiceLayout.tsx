@@ -38,7 +38,7 @@ export default function ServiceLayout({
   heroFeature,
 }: ServiceLayoutProps) {
   useEffect(() => {
-    document.title = `${title} | G&S Exterior Restoration — Mexico, MO`;
+    document.title = `${title} | G&S Exterior Restoration — Mexico, Missouri`;
     const meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute("content", metaDescription);
   }, [title, metaDescription]);
@@ -46,7 +46,7 @@ export default function ServiceLayout({
   const [path] = useLocation();
 
   useSeo({
-    title: `${title} in Mexico, MO | G&S Exterior Restoration`,
+    title: `${title} in Mexico, Missouri | G&S Exterior Restoration`,
     description: metaDescription,
     path,
     image: heroImg,
@@ -117,7 +117,7 @@ export default function ServiceLayout({
                 backgroundColor: "oklch(0.72 0.12 75 / 0.08)",
               }}
             >
-              Mexico, MO &amp; Surrounding Areas
+              Mexico, Missouri
             </div>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(320px,460px)] gap-10 items-end">
@@ -379,7 +379,7 @@ export default function ServiceLayout({
             className="text-xs"
             style={{ color: "oklch(0.55 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
           >
-            © 2026 G&S Exterior Restoration, LLC · Mexico, MO
+            © 2026 G&S Exterior Restoration, LLC · Mexico, Missouri
           </div>
         </div>
       </footer>

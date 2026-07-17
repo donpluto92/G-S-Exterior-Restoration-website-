@@ -11,7 +11,7 @@ import {
   Phone,
   Mail,
   MapPin,
-  Shield,
+  ShieldCheck,
   Star,
   CheckCircle,
   Droplets,
@@ -22,7 +22,8 @@ import {
   Facebook,
   Instagram,
   Clock,
-  Quote,
+  Camera,
+  UserRound,
 } from "lucide-react";
 import { Link } from "wouter";
 import { localBusinessSchema, useSeo, websiteSchema } from "@/lib/seo";
@@ -33,6 +34,33 @@ const DRIVEWAY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/Z
 const DECK_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/deck-clean-gknHjniPv6K2enyENyo566.webp";
 const SIDING_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/siding-clean-dk8VDGPUe5sPbznsNs5D65.webp";
 const VEHICLE_IMG = "/images/vehicle-wash.jpg";
+
+const projectResults = [
+  {
+    title: "Siding Cleaning",
+    description: "Organic growth and surface buildup removed from white siding.",
+    image: "/images/siding-growth-before-after.webp",
+    alt: "Before and after siding cleaning showing organic growth removed from white siding between two windows",
+    width: 1371,
+    height: 1148,
+  },
+  {
+    title: "Composite Deck Cleaning",
+    description: "Leaves, dirt, and surface buildup removed from gray composite decking.",
+    image: "/images/deck-cleaning-before-after.webp",
+    alt: "Before and after composite deck cleaning showing leaves, dirt, and surface buildup removed",
+    width: 1200,
+    height: 1200,
+  },
+  {
+    title: "House Siding Wash",
+    description: "Widespread organic growth removed from the rear exterior siding.",
+    image: "/images/siding-washing-before-after.webp",
+    alt: "Before and after house siding wash showing widespread organic growth removed from white siding",
+    width: 1200,
+    height: 1200,
+  },
+];
 
 // Scroll reveal hook inline
 function useReveal() {
@@ -98,32 +126,32 @@ const services = [
 ];
 
 const trustItems = [
-  { icon: Shield, label: "Fully Insured" },
+  { icon: UserRound, label: "Owner-Operated" },
   { icon: Star, label: "Free Estimates" },
-  { icon: CheckCircle, label: "Satisfaction Guaranteed" },
-  { icon: Clock, label: "Book Online 24/7" },
+  { icon: ShieldCheck, label: "Surface-Specific Methods" },
+  { icon: Camera, label: "Photo Quotes Available" },
 ];
 
 const whyUs = [
   {
     title: "Honest Pricing",
     description:
-      "No hidden fees, no surprises. Every job starts with a free estimate so you know exactly what to expect before we begin.",
+      "You receive a clear estimate before work is scheduled. If site conditions change the scope, we discuss it with you before proceeding.",
   },
   {
-    title: "Local & Dependable",
+    title: "Local & Direct",
     description:
-      "We're your neighbors in Mexico, MO. We show up on time, do the job right, and stand behind our work every single time.",
+      "G&S is owner-operated in Mexico, Missouri, so you communicate directly with Darren from the estimate through the completed work.",
   },
   {
-    title: "Safe for Your Property",
+    title: "Surface-Aware Cleaning",
     description:
-      "We use the right pressure and techniques for each surface — no unnecessary force that could damage siding, wood, or paint.",
+      "Pressure, cleaning method, and treatment are selected after considering the material, buildup, access, and existing condition.",
   },
   {
-    title: "Results You Can See",
+    title: "Realistic Expectations",
     description:
-      "From the street to the backyard, we deliver a transformation you'll notice immediately. Clean exteriors, year-round.",
+      "We explain what cleaning can address and where oxidation, staining, age, or previous damage may limit the final result.",
   },
 ];
 
@@ -137,9 +165,9 @@ export default function HomePage() {
   const contactRef = useReveal();
 
   useSeo({
-    title: "Pressure Washing in Mexico, MO | G&S Exterior Restoration",
+    title: "Exterior Cleaning in Mexico, Missouri | G&S Exterior Restoration",
     description:
-      "G&S Exterior Restoration LLC provides pressure washing, soft washing, driveway cleaning, deck cleaning, siding washing, and vehicle washing in Mexico, MO and surrounding Mid-Missouri communities. Free estimates.",
+      "Owner-operated exterior cleaning in Mexico, Missouri for siding, concrete, decks, patios, walkways, and vehicles. Free estimates and photo quotes available.",
     path: "/",
     image: HERO_IMG,
     schema: [localBusinessSchema, websiteSchema],
@@ -508,10 +536,10 @@ export default function HomePage() {
             {/* Right: stat cards */}
             <div className="grid grid-cols-2 gap-4">
               {[
-                { value: "100%", labelKey: "fullyInsured", subKey: "everyJobEveryTime" },
+                { value: "LOCAL", labelKey: "ownerOperated", subKey: "directOwnerCommunication" },
                 { value: "$0", labelKey: "estimateCost", subKey: "freeQuotes" },
-                { value: "24/7", labelKey: "bookOnline", subKey: "anytimeAnyDevice" },
-                { value: "MO", labelKey: "mexicoAndBeyond", subKey: "proudlyLocal" },
+                { value: "PHOTO", labelKey: "photoQuotes", subKey: "sendPhotosOnline" },
+                { value: "MO", labelKey: "mexicoMissouri", subKey: "locallyBased" },
               ].map((stat, i) => (
               <div
                 key={stat.labelKey}
@@ -554,7 +582,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── REVIEWS ── */}
+      {/* ── REAL PROJECT RESULTS ── */}
       <section
         className="py-24"
         style={{ backgroundColor: "oklch(0.20 0.06 155)", borderTop: "1px solid oklch(0.35 0.08 155)", borderBottom: "1px solid oklch(0.35 0.08 155)" }}
@@ -582,70 +610,39 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                name: "Sarah M.",
-                location: "Mexico, MO",
-                review: "G&S did an incredible job on our driveway. It looks brand new — I couldn't believe the difference. They were on time, professional, and the price was very fair. Will definitely use them again.",
-                service: "Driveway Cleaning",
-              },
-              {
-                name: "Tom R.",
-                location: "Mexico, MO",
-                review: "Our deck had years of algae and mildew buildup and I was worried it was beyond saving. G&S had it looking like new in a couple of hours. Highly recommend to anyone in the area.",
-                service: "Deck Cleaning",
-              },
-              {
-                name: "Linda K.",
-                location: "Centralia, MO",
-                review: "The siding on our house had black streaks all the way across the front. After G&S washed it, the whole house looked freshly painted. Fantastic work and great communication throughout.",
-                service: "Siding Washing",
-              },
-            ].map((review, i) => (
-              <div
-                key={review.name}
-                className="rounded-xl p-6 border flex flex-col"
+            {projectResults.map((project) => (
+              <figure
+                key={project.image}
+                className="rounded-xl overflow-hidden border flex flex-col"
                 style={{
                   backgroundColor: "oklch(0.28 0.07 155)",
                   borderColor: "oklch(0.35 0.08 155)",
                   boxShadow: "0 8px 24px rgba(26, 58, 42, 0.12), 0 2px 8px rgba(201, 168, 76, 0.08)",
                 }}
               >
-                <Quote size={28} className="mb-4 opacity-40" style={{ color: "oklch(0.72 0.12 75)" }} />
-                <p
-                  className="text-sm leading-relaxed flex-1 mb-6 italic"
-                  style={{ color: "oklch(0.85 0.02 80)", fontFamily: "'Barlow', sans-serif" }}
-                >
-                  &ldquo;{review.review}&rdquo;
-                </p>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div
-                      className="font-bold text-sm"
-                      style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, color: "oklch(0.98 0.015 80)" }}
-                    >
-                      {review.name}
-                    </div>
-                    <div
-                      className="text-xs"
-                      style={{ color: "oklch(0.65 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
-                    >
-                      {review.location}
-                    </div>
-                  </div>
-                  <div className="flex gap-0.5">
-                    {[...Array(5)].map((_, j) => (
-                      <Star key={j} size={14} fill="oklch(0.72 0.12 75)" style={{ color: "oklch(0.72 0.12 75)" }} />
-                    ))}
-                  </div>
-                </div>
-                <div
-                  className="mt-3 pt-3 border-t text-xs"
-                  style={{ borderColor: "oklch(0.35 0.08 155)", color: "oklch(0.55 0.04 155)", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase" }}
-                >
-                  {review.service}
-                </div>
-              </div>
+                <img
+                  src={project.image}
+                  alt={project.alt}
+                  width={project.width}
+                  height={project.height}
+                  loading="lazy"
+                  className="w-full aspect-square object-cover"
+                />
+                <figcaption className="p-5 border-t" style={{ borderColor: "oklch(0.35 0.08 155)" }}>
+                  <h3
+                    className="font-bold text-base mb-1"
+                    style={{ fontFamily: "'Barlow Condensed', sans-serif", color: "oklch(0.98 0.015 80)" }}
+                  >
+                    {project.title}
+                  </h3>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: "oklch(0.75 0.025 80)", fontFamily: "'Barlow', sans-serif" }}
+                  >
+                    {project.description}
+                  </p>
+                </figcaption>
+              </figure>
             ))}
           </div>
 
@@ -789,9 +786,9 @@ export default function HomePage() {
                   fontFamily: "'Barlow', sans-serif",
                 }}
               >
-                Call, text, email, or book online — we're available 24/7.
-                We'll get back to you quickly with a no-obligation estimate
-                for your project.
+                Call, text, email, send project photos, or choose a time for an
+                on-site estimate. We'll review the details and reply as soon as
+                possible.
               </p>
 
               <div className="reveal flex flex-col gap-6">
@@ -886,7 +883,7 @@ export default function HomePage() {
                         color: "oklch(0.98 0.015 80)",
                       }}
                     >
-                      Mexico, MO &amp; Surrounding Areas
+                      Mexico, Missouri
                     </div>
                   </div>
                 </div>
@@ -914,8 +911,8 @@ export default function HomePage() {
               className="text-sm mb-6 leading-relaxed"
               style={{ color: "oklch(0.75 0.025 80)", fontFamily: "'Barlow', sans-serif" }}
             >
-              Pick a time that works for you and it goes straight to our calendar.
-              We'll confirm and show up ready to work.
+              Choose an available time for a free on-site estimate. We'll confirm the
+              appointment before arriving.
             </p>
 
             {/* Booking steps */}
@@ -923,7 +920,7 @@ export default function HomePage() {
               {[
                 { step: "01", label: "Choose a date & time", sub: "Pick any available slot on our calendar" },
                 { step: "02", label: "Add your details", sub: "Name, address, and service needed" },
-                { step: "03", label: "We confirm & show up", sub: "You'll get a confirmation — we handle the rest" },
+                { step: "03", label: "We confirm the visit", sub: "You'll receive confirmation before the appointment" },
               ].map((item) => (
                 <div key={item.step} className="flex items-start gap-4">
                   <div
@@ -996,7 +993,7 @@ export default function HomePage() {
                   color: "oklch(0.72 0.12 75)",
                 }}
               >
-                Proudly Serving Mexico, MO &amp; Surrounding Areas
+                Based in Mexico, Missouri
               </div>
             </div>
 

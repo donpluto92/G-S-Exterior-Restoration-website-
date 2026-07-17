@@ -10,14 +10,7 @@ export const BUSINESS_IMAGE =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/hero-pressure-wash-5H7By3vYupAzNxdmLxcsg7.webp";
 
 export const SERVICE_AREAS = [
-  "Mexico, MO",
-  "Audrain County, MO",
-  "Centralia, MO",
-  "Vandalia, MO",
-  "Fulton, MO",
-  "Columbia, MO",
-  "Kingdom City, MO",
-  "Moberly, MO",
+  "Mexico, Missouri",
 ];
 
 type SeoOptions = {
@@ -95,7 +88,7 @@ export const areaServedSchema = SERVICE_AREAS.map((name) => ({
 
 export const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+  "@type": "LocalBusiness",
   "@id": `${SITE_URL}/#localbusiness`,
   name: BUSINESS_NAME,
   url: SITE_URL,
@@ -104,8 +97,9 @@ export const localBusinessSchema = {
   telephone: BUSINESS_PHONE,
   email: BUSINESS_EMAIL,
   priceRange: "$$",
+  foundingDate: "2026",
   description:
-    "G&S Exterior Restoration LLC provides pressure washing, soft washing, driveway cleaning, deck cleaning, siding washing, and vehicle washing in Mexico, Missouri and surrounding Mid-Missouri communities.",
+    "Owner-operated exterior cleaning in Mexico, Missouri for siding, concrete, decks, patios, walkways, and vehicles.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Mexico",
