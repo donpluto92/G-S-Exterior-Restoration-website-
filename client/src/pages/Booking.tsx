@@ -35,7 +35,8 @@ const bookingCopy = {
       "Add your name, property address, and the surface you need cleaned.",
       "Watch for confirmation before the estimate visit.",
     ],
-    location: "Estimate visits are based in Mexico, Missouri.",
+    location:
+      "Based in Mexico, Missouri. Estimate visits outside Mexico are available depending on project size, distance, and scheduling.",
     scheduleTitle: "Choose an Appointment Time",
     scheduleText:
       "Use the Google Calendar scheduler below. If it does not load, open the booking page directly.",
@@ -64,7 +65,8 @@ const bookingCopy = {
       "Agregue su nombre, dirección y la superficie que necesita limpiar.",
       "Espere la confirmación antes de la visita de estimación.",
     ],
-    location: "Las visitas de estimación se basan en México, Missouri.",
+    location:
+      "Con sede en México, Missouri. Las visitas de estimación fuera de México están disponibles según el tamaño del proyecto, la distancia y la disponibilidad.",
     scheduleTitle: "Elija una Hora para la Cita",
     scheduleText:
       "Use el calendario de Google a continuación. Si no carga, abra la página de reservaciones directamente.",
