@@ -6,19 +6,19 @@ export default function DrivewayCleaning() {
   return (
     <ServiceLayout
       title="Driveway Cleaning"
-      subtitle="Mexico, MO."
-      metaDescription="Professional driveway cleaning and concrete pressure washing in Mexico, MO. Remove dirt, algae, oil stains, and grime. Free estimates. Fully insured. Call G&S Exterior Restoration."
+      subtitle="Mexico, Missouri."
+      metaDescription="Owner-operated driveway cleaning and concrete pressure washing in Mexico, Missouri. Treatment for dirt, organic buildup, and common surface stains. Free estimates."
       heroImg={DRIVEWAY_IMG}
-      intro="Your driveway is the first thing people see. G&S Exterior Restoration uses professional-grade pressure washing equipment to remove years of dirt, algae, oil stains, and grime from concrete and paved surfaces — restoring your driveway to like-new condition."
+      intro="G&S Exterior Restoration cleans concrete driveways and paved surfaces using a process selected for the material, buildup, staining, and current condition. Cleaning can address dirt, organic growth, and many common surface stains, while deep discoloration and existing damage may remain visible."
       benefits={[
-        "Removal of dirt, algae, mold, mildew, and surface stains",
-        "Oil and grease stain treatment for concrete driveways",
-        "Safe pressure levels that won't damage concrete or pavers",
-        "Surface cleaner attachment for streak-free, even results",
-        "Improves curb appeal and property value",
+        "Cleaning for dirt, algae, mold, mildew, and surface buildup",
+        "Oil and grease stain treatment when appropriate",
+        "Pressure and cleaning methods selected for the surface condition",
+        "Surface cleaner used when appropriate for even coverage",
+        "Realistic expectations based on age, staining, and previous damage",
         "Free estimate before any work begins",
-        "Fully insured — your property is protected",
-        "Serving Mexico, MO and all surrounding Audrain County communities",
+        "Owner-operated service with direct communication",
+        "Based in Mexico, Missouri",
       ]}
       process={[
         {
@@ -29,12 +29,12 @@ export default function DrivewayCleaning() {
         {
           step: "02",
           title: "Pre-Treatment & Washing",
-          description: "We apply a biodegradable pre-treatment to break down oil and organic growth, then pressure wash with a surface cleaner for even, streak-free results.",
+          description: "When needed, we apply an appropriate pre-treatment, then clean the surface using pressure and equipment selected for the concrete's condition.",
         },
         {
           step: "03",
           title: "Final Rinse & Inspection",
-          description: "We rinse the entire surface and walk the job with you to make sure you're completely satisfied before we leave.",
+          description: "We rinse the surface, review the completed cleaning, and point out any deep staining or existing condition that remains visible.",
         },
       ]}
       faqs={[
@@ -44,15 +44,15 @@ export default function DrivewayCleaning() {
         },
         {
           question: "Will pressure washing damage my concrete?",
-          answer: "No — we use the correct pressure levels and a surface cleaner attachment designed for concrete. We never use excessive pressure that could etch or pit the surface.",
+          answer: "Incorrect pressure or technique can etch concrete. We inspect the surface first and choose the pressure, equipment, and treatment for its condition. Existing cracks, scaling, repairs, or weak areas may affect what can be cleaned safely.",
         },
         {
           question: "Can you remove oil stains from my driveway?",
-          answer: "Yes. We use a degreasing pre-treatment specifically for oil and grease stains. Results depend on how deep the stain has penetrated, but we can significantly reduce or fully remove most oil stains.",
+          answer: "We can treat many oil and grease stains. The final result depends on the stain's age, depth, previous treatments, and the porosity of the concrete, so complete removal cannot be promised.",
         },
         {
           question: "How often should I have my driveway cleaned?",
-          answer: "Once a year is a good rule of thumb for most driveways in Missouri. If you have heavy tree coverage or significant algae growth, every 6–12 months keeps it looking its best.",
+          answer: "Cleaning frequency depends on shade, drainage, traffic, tree coverage, and the type of buildup. We can recommend a practical interval after seeing the property.",
         },
       ]}
       relatedServices={[

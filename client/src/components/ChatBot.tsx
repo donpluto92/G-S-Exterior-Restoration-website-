@@ -17,7 +17,7 @@ const FAQ_DATA = [
   {
     question: "What services do you offer?",
     answer:
-      "We offer professional pressure washing and exterior restoration services including: Driveway Cleaning, Deck Cleaning, Siding & Exterior Surface Washing, and Vehicle Washing. All services include free estimates.",
+      "We offer exterior cleaning services including driveway and concrete cleaning, deck and patio cleaning, siding washing, walkway cleaning, and exterior vehicle washing. All services include free estimates.",
   },
   {
     question: "Do you offer free estimates?",
@@ -27,17 +27,17 @@ const FAQ_DATA = [
   {
     question: "What areas do you serve?",
     answer:
-      "We proudly serve Mexico, MO and all surrounding communities in Audrain County. Contact us to confirm service availability for your location.",
+      "G&S Exterior Restoration is based in Mexico, Missouri. Travel availability for projects outside Mexico depends on project size, distance, and scheduling. Contact us to check your address.",
   },
   {
     question: "How do I book a service?",
     answer:
-      "You can book online through our Google Calendar scheduling system, fill out an estimate request form, or call us directly at (314) 467-0332. We're available 24/7 for booking.",
+      "You can request a photo quote, choose a time for a free on-site estimate, or call or text (314) 467-0332. Calendar requests are confirmed before the appointment.",
   },
   {
-    question: "Are you fully insured?",
+    question: "Is G&S owner-operated?",
     answer:
-      "Yes, G&S Exterior Restoration is fully insured. We guarantee your satisfaction on every job.",
+      "Yes. Darren handles estimates, communicates directly with customers, and oversees the work on each project.",
   },
   {
     question: "How quickly can you schedule?",

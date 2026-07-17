@@ -6,19 +6,19 @@ export default function VehicleWashing() {
   return (
     <ServiceLayout
       title="Vehicle Washing"
-      subtitle="Mexico, MO."
-      metaDescription="Professional exterior vehicle washing in Mexico, MO. Remove road grime, dirt, salt, and buildup from cars, trucks, and more. Free estimates. G&S Exterior Restoration."
+      subtitle="Mexico, Missouri."
+      metaDescription="Owner-operated exterior vehicle washing in Mexico, Missouri for road grime, dirt, salt, and common buildup on cars, trucks, and work vehicles."
       heroImg={VEHICLE_IMG}
       intro="Road salt, mud, grime, and everyday buildup take a toll on your vehicle's finish. G&S Exterior Restoration provides professional exterior vehicle washing to keep your cars, trucks, and other vehicles looking clean and well maintained — right at your home or property."
       benefits={[
         "Removes road grime, dirt, salt, and seasonal buildup",
-        "Safe pressure levels appropriate for vehicle paint and finishes",
+        "Pressure, nozzle distance, and wash method selected for the finish",
         "Exterior wash for cars, trucks, SUVs, and work vehicles",
         "Convenient — we come to your location",
-        "Helps prevent rust and long-term paint damage from salt",
-        "Quick turnaround — most vehicles done in under an hour",
+        "Cleaning focused on visible exterior road and seasonal buildup",
+        "Service time based on vehicle size and condition",
         "Free estimate — no obligation",
-        "Fully insured service in Mexico, MO and surrounding areas",
+        "Owner-operated service based in Mexico, Missouri",
       ]}
       process={[
         {
@@ -29,18 +29,18 @@ export default function VehicleWashing() {
         {
           step: "02",
           title: "Exterior Wash",
-          description: "We wash the exterior using appropriate pressure and technique for vehicle paint — removing dirt, salt, and buildup from all panels, wheels, and lower body areas.",
+          description: "We wash the exterior using pressure, nozzle distance, and technique selected for the finish and visible condition of the vehicle.",
         },
         {
           step: "03",
           title: "Final Rinse & Inspection",
-          description: "We do a thorough final rinse and inspect the vehicle with you to make sure every panel is clean and you're satisfied with the results.",
+          description: "We complete a final rinse and inspect the exterior with you, noting any bonded contamination, oxidation, chips, or staining outside the scope of an exterior wash.",
         },
       ]}
       faqs={[
         {
           question: "Will pressure washing damage my car's paint?",
-          answer: "No — we use pressure levels and nozzle distances that are safe for automotive paint. We never use high-pressure wands at close range on vehicle panels.",
+          answer: "Incorrect pressure or nozzle distance can damage paint, trim, decals, or loose finishes. We inspect the visible condition and adjust the washing method, but pre-existing chips, peeling clear coat, loose decals, and damaged trim require special care.",
         },
         {
           question: "Do you come to my location?",

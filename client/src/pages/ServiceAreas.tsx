@@ -1,6 +1,4 @@
-/* GS Restoration — Service Areas Page
-   Local SEO page targeting Mexico MO and surrounding Audrain County communities
-*/
+/* GS Restoration — Service Availability Page */
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import { MapPin, Phone, Clock, CheckCircle, ArrowLeft } from "lucide-react";
@@ -10,14 +8,16 @@ import { localBusinessSchema, useSeo } from "@/lib/seo";
 const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/hero-pressure-wash-5H7By3vYupAzNxdmLxcsg7.webp";
 
 const areas = [
-  { name: "Mexico, MO", description: "Our home base. We serve all neighborhoods in Mexico, MO for driveway cleaning, deck washing, siding washing, and vehicle washing." },
-  { name: "Audrain County, MO", description: "We cover all of Audrain County including rural properties, farms, and residential communities throughout the county." },
-  { name: "Centralia, MO", description: "Professional pressure washing services available in Centralia and surrounding Boone County communities." },
-  { name: "Vandalia, MO", description: "Serving Vandalia and the surrounding Audrain County area with exterior cleaning services." },
-  { name: "Fulton, MO", description: "We travel to Fulton and Callaway County for larger jobs and regular customers." },
-  { name: "Columbia, MO", description: "Available for select jobs in the Columbia area. Contact us to discuss your project." },
-  { name: "Kingdom City, MO", description: "Pressure washing and exterior cleaning available for homes, driveways, decks, and nearby properties around Kingdom City." },
-  { name: "Moberly, MO", description: "Available for select pressure washing and soft washing projects in the Moberly area. Reach out for scheduling and availability." },
+  {
+    name: "Mexico, Missouri",
+    description:
+      "Our home base for siding washing, driveway and concrete cleaning, deck and patio cleaning, walkways, and exterior vehicle washing.",
+  },
+  {
+    name: "Nearby Project Availability",
+    description:
+      "Travel outside Mexico depends on project size, distance, and scheduling. Contact us with the property address and project details to confirm availability.",
+  },
 ];
 
 const services = [
@@ -28,16 +28,10 @@ const services = [
 ];
 
 export default function ServiceAreas() {
-  useEffect(() => {
-    document.title = "Service Areas | G&S Exterior Restoration — Mexico, MO & Surrounding Areas";
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute("content", "G&S Exterior Restoration serves Mexico, MO and surrounding communities in Audrain County, Centralia, Vandalia, Fulton, and more. Professional pressure washing — free estimates.");
-  }, []);
-
   useSeo({
-    title: "Pressure Washing Service Areas | Mexico, MO & Mid-Missouri",
+    title: "Exterior Cleaning Service Availability | Mexico, Missouri",
     description:
-      "G&S Exterior Restoration serves Mexico, MO, Audrain County, Centralia, Vandalia, Fulton, Columbia, and nearby Mid-Missouri communities with pressure washing and exterior cleaning. Free estimates.",
+      "G&S Exterior Restoration is an owner-operated exterior-cleaning company based in Mexico, Missouri. Travel availability depends on project size, distance, and scheduling.",
     path: "/service-areas",
     image: HERO_IMG,
     schema: localBusinessSchema,
@@ -105,16 +99,16 @@ export default function ServiceAreas() {
           >
             Service Areas
             <span className="block italic" style={{ color: "oklch(0.82 0.10 75)" }}>
-              Mexico, MO &amp; Beyond.
+              Based in Mexico, Missouri.
             </span>
           </h1>
           <p
             className="text-base max-w-xl mb-8 leading-relaxed"
             style={{ color: "oklch(0.80 0.025 80)", fontFamily: "'Barlow', sans-serif" }}
           >
-            G&S Exterior Restoration is based in Mexico, MO and proudly serves
-            homeowners and businesses throughout Audrain County and the surrounding
-            communities. Not sure if we cover your area? Give us a call.
+            G&S Exterior Restoration provides owner-operated exterior cleaning in
+            Mexico, Missouri. For projects outside Mexico, travel availability depends
+            on the project size, distance, and schedule.
           </p>
           <div className="flex flex-wrap gap-4">
             <a
@@ -141,7 +135,7 @@ export default function ServiceAreas() {
             className="reveal text-3xl sm:text-4xl font-bold mb-10"
             style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.20 0.06 155)" }}
           >
-            Communities We Serve
+            Service Availability
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {areas.map((area, i) => (
@@ -181,11 +175,11 @@ export default function ServiceAreas() {
               className="text-base font-bold"
               style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, color: "oklch(0.20 0.06 155)" }}
             >
-              Don't see your city?{" "}
+              Have a project outside Mexico?{" "}
               <a href="tel:3144670332" style={{ color: "oklch(0.55 0.10 75)" }}>
                 Call us at (314) 467-0332
               </a>{" "}
-              — we may still be able to help.
+              — share the address and project details to check availability.
             </p>
           </div>
         </div>
@@ -198,13 +192,13 @@ export default function ServiceAreas() {
             className="reveal text-3xl sm:text-4xl font-bold mb-4"
             style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.98 0.015 80)" }}
           >
-            Services Available in All Areas
+            Exterior Cleaning Services
           </h2>
           <p
             className="reveal text-base mb-10"
             style={{ color: "oklch(0.80 0.025 80)", fontFamily: "'Barlow', sans-serif" }}
           >
-            Every service we offer is available throughout our service area. All jobs include a free estimate.
+            Project availability is confirmed during the estimate. Every listed service includes a free estimate.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {services.map((s, i) => (
@@ -277,7 +271,7 @@ export default function ServiceAreas() {
             className="text-xs"
             style={{ color: "oklch(0.55 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
           >
-            © 2026 G&S Exterior Restoration, LLC · Mexico, MO
+            © 2026 G&S Exterior Restoration, LLC · Mexico, Missouri
           </div>
         </div>
       </footer>

@@ -6,24 +6,24 @@ export default function SidingWashing() {
   return (
     <ServiceLayout
       title="Siding & Exterior Washing"
-      subtitle="Mexico, MO."
-      metaDescription="Professional house washing and siding cleaning in Mexico, MO. Safe soft washing removes mold, mildew, algae, and dirt from vinyl siding and exterior surfaces. Free estimates. G&S Exterior Restoration."
+      subtitle="Mexico, Missouri."
+      metaDescription="Owner-operated house washing and siding cleaning in Mexico, Missouri using surface-specific soft washing methods. Free estimates from G&S Exterior Restoration."
       heroImg={SIDING_IMG}
       heroFeature={{
         title: "Siding Washing Results",
-        image: "/images/siding-before-after.jpg",
+        image: "/images/siding-growth-before-after.webp",
         alt: "Before and after siding washing result showing algae and dirt removed from white house siding",
       }}
-      intro="Black streaks, green algae, and mildew on your siding make even a well-maintained home look neglected. G&S Exterior Restoration uses safe soft washing techniques to remove mold, mildew, algae, and built-up dirt from vinyl siding and other exterior surfaces — without the harsh pressure that can force water behind panels or damage paint."
+      intro="Black streaks, green algae, mildew, and dirt can collect on siding and exterior surfaces. G&S Exterior Restoration inspects the material and existing condition before using a lower-pressure washing approach and appropriate treatment for the buildup present."
       benefits={[
-        "Safe soft washing — no harsh pressure that damages siding",
-        "Removes mold, mildew, algae, and black streaks",
-        "Cleans vinyl, wood, brick, stucco, and painted surfaces",
-        "Biodegradable cleaning solutions safe for landscaping",
-        "Improves curb appeal and protects your home's exterior",
-        "Prevents long-term damage from organic growth",
+        "Lower-pressure washing methods selected for the surface",
+        "Treatment for mold, mildew, algae, and common organic streaking",
+        "Inspection of vinyl, wood, brick, stucco, and painted surfaces",
+        "Landscaping pre-wetting and rinsing as conditions require",
+        "Realistic expectations for oxidation, fading, stains, and existing damage",
+        "Direct communication about sensitive or deteriorated areas",
         "Free estimate before any work begins",
-        "Fully insured — serving Mexico, MO and surrounding areas",
+        "Owner-operated service based in Mexico, Missouri",
       ]}
       process={[
         {
@@ -34,22 +34,22 @@ export default function SidingWashing() {
         {
           step: "02",
           title: "Soft Wash Application",
-          description: "We apply a biodegradable cleaning solution that kills mold, mildew, and algae at the root — then rinse with low pressure to safely remove all residue without forcing water behind panels.",
+          description: "We apply an appropriate cleaning treatment for the surface and buildup, allow the needed dwell time, and rinse using controlled lower pressure.",
         },
         {
           step: "03",
           title: "Final Rinse & Review",
-          description: "We rinse the entire exterior and review the results with you to ensure every section is clean and you're fully satisfied.",
+          description: "We rinse the cleaned areas and review the result, including any oxidation, deep staining, fading, or previous damage that remains visible.",
         },
       ]}
       faqs={[
         {
           question: "What's the difference between pressure washing and soft washing for siding?",
-          answer: "Pressure washing uses high-force water to blast away dirt, which can damage vinyl siding, force water behind panels, and strip paint. Soft washing uses low pressure combined with a cleaning solution that kills organic growth at the root — it's safer and more effective for siding.",
+          answer: "Soft washing relies on lower water pressure and a cleaning treatment selected for organic buildup. Siding condition, seams, paint, oxidation, and nearby openings are inspected before choosing the method.",
         },
         {
           question: "Will the cleaning solution harm my plants or lawn?",
-          answer: "We use biodegradable cleaning solutions and take care to pre-wet surrounding landscaping before and after washing. We haven't had issues with plant damage using our current process.",
+          answer: "We identify nearby landscaping, pre-wet and rinse plants as conditions require, and manage the work area carefully. Please tell us about sensitive plants, gardens, ponds, or recent landscaping before service.",
         },
         {
           question: "How long does house washing take?",
