@@ -1015,9 +1015,9 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right: Google Calendar booking */}
+            {/* Right: secondary on-site estimate path */}
             <div
-              className="reveal rounded-xl p-8 border flex flex-col"
+              className="reveal flex flex-col rounded-xl border p-8"
               style={{
                 backgroundColor: "oklch(0.20 0.06 155)",
                 borderColor: "oklch(0.35 0.08 155)",
@@ -1030,7 +1030,7 @@ export default function HomePage() {
                   color: "oklch(0.98 0.015 80)",
                 }}
               >
-                Book a Free On-Site Estimate
+                Need an In-Person Estimate?
               </h3>
               <p
                 className="text-sm mb-6 leading-relaxed"
@@ -1039,39 +1039,32 @@ export default function HomePage() {
                   fontFamily: "'Barlow', sans-serif",
                 }}
               >
-                Choose an available time for a free on-site estimate. We'll
-                confirm the appointment before arriving.
+                Use the separate booking page when the project needs a closer
+                look. Choose an available time for a free estimate visit and
+                wait for confirmation before the appointment.
               </p>
 
-              {/* Booking steps */}
-              <div className="flex flex-col gap-4 mb-8">
+              <div className="mb-8 flex flex-col gap-4">
                 {[
                   {
-                    step: "01",
-                    label: "Choose a date & time",
-                    sub: "Pick any available slot on our calendar",
+                    label: "For an estimate visit",
+                    sub: "The scheduled appointment is not the cleaning service itself.",
                   },
                   {
-                    step: "02",
-                    label: "Add your details",
-                    sub: "Name, address, and service needed",
+                    label: "Property details required",
+                    sub: "Add the address and surface you need inspected.",
                   },
                   {
-                    step: "03",
-                    label: "We confirm the visit",
-                    sub: "You'll receive confirmation before the appointment",
+                    label: "Confirmation follows",
+                    sub: "We confirm the appointment before arriving.",
                   },
                 ].map(item => (
-                  <div key={item.step} className="flex items-start gap-4">
-                    <div
-                      className="text-2xl font-bold leading-none flex-shrink-0 w-10"
-                      style={{
-                        fontFamily: "'Playfair Display', serif",
-                        color: "oklch(0.72 0.12 75 / 0.4)",
-                      }}
-                    >
-                      {item.step}
-                    </div>
+                  <div key={item.label} className="flex items-start gap-3">
+                    <CheckCircle
+                      className="mt-0.5 shrink-0"
+                      size={17}
+                      style={{ color: "oklch(0.72 0.12 75)" }}
+                    />
                     <div>
                       <div
                         className="text-sm font-bold"
@@ -1097,15 +1090,12 @@ export default function HomePage() {
                 ))}
               </div>
 
-              <a
-                href="https://calendar.app.google/YmtAenZ1D6f8BQ8h9"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-gold rounded-sm text-center block"
-              >
-                <Clock size={15} className="inline mr-2" />
-                Schedule an On-Site Estimate
-              </a>
+              <Link href="/booking">
+                <a className="btn-gold block rounded-sm text-center">
+                  <Clock size={15} className="mr-2 inline" />
+                  View On-Site Estimate Times
+                </a>
+              </Link>
 
               <div
                 className="mt-4 pt-4 border-t text-center"

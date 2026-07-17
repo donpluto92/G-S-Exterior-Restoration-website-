@@ -1,11 +1,19 @@
 /* GS Restoration — Service Availability Page */
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
-import { MapPin, Phone, Clock, CheckCircle, ArrowLeft } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Clock,
+  CheckCircle,
+  ArrowLeft,
+  Camera,
+} from "lucide-react";
 import { Link } from "wouter";
 import { localBusinessSchema, useSeo } from "@/lib/seo";
 
-const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/hero-pressure-wash-5H7By3vYupAzNxdmLxcsg7.webp";
+const HERO_IMG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/hero-pressure-wash-5H7By3vYupAzNxdmLxcsg7.webp";
 
 const areas = [
   {
@@ -39,8 +47,8 @@ export default function ServiceAreas() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             const reveals = entry.target.querySelectorAll(".reveal");
             reveals.forEach((r, i) => {
@@ -51,12 +59,17 @@ export default function ServiceAreas() {
       },
       { threshold: 0.1 }
     );
-    document.querySelectorAll(".reveal-section").forEach((s) => observer.observe(s));
+    document
+      .querySelectorAll(".reveal-section")
+      .forEach(s => observer.observe(s));
     return () => observer.disconnect();
   }, []);
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "oklch(0.98 0.015 80)" }}>
+    <div
+      className="min-h-screen"
+      style={{ backgroundColor: "oklch(0.98 0.015 80)" }}
+    >
       <Navbar />
 
       {/* Hero */}
@@ -66,17 +79,28 @@ export default function ServiceAreas() {
       >
         <div
           className="absolute inset-0 opacity-25"
-          style={{ backgroundImage: `url(${HERO_IMG})`, backgroundSize: "cover", backgroundPosition: "center" }}
+          style={{
+            backgroundImage: `url(${HERO_IMG})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
         />
         <div
           className="absolute inset-0"
-          style={{ background: "linear-gradient(to right, oklch(0.15 0.06 155 / 0.95) 40%, oklch(0.15 0.06 155 / 0.6) 100%)" }}
+          style={{
+            background:
+              "linear-gradient(to right, oklch(0.15 0.06 155 / 0.95) 40%, oklch(0.15 0.06 155 / 0.6) 100%)",
+          }}
         />
         <div className="container relative z-10">
           <Link href="/">
             <a
               className="inline-flex items-center gap-2 text-xs tracking-widest uppercase mb-6 opacity-70 hover:opacity-100 transition-opacity"
-              style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 600, color: "oklch(0.72 0.12 75)" }}
+              style={{
+                fontFamily: "'Barlow Condensed', sans-serif",
+                fontWeight: 600,
+                color: "oklch(0.72 0.12 75)",
+              }}
             >
               <ArrowLeft size={14} /> Back to Home
             </a>
@@ -95,30 +119,34 @@ export default function ServiceAreas() {
           </div>
           <h1
             className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4 max-w-2xl"
-            style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.98 0.015 80)" }}
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              color: "oklch(0.98 0.015 80)",
+            }}
           >
             Service Areas
-            <span className="block italic" style={{ color: "oklch(0.82 0.10 75)" }}>
+            <span
+              className="block italic"
+              style={{ color: "oklch(0.82 0.10 75)" }}
+            >
               Based in Mexico, Missouri.
             </span>
           </h1>
           <p
             className="text-base max-w-xl mb-8 leading-relaxed"
-            style={{ color: "oklch(0.80 0.025 80)", fontFamily: "'Barlow', sans-serif" }}
+            style={{
+              color: "oklch(0.80 0.025 80)",
+              fontFamily: "'Barlow', sans-serif",
+            }}
           >
-            G&S Exterior Restoration provides owner-operated exterior cleaning in
-            Mexico, Missouri. For projects outside Mexico, travel availability depends
-            on the project size, distance, and schedule.
+            G&S Exterior Restoration provides owner-operated exterior cleaning
+            in Mexico, Missouri. For projects outside Mexico, travel
+            availability depends on the project size, distance, and schedule.
           </p>
           <div className="flex flex-wrap gap-4">
-            <a
-              href="https://calendar.app.google/YmtAenZ1D6f8BQ8h9"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-gold rounded-sm"
-            >
-              <Clock size={15} className="inline mr-2" />
-              Book a Free Estimate
+            <a href="/#estimator" className="btn-gold rounded-sm">
+              <Camera size={15} className="inline mr-2" />
+              Request Photo Quote
             </a>
             <a href="tel:3144670332" className="btn-outline-gold rounded-sm">
               <Phone size={15} className="inline mr-2" />
@@ -129,11 +157,17 @@ export default function ServiceAreas() {
       </section>
 
       {/* Areas Grid */}
-      <section className="py-20 reveal-section" style={{ backgroundColor: "oklch(0.98 0.015 80)" }}>
+      <section
+        className="py-20 reveal-section"
+        style={{ backgroundColor: "oklch(0.98 0.015 80)" }}
+      >
         <div className="container">
           <h2
             className="reveal text-3xl sm:text-4xl font-bold mb-10"
-            style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.20 0.06 155)" }}
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              color: "oklch(0.20 0.06 155)",
+            }}
           >
             Service Availability
           </h2>
@@ -152,14 +186,21 @@ export default function ServiceAreas() {
                   <MapPin size={16} style={{ color: "oklch(0.55 0.10 75)" }} />
                   <h3
                     className="font-bold text-base"
-                    style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, color: "oklch(0.20 0.06 155)" }}
+                    style={{
+                      fontFamily: "'Barlow Condensed', sans-serif",
+                      fontWeight: 700,
+                      color: "oklch(0.20 0.06 155)",
+                    }}
                   >
                     {area.name}
                   </h3>
                 </div>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "oklch(0.45 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
+                  style={{
+                    color: "oklch(0.45 0.04 155)",
+                    fontFamily: "'Barlow', sans-serif",
+                  }}
                 >
                   {area.description}
                 </p>
@@ -169,11 +210,18 @@ export default function ServiceAreas() {
 
           <div
             className="reveal mt-10 rounded-lg p-6 border-2 text-center"
-            style={{ borderColor: "oklch(0.72 0.12 75)", backgroundColor: "oklch(0.72 0.12 75 / 0.06)" }}
+            style={{
+              borderColor: "oklch(0.72 0.12 75)",
+              backgroundColor: "oklch(0.72 0.12 75 / 0.06)",
+            }}
           >
             <p
               className="text-base font-bold"
-              style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, color: "oklch(0.20 0.06 155)" }}
+              style={{
+                fontFamily: "'Barlow Condensed', sans-serif",
+                fontWeight: 700,
+                color: "oklch(0.20 0.06 155)",
+              }}
             >
               Have a project outside Mexico?{" "}
               <a href="tel:3144670332" style={{ color: "oklch(0.55 0.10 75)" }}>
@@ -186,19 +234,29 @@ export default function ServiceAreas() {
       </section>
 
       {/* Services in these areas */}
-      <section className="py-20 reveal-section" style={{ backgroundColor: "oklch(0.28 0.07 155)" }}>
+      <section
+        className="py-20 reveal-section"
+        style={{ backgroundColor: "oklch(0.28 0.07 155)" }}
+      >
         <div className="container">
           <h2
             className="reveal text-3xl sm:text-4xl font-bold mb-4"
-            style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.98 0.015 80)" }}
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              color: "oklch(0.98 0.015 80)",
+            }}
           >
             Exterior Cleaning Services
           </h2>
           <p
             className="reveal text-base mb-10"
-            style={{ color: "oklch(0.80 0.025 80)", fontFamily: "'Barlow', sans-serif" }}
+            style={{
+              color: "oklch(0.80 0.025 80)",
+              fontFamily: "'Barlow', sans-serif",
+            }}
           >
-            Project availability is confirmed during the estimate. Every listed service includes a free estimate.
+            Project availability is confirmed during the estimate. Every listed
+            service includes a free estimate.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {services.map((s, i) => (
@@ -210,17 +268,26 @@ export default function ServiceAreas() {
                     backgroundColor: "oklch(0.20 0.06 155)",
                     borderColor: "oklch(0.35 0.08 155)",
                   }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = "oklch(0.72 0.12 75)";
+                  onMouseEnter={e => {
+                    (e.currentTarget as HTMLElement).style.borderColor =
+                      "oklch(0.72 0.12 75)";
                   }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = "oklch(0.35 0.08 155)";
+                  onMouseLeave={e => {
+                    (e.currentTarget as HTMLElement).style.borderColor =
+                      "oklch(0.35 0.08 155)";
                   }}
                 >
-                  <CheckCircle size={16} style={{ color: "oklch(0.72 0.12 75)", flexShrink: 0 }} />
+                  <CheckCircle
+                    size={16}
+                    style={{ color: "oklch(0.72 0.12 75)", flexShrink: 0 }}
+                  />
                   <span
                     className="text-sm font-bold"
-                    style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, color: "oklch(0.98 0.015 80)" }}
+                    style={{
+                      fontFamily: "'Barlow Condensed', sans-serif",
+                      fontWeight: 700,
+                      color: "oklch(0.98 0.015 80)",
+                    }}
                   >
                     {s.title}
                   </span>
@@ -232,29 +299,34 @@ export default function ServiceAreas() {
       </section>
 
       {/* CTA */}
-      <section className="py-20" style={{ backgroundColor: "oklch(0.20 0.06 155)" }}>
+      <section
+        className="py-20"
+        style={{ backgroundColor: "oklch(0.20 0.06 155)" }}
+      >
         <div className="container text-center">
           <h2
             className="text-3xl sm:text-4xl font-bold mb-4"
-            style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.98 0.015 80)" }}
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              color: "oklch(0.98 0.015 80)",
+            }}
           >
             Ready to Get Started?
           </h2>
           <p
             className="text-base mb-8 max-w-lg mx-auto"
-            style={{ color: "oklch(0.80 0.025 80)", fontFamily: "'Barlow', sans-serif" }}
+            style={{
+              color: "oklch(0.80 0.025 80)",
+              fontFamily: "'Barlow', sans-serif",
+            }}
           >
-            Book a free estimate online or give us a call. We'll get back to you quickly.
+            Request a photo quote, schedule an on-site estimate, or call or text
+            to discuss the project.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <a
-              href="https://calendar.app.google/YmtAenZ1D6f8BQ8h9"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-gold rounded-sm"
-            >
+            <a href="/booking" className="btn-gold rounded-sm">
               <Clock size={15} className="inline mr-2" />
-              Book on Google Calendar
+              Schedule On-Site Estimate
             </a>
             <a href="tel:3144670332" className="btn-outline-gold rounded-sm">
               <Phone size={15} className="inline mr-2" />
@@ -265,11 +337,20 @@ export default function ServiceAreas() {
       </section>
 
       {/* Footer */}
-      <footer style={{ backgroundColor: "oklch(0.15 0.05 155)", borderTop: "1px solid oklch(0.25 0.06 155)" }} className="py-8">
+      <footer
+        style={{
+          backgroundColor: "oklch(0.15 0.05 155)",
+          borderTop: "1px solid oklch(0.25 0.06 155)",
+        }}
+        className="py-8"
+      >
         <div className="container flex items-center justify-center">
           <div
             className="text-xs"
-            style={{ color: "oklch(0.55 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
+            style={{
+              color: "oklch(0.55 0.04 155)",
+              fontFamily: "'Barlow', sans-serif",
+            }}
           >
             © 2026 G&S Exterior Restoration, LLC · Mexico, Missouri
           </div>

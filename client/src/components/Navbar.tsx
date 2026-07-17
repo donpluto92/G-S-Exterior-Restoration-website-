@@ -20,12 +20,17 @@ export default function Navbar() {
     { label: "Home", href: "#home" },
     { label: "Services", href: "#services" },
     { label: "Photo Quote", href: "#estimator" },
+    { label: "Booking", href: "/booking" },
     { label: "About", href: "#about" },
     { label: "Contact", href: "#contact" },
   ];
 
   const scrollTo = (href: string) => {
     setMenuOpen(false);
+    if (href.startsWith("/")) {
+      window.location.href = href;
+      return;
+    }
     const el = document.querySelector(href);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
@@ -58,26 +63,42 @@ export default function Navbar() {
         </button>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-6">
-          {navLinks.map(link => (
-            <button
-              key={link.label}
-              onClick={() => scrollTo(link.href)}
-              className="text-base tracking-widest uppercase transition-colors duration-200 hover:opacity-100"
-              style={{
-                fontFamily: "'Barlow Condensed', sans-serif",
-                fontWeight: 600,
-                color: "oklch(0.82 0.10 75)",
-                opacity: 0.85,
-              }}
-            >
-              {link.label}
-            </button>
-          ))}
+        <nav className="hidden items-center gap-5 xl:flex">
+          {navLinks.map(link =>
+            link.href.startsWith("/") ? (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-base tracking-widest uppercase transition-colors duration-200 hover:opacity-100"
+                style={{
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  fontWeight: 600,
+                  color: "oklch(0.82 0.10 75)",
+                  opacity: 0.85,
+                }}
+              >
+                {link.label}
+              </a>
+            ) : (
+              <button
+                key={link.label}
+                onClick={() => scrollTo(link.href)}
+                className="text-base tracking-widest uppercase transition-colors duration-200 hover:opacity-100"
+                style={{
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  fontWeight: 600,
+                  color: "oklch(0.82 0.10 75)",
+                  opacity: 0.85,
+                }}
+              >
+                {link.label}
+              </button>
+            )
+          )}
         </nav>
 
         {/* Language Toggle + conversion actions */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden items-center gap-3 xl:flex">
           <LanguageToggle />
           <a
             href="tel:3144670332"
@@ -98,7 +119,7 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden p-2"
+          className="p-2 xl:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
           style={{ color: "oklch(0.98 0.015 80)" }}
           aria-label="Toggle menu"
@@ -109,27 +130,44 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       <div
-        className={`md:hidden transition-all duration-300 overflow-hidden ${
-          menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        className={`overflow-hidden transition-all duration-300 xl:hidden ${
+          menuOpen ? "max-h-[48rem] opacity-100" : "max-h-0 opacity-0"
         }`}
         style={{ backgroundColor: "oklch(0.20 0.06 155)" }}
       >
         <div className="container py-4 flex flex-col gap-4">
-          {navLinks.map(link => (
-            <button
-              key={link.label}
-              onClick={() => scrollTo(link.href)}
-              className="text-left text-lg tracking-widest uppercase py-2 border-b"
-              style={{
-                fontFamily: "'Barlow Condensed', sans-serif",
-                fontWeight: 600,
-                color: "oklch(0.82 0.10 75)",
-                borderColor: "oklch(0.35 0.08 155)",
-              }}
-            >
-              {link.label}
-            </button>
-          ))}
+          {navLinks.map(link =>
+            link.href.startsWith("/") ? (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className="border-b py-2 text-left text-lg uppercase tracking-widest"
+                style={{
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  fontWeight: 600,
+                  color: "oklch(0.82 0.10 75)",
+                  borderColor: "oklch(0.35 0.08 155)",
+                }}
+              >
+                {link.label}
+              </a>
+            ) : (
+              <button
+                key={link.label}
+                onClick={() => scrollTo(link.href)}
+                className="border-b py-2 text-left text-lg uppercase tracking-widest"
+                style={{
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  fontWeight: 600,
+                  color: "oklch(0.82 0.10 75)",
+                  borderColor: "oklch(0.35 0.08 155)",
+                }}
+              >
+                {link.label}
+              </button>
+            )
+          )}
           <div className="py-2">
             <LanguageToggle />
           </div>

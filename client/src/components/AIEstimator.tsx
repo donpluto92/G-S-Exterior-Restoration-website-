@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import type { LucideIcon } from "lucide-react";
@@ -34,6 +34,93 @@ type ServiceType =
   | "vehicle"
   | "patio"
   | "walkway";
+
+const MIN_PHOTOS = 3;
+const MAX_PHOTOS = 8;
+const MAX_PHOTO_SIZE = 10 * 1024 * 1024;
+const MAX_REQUEST_PHOTO_SIZE = 4 * 1024 * 1024;
+const ALLOWED_PHOTO_TYPES = new Set([
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+  "image/heic",
+  "image/heif",
+]);
+
+function PhotoPreview({ photo, index }: { photo: File; index: number }) {
+  const [previewUrl, setPreviewUrl] = useState("");
+
+  useEffect(() => {
+    const url = URL.createObjectURL(photo);
+    setPreviewUrl(url);
+    return () => URL.revokeObjectURL(url);
+  }, [photo]);
+
+  return previewUrl ? (
+    <img
+      src={previewUrl}
+      alt={`Selected project photo ${index + 1}`}
+      className="h-28 w-full object-cover"
+    />
+  ) : (
+    <div className="h-28 w-full animate-pulse bg-slate-100" />
+  );
+}
+
+async function preparePhotoForUpload(photo: File) {
+  if (
+    photo.size <= 350 * 1024 &&
+    ["image/jpeg", "image/png", "image/webp"].includes(photo.type)
+  ) {
+    return photo;
+  }
+
+  const sourceUrl = URL.createObjectURL(photo);
+  try {
+    const image = await new Promise<HTMLImageElement>((resolve, reject) => {
+      const element = new Image();
+      element.decoding = "async";
+      element.onload = () => resolve(element);
+      element.onerror = () =>
+        reject(
+          new Error(
+            "One selected photo could not be prepared. Try a JPG, PNG, or WebP version."
+          )
+        );
+      element.src = sourceUrl;
+    });
+
+    const longestSide = Math.max(image.naturalWidth, image.naturalHeight);
+    const scale = Math.min(1, 1280 / longestSide);
+    const width = Math.max(1, Math.round(image.naturalWidth * scale));
+    const height = Math.max(1, Math.round(image.naturalHeight * scale));
+    const canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    const context = canvas.getContext("2d");
+    if (!context) throw new Error("Could not prepare the selected photos");
+    context.drawImage(image, 0, 0, width, height);
+
+    const blob = await new Promise<Blob>((resolve, reject) => {
+      canvas.toBlob(
+        result =>
+          result
+            ? resolve(result)
+            : reject(new Error("Could not prepare the selected photos")),
+        "image/jpeg",
+        0.72
+      );
+    });
+
+    const baseName = photo.name.replace(/\.[^.]+$/, "") || "project-photo";
+    return new File([blob], `${baseName}.jpg`, {
+      type: "image/jpeg",
+      lastModified: photo.lastModified,
+    });
+  } finally {
+    URL.revokeObjectURL(sourceUrl);
+  }
+}
 
 const services: Array<{
   id: ServiceType;
@@ -123,12 +210,17 @@ export default function AIEstimator() {
     [serviceType]
   );
 
-  const canSubmit =
-    serviceType &&
-    formData.fullName &&
-    formData.email &&
-    formData.phone &&
-    formData.propertyAddress;
+  const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim());
+  const phoneIsValid = formData.phone.replace(/\D/g, "").length >= 10;
+  const detailsAreValid = Boolean(
+    formData.fullName.trim() &&
+      emailIsValid &&
+      phoneIsValid &&
+      formData.propertyAddress.trim()
+  );
+  const canSubmit = Boolean(
+    serviceType && detailsAreValid && photos.length >= MIN_PHOTOS
+  );
 
   const updateField = (field: keyof typeof formData, value: string) => {
     setFormData(current => ({ ...current, [field]: value }));
@@ -138,12 +230,18 @@ export default function AIEstimator() {
     const files = Array.from(e.target.files || []);
     if (files.length === 0) return;
 
-    if (files.length + photos.length > 8) {
-      toast.error("You can upload up to 8 photos");
+    if (files.length + photos.length > MAX_PHOTOS) {
+      toast.error(`You can upload up to ${MAX_PHOTOS} photos`);
       return;
     }
 
-    const oversized = files.find(file => file.size > 10 * 1024 * 1024);
+    const unsupported = files.find(file => !ALLOWED_PHOTO_TYPES.has(file.type));
+    if (unsupported) {
+      toast.error("Use JPG, PNG, WebP, HEIC, or HEIF photos");
+      return;
+    }
+
+    const oversized = files.find(file => file.size > MAX_PHOTO_SIZE);
     if (oversized) {
       toast.error("Each photo needs to be under 10MB");
       return;
@@ -151,6 +249,24 @@ export default function AIEstimator() {
 
     setPhotos(current => [...current, ...files]);
     e.target.value = "";
+  };
+
+  const continueToPhotos = () => {
+    if (!detailsAreValid) {
+      toast.error(
+        "Enter your name, a valid email, a 10-digit phone number, and the property address"
+      );
+      return;
+    }
+    setStep("photos");
+  };
+
+  const continueToReview = () => {
+    if (photos.length < MIN_PHOTOS) {
+      toast.error(`Add at least ${MIN_PHOTOS} clear project photos`);
+      return;
+    }
+    setStep("review");
   };
 
   const handleSubmit = async () => {
@@ -161,12 +277,26 @@ export default function AIEstimator() {
 
     setIsSubmitting(true);
     try {
+      const preparedPhotos: File[] = [];
+      for (const photo of photos) {
+        preparedPhotos.push(await preparePhotoForUpload(photo));
+      }
+      const preparedSize = preparedPhotos.reduce(
+        (total, photo) => total + photo.size,
+        0
+      );
+      if (preparedSize > MAX_REQUEST_PHOTO_SIZE) {
+        throw new Error(
+          "The prepared photos are still too large. Remove one or use simpler JPG images."
+        );
+      }
+
       const payload = new FormData();
       payload.append("serviceType", serviceType);
       Object.entries(formData).forEach(([key, value]) => {
         payload.append(key, value);
       });
-      photos.forEach(photo => {
+      preparedPhotos.forEach(photo => {
         payload.append("photos", photo);
       });
 
@@ -176,14 +306,25 @@ export default function AIEstimator() {
       });
 
       if (!response.ok) {
-        throw new Error(await response.text());
+        const responseBody = await response
+          .json()
+          .catch(() => ({ error: "Could not send the quote request" }));
+        throw new Error(
+          typeof responseBody.error === "string"
+            ? responseBody.error
+            : "Could not send the quote request"
+        );
       }
 
       setStep("success");
       toast.success("Quote request sent");
     } catch (error) {
       console.error("Quote request failed:", error);
-      toast.error("Could not send your request. Please call or text us.");
+      toast.error(
+        error instanceof Error
+          ? error.message
+          : "Could not send your request. Please call or text us."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -303,10 +444,18 @@ export default function AIEstimator() {
 
               <div className="grid gap-4">
                 <div>
-                  <label className="mb-2 block text-sm font-semibold text-slate-800">
+                  <label
+                    htmlFor="quote-full-name"
+                    className="mb-2 block text-sm font-semibold text-slate-800"
+                  >
                     Full name *
                   </label>
                   <input
+                    id="quote-full-name"
+                    name="fullName"
+                    autoComplete="name"
+                    required
+                    maxLength={120}
                     value={formData.fullName}
                     onChange={e => updateField("fullName", e.target.value)}
                     className="estimator-input w-full rounded-lg border border-slate-300 px-4 py-3"
@@ -316,11 +465,19 @@ export default function AIEstimator() {
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label className="mb-2 block text-sm font-semibold text-slate-800">
+                    <label
+                      htmlFor="quote-email"
+                      className="mb-2 block text-sm font-semibold text-slate-800"
+                    >
                       Email *
                     </label>
                     <input
+                      id="quote-email"
+                      name="email"
                       type="email"
+                      autoComplete="email"
+                      required
+                      maxLength={254}
                       value={formData.email}
                       onChange={e => updateField("email", e.target.value)}
                       className="estimator-input w-full rounded-lg border border-slate-300 px-4 py-3"
@@ -328,11 +485,20 @@ export default function AIEstimator() {
                     />
                   </div>
                   <div>
-                    <label className="mb-2 block text-sm font-semibold text-slate-800">
+                    <label
+                      htmlFor="quote-phone"
+                      className="mb-2 block text-sm font-semibold text-slate-800"
+                    >
                       Phone *
                     </label>
                     <input
+                      id="quote-phone"
+                      name="phone"
                       type="tel"
+                      inputMode="tel"
+                      autoComplete="tel"
+                      required
+                      maxLength={40}
                       value={formData.phone}
                       onChange={e => updateField("phone", e.target.value)}
                       className="estimator-input w-full rounded-lg border border-slate-300 px-4 py-3"
@@ -342,11 +508,19 @@ export default function AIEstimator() {
                 </div>
 
                 <div>
-                  <label className="mb-2 flex items-center gap-2 text-sm font-semibold text-slate-800">
+                  <label
+                    htmlFor="quote-address"
+                    className="mb-2 flex items-center gap-2 text-sm font-semibold text-slate-800"
+                  >
                     <MapPin size={16} />
                     Property address *
                   </label>
                   <input
+                    id="quote-address"
+                    name="propertyAddress"
+                    autoComplete="street-address"
+                    required
+                    maxLength={300}
                     value={formData.propertyAddress}
                     onChange={e =>
                       updateField("propertyAddress", e.target.value)
@@ -358,11 +532,17 @@ export default function AIEstimator() {
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label className="mb-2 flex items-center gap-2 text-sm font-semibold text-slate-800">
+                    <label
+                      htmlFor="quote-size"
+                      className="mb-2 flex items-center gap-2 text-sm font-semibold text-slate-800"
+                    >
                       <Ruler size={16} />
                       Approximate size
                     </label>
                     <input
+                      id="quote-size"
+                      name="approximateSize"
+                      maxLength={200}
                       value={formData.approximateSize}
                       onChange={e =>
                         updateField("approximateSize", e.target.value)
@@ -372,10 +552,15 @@ export default function AIEstimator() {
                     />
                   </div>
                   <div>
-                    <label className="mb-2 block text-sm font-semibold text-slate-800">
+                    <label
+                      htmlFor="quote-condition"
+                      className="mb-2 block text-sm font-semibold text-slate-800"
+                    >
                       Condition
                     </label>
                     <select
+                      id="quote-condition"
+                      name="condition"
                       value={formData.condition}
                       onChange={e => updateField("condition", e.target.value)}
                       className="estimator-input estimator-select w-full rounded-lg border border-slate-300 px-4 py-3"
@@ -388,10 +573,16 @@ export default function AIEstimator() {
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-sm font-semibold text-slate-800">
+                  <label
+                    htmlFor="quote-timeline"
+                    className="mb-2 block text-sm font-semibold text-slate-800"
+                  >
                     Preferred timeline
                   </label>
                   <input
+                    id="quote-timeline"
+                    name="timeline"
+                    maxLength={200}
                     value={formData.timeline}
                     onChange={e => updateField("timeline", e.target.value)}
                     className="estimator-input w-full rounded-lg border border-slate-300 px-4 py-3"
@@ -399,7 +590,7 @@ export default function AIEstimator() {
                   />
                 </div>
 
-                <Button onClick={() => setStep("photos")} className="mt-2">
+                <Button onClick={continueToPhotos} className="mt-2">
                   Continue to photos
                 </Button>
               </div>
@@ -411,7 +602,7 @@ export default function AIEstimator() {
               <div className="mb-6 flex items-start justify-between gap-4">
                 <div>
                   <p className="text-sm font-semibold text-emerald-700">
-                    Photos help tighten the quote
+                    Add 3–8 photos for a usable quote
                   </p>
                   <h3 className="estimator-slide-title text-2xl font-bold text-slate-950">
                     <Images size={22} />
@@ -437,14 +628,20 @@ export default function AIEstimator() {
                   Upload clear photos
                 </span>
                 <span className="mt-1 block text-sm text-slate-600">
-                  Wide shot, close-up stains, and any tricky areas. Up to 8
-                  photos.
+                  Include the full area, close-ups of heavy buildup, and access
+                  around the surface.
+                </span>
+                <span className="mt-2 block text-xs text-slate-500">
+                  JPG, PNG, WebP, HEIC, or HEIF · 10MB per original · Photos are
+                  resized before sending
                 </span>
                 <input
                   id="photo-upload"
+                  name="photos"
                   type="file"
                   multiple
-                  accept="image/*"
+                  required
+                  accept="image/jpeg,image/png,image/webp,image/heic,image/heif"
                   onChange={handlePhotoUpload}
                   className="hidden"
                 />
@@ -457,11 +654,7 @@ export default function AIEstimator() {
                       key={`${photo.name}-${index}`}
                       className="relative overflow-hidden rounded-lg border"
                     >
-                      <img
-                        src={URL.createObjectURL(photo)}
-                        alt={`Upload ${index + 1}`}
-                        className="h-28 w-full object-cover"
-                      />
+                      <PhotoPreview photo={photo} index={index} />
                       <button
                         type="button"
                         onClick={() =>
@@ -479,19 +672,49 @@ export default function AIEstimator() {
                 </div>
               )}
 
-              <textarea
-                value={formData.notes}
-                onChange={e => updateField("notes", e.target.value)}
-                className="estimator-input mt-6 w-full rounded-lg border border-slate-300 px-4 py-3"
-                rows={4}
-                placeholder="Gate codes, water access, problem areas, best time to contact you..."
-              />
+              <div className="mt-6">
+                <label
+                  htmlFor="quote-notes"
+                  className="mb-2 block text-sm font-semibold text-slate-800"
+                >
+                  Project notes
+                </label>
+                <textarea
+                  id="quote-notes"
+                  name="notes"
+                  maxLength={2000}
+                  value={formData.notes}
+                  onChange={e => updateField("notes", e.target.value)}
+                  className="estimator-input w-full rounded-lg border border-slate-300 px-4 py-3"
+                  rows={4}
+                  placeholder="Gate codes, water access, problem areas, best time to contact you..."
+                />
+              </div>
+
+              <div className="mt-5 space-y-2 rounded-lg border border-amber-200 bg-amber-50 p-4 text-xs leading-relaxed text-slate-700">
+                <p>
+                  <strong>What happens next:</strong> Darren reviews the details
+                  and replies with an estimate or asks for an on-site look when
+                  photos are not enough. Response timing depends on the current
+                  work schedule; call or text if the request is time-sensitive.
+                </p>
+                <p>
+                  A photo quote is based on the information submitted. If site
+                  conditions change the scope or price, G&amp;S discusses that
+                  with you before work begins.
+                </p>
+                <p>
+                  Your contact details, address, and photos are submitted to
+                  prepare and respond to this estimate request. Submission does
+                  not authorize publication of your photos.
+                </p>
+              </div>
 
               <div className="estimator-button-row mt-6 flex gap-3">
                 <Button variant="outline" onClick={() => setStep("details")}>
                   Back
                 </Button>
-                <Button onClick={() => setStep("review")} className="flex-1">
+                <Button onClick={continueToReview} className="flex-1">
                   Review request
                 </Button>
               </div>
