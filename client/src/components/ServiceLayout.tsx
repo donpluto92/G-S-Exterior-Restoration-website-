@@ -4,9 +4,14 @@
 */
 import { useEffect } from "react";
 import Navbar from "./Navbar";
-import { Phone, Clock, CheckCircle, ArrowLeft } from "lucide-react";
+import { Phone, CheckCircle, ArrowLeft, Camera } from "lucide-react";
 import { Link, useLocation } from "wouter";
-import { faqSchema, localBusinessSchema, serviceSchema, useSeo } from "@/lib/seo";
+import {
+  faqSchema,
+  localBusinessSchema,
+  serviceSchema,
+  useSeo,
+} from "@/lib/seo";
 
 interface ServiceLayoutProps {
   title: string;
@@ -60,8 +65,8 @@ export default function ServiceLayout({
   // Scroll reveal
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             const reveals = entry.target.querySelectorAll(".reveal");
             reveals.forEach((r, i) => {
@@ -72,12 +77,17 @@ export default function ServiceLayout({
       },
       { threshold: 0.1 }
     );
-    document.querySelectorAll(".reveal-section").forEach((s) => observer.observe(s));
+    document
+      .querySelectorAll(".reveal-section")
+      .forEach(s => observer.observe(s));
     return () => observer.disconnect();
   }, []);
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "oklch(0.98 0.015 80)" }}>
+    <div
+      className="min-h-screen"
+      style={{ backgroundColor: "oklch(0.98 0.015 80)" }}
+    >
       <Navbar />
 
       {/* Hero */}
@@ -95,14 +105,21 @@ export default function ServiceLayout({
         />
         <div
           className="absolute inset-0"
-          style={{ background: "linear-gradient(to right, oklch(0.15 0.06 155 / 0.95) 40%, oklch(0.15 0.06 155 / 0.6) 100%)" }}
+          style={{
+            background:
+              "linear-gradient(to right, oklch(0.15 0.06 155 / 0.95) 40%, oklch(0.15 0.06 155 / 0.6) 100%)",
+          }}
         />
         <div className="container relative z-10">
           <div className="mb-6 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
             <Link href="/">
               <a
                 className="inline-flex items-center gap-2 text-xs tracking-widest uppercase transition-opacity hover:opacity-100 opacity-70"
-                style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 600, color: "oklch(0.72 0.12 75)" }}
+                style={{
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  fontWeight: 600,
+                  color: "oklch(0.72 0.12 75)",
+                }}
               >
                 <ArrowLeft size={14} /> Back to Home
               </a>
@@ -124,30 +141,37 @@ export default function ServiceLayout({
             <div>
               <h1
                 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4 max-w-2xl"
-                style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.98 0.015 80)" }}
+                style={{
+                  fontFamily: "'Playfair Display', serif",
+                  color: "oklch(0.98 0.015 80)",
+                }}
               >
                 {title}
-                <span className="block italic" style={{ color: "oklch(0.82 0.10 75)" }}>
+                <span
+                  className="block italic"
+                  style={{ color: "oklch(0.82 0.10 75)" }}
+                >
                   {subtitle}
                 </span>
               </h1>
               <p
                 className="text-base max-w-xl mb-8 leading-relaxed"
-                style={{ color: "oklch(0.80 0.025 80)", fontFamily: "'Barlow', sans-serif" }}
+                style={{
+                  color: "oklch(0.80 0.025 80)",
+                  fontFamily: "'Barlow', sans-serif",
+                }}
               >
                 {intro}
               </p>
               <div className="flex flex-wrap gap-4">
-                <a
-                  href="https://calendar.app.google/YmtAenZ1D6f8BQ8h9"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-gold rounded-sm"
-                >
-                  <Clock size={15} className="inline mr-2" />
-                  Book a Free Estimate
+                <a href="/#estimator" className="btn-gold rounded-sm">
+                  <Camera size={15} className="inline mr-2" />
+                  Request Photo Quote
                 </a>
-                <a href="tel:3144670332" className="btn-outline-gold rounded-sm">
+                <a
+                  href="tel:3144670332"
+                  className="btn-outline-gold rounded-sm"
+                >
                   <Phone size={15} className="inline mr-2" />
                   (314) 467-0332
                 </a>
@@ -186,11 +210,17 @@ export default function ServiceLayout({
       </section>
 
       {/* Benefits */}
-      <section className="py-20 reveal-section" style={{ backgroundColor: "oklch(0.98 0.015 80)" }}>
+      <section
+        className="py-20 reveal-section"
+        style={{ backgroundColor: "oklch(0.98 0.015 80)" }}
+      >
         <div className="container">
           <h2
             className="reveal text-3xl sm:text-4xl font-bold mb-10"
-            style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.20 0.06 155)" }}
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              color: "oklch(0.20 0.06 155)",
+            }}
           >
             What's Included
           </h2>
@@ -205,10 +235,17 @@ export default function ServiceLayout({
                   backgroundColor: "#fff",
                 }}
               >
-                <CheckCircle size={18} className="flex-shrink-0 mt-0.5" style={{ color: "oklch(0.55 0.10 75)" }} />
+                <CheckCircle
+                  size={18}
+                  className="flex-shrink-0 mt-0.5"
+                  style={{ color: "oklch(0.55 0.10 75)" }}
+                />
                 <span
                   className="text-sm leading-relaxed"
-                  style={{ color: "oklch(0.30 0.05 155)", fontFamily: "'Barlow', sans-serif" }}
+                  style={{
+                    color: "oklch(0.30 0.05 155)",
+                    fontFamily: "'Barlow', sans-serif",
+                  }}
                 >
                   {benefit}
                 </span>
@@ -219,11 +256,17 @@ export default function ServiceLayout({
       </section>
 
       {/* Process */}
-      <section className="py-20 reveal-section" style={{ backgroundColor: "oklch(0.28 0.07 155)" }}>
+      <section
+        className="py-20 reveal-section"
+        style={{ backgroundColor: "oklch(0.28 0.07 155)" }}
+      >
         <div className="container">
           <h2
             className="reveal text-3xl sm:text-4xl font-bold mb-10"
-            style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.98 0.015 80)" }}
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              color: "oklch(0.98 0.015 80)",
+            }}
           >
             Our Process
           </h2>
@@ -236,19 +279,29 @@ export default function ServiceLayout({
               >
                 <div
                   className="text-5xl font-bold mb-3 leading-none"
-                  style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.72 0.12 75 / 0.35)" }}
+                  style={{
+                    fontFamily: "'Playfair Display', serif",
+                    color: "oklch(0.72 0.12 75 / 0.35)",
+                  }}
                 >
                   {item.step}
                 </div>
                 <h3
                   className="text-lg font-bold mb-2"
-                  style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, color: "oklch(0.98 0.015 80)" }}
+                  style={{
+                    fontFamily: "'Barlow Condensed', sans-serif",
+                    fontWeight: 700,
+                    color: "oklch(0.98 0.015 80)",
+                  }}
                 >
                   {item.title}
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "oklch(0.75 0.025 80)", fontFamily: "'Barlow', sans-serif" }}
+                  style={{
+                    color: "oklch(0.75 0.025 80)",
+                    fontFamily: "'Barlow', sans-serif",
+                  }}
                 >
                   {item.description}
                 </p>
@@ -259,11 +312,17 @@ export default function ServiceLayout({
       </section>
 
       {/* FAQs */}
-      <section className="py-20 reveal-section" style={{ backgroundColor: "oklch(0.93 0.02 80)" }}>
+      <section
+        className="py-20 reveal-section"
+        style={{ backgroundColor: "oklch(0.93 0.02 80)" }}
+      >
         <div className="container max-w-3xl">
           <h2
             className="reveal text-3xl sm:text-4xl font-bold mb-10"
-            style={{ fontFamily: "'Playfair Display', serif", color: "oklch(0.20 0.06 155)" }}
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              color: "oklch(0.20 0.06 155)",
+            }}
           >
             Frequently Asked Questions
           </h2>
@@ -280,13 +339,20 @@ export default function ServiceLayout({
               >
                 <h3
                   className="font-bold text-base mb-2"
-                  style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, color: "oklch(0.20 0.06 155)" }}
+                  style={{
+                    fontFamily: "'Barlow Condensed', sans-serif",
+                    fontWeight: 700,
+                    color: "oklch(0.20 0.06 155)",
+                  }}
                 >
                   {faq.question}
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "oklch(0.45 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
+                  style={{
+                    color: "oklch(0.45 0.04 155)",
+                    fontFamily: "'Barlow', sans-serif",
+                  }}
                 >
                   {faq.answer}
                 </p>
@@ -297,7 +363,10 @@ export default function ServiceLayout({
       </section>
 
       {/* CTA Section */}
-      <section className="py-20" style={{ backgroundColor: "oklch(0.20 0.06 155)" }}>
+      <section
+        className="py-20"
+        style={{ backgroundColor: "oklch(0.20 0.06 155)" }}
+      >
         <div className="container">
           <div className="text-center max-w-2xl mx-auto">
             <h2
@@ -311,24 +380,20 @@ export default function ServiceLayout({
             </h2>
             <p
               className="text-lg mb-8"
-              style={{ color: "oklch(0.88 0.02 80)", fontFamily: "'Barlow', sans-serif" }}
+              style={{
+                color: "oklch(0.88 0.02 80)",
+                fontFamily: "'Barlow', sans-serif",
+              }}
             >
-              Send a fast photo quote request on the homepage or book a free consultation directly.
+              Send a photo quote request or schedule a free on-site estimate
+              when the project needs a closer look.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <a
-                href="/#estimator"
-                className="btn-gold rounded-sm"
-              >
+              <a href="/#estimator" className="btn-gold rounded-sm">
                 Request Photo Quote
               </a>
-              <a
-                href="https://calendar.app.google/YmtAenZ1D6f8BQ8h9"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-outline-gold rounded-sm"
-              >
-                Book Consultation
+              <a href="/booking" className="btn-outline-gold rounded-sm">
+                Schedule On-Site Estimate
               </a>
             </div>
           </div>
@@ -336,16 +401,23 @@ export default function ServiceLayout({
       </section>
 
       {/* Related Services */}
-      <section className="py-12" style={{ backgroundColor: "oklch(0.15 0.05 155)" }}>
+      <section
+        className="py-12"
+        style={{ backgroundColor: "oklch(0.15 0.05 155)" }}
+      >
         <div className="container">
           <p
             className="text-xs tracking-widest uppercase mb-4"
-            style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 600, color: "oklch(0.65 0.04 155)" }}
+            style={{
+              fontFamily: "'Barlow Condensed', sans-serif",
+              fontWeight: 600,
+              color: "oklch(0.65 0.04 155)",
+            }}
           >
             Other Services
           </p>
           <div className="flex flex-wrap gap-3">
-            {relatedServices.map((s) => (
+            {relatedServices.map(s => (
               <Link key={s.href} href={s.href}>
                 <a
                   className="px-4 py-2 rounded border text-sm transition-colors duration-200"
@@ -355,13 +427,17 @@ export default function ServiceLayout({
                     borderColor: "oklch(0.35 0.08 155)",
                     color: "oklch(0.80 0.025 80)",
                   }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = "oklch(0.72 0.12 75)";
-                    (e.currentTarget as HTMLElement).style.color = "oklch(0.72 0.12 75)";
+                  onMouseEnter={e => {
+                    (e.currentTarget as HTMLElement).style.borderColor =
+                      "oklch(0.72 0.12 75)";
+                    (e.currentTarget as HTMLElement).style.color =
+                      "oklch(0.72 0.12 75)";
                   }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = "oklch(0.35 0.08 155)";
-                    (e.currentTarget as HTMLElement).style.color = "oklch(0.80 0.025 80)";
+                  onMouseLeave={e => {
+                    (e.currentTarget as HTMLElement).style.borderColor =
+                      "oklch(0.35 0.08 155)";
+                    (e.currentTarget as HTMLElement).style.color =
+                      "oklch(0.80 0.025 80)";
                   }}
                 >
                   {s.title}
@@ -373,11 +449,20 @@ export default function ServiceLayout({
       </section>
 
       {/* Footer */}
-      <footer style={{ backgroundColor: "oklch(0.15 0.05 155)", borderTop: "1px solid oklch(0.25 0.06 155)" }} className="py-8">
+      <footer
+        style={{
+          backgroundColor: "oklch(0.15 0.05 155)",
+          borderTop: "1px solid oklch(0.25 0.06 155)",
+        }}
+        className="py-8"
+      >
         <div className="container flex items-center justify-center">
           <div
             className="text-xs"
-            style={{ color: "oklch(0.55 0.04 155)", fontFamily: "'Barlow', sans-serif" }}
+            style={{
+              color: "oklch(0.55 0.04 155)",
+              fontFamily: "'Barlow', sans-serif",
+            }}
           >
             © 2026 G&S Exterior Restoration, LLC · Mexico, Missouri
           </div>

@@ -78,16 +78,6 @@ export default function ChatBot() {
     setShowFAQ(false);
   };
 
-  const handleBookClick = () => {
-    const bookingMessage = {
-      id: `booking-${Date.now()}`,
-      type: "system" as const,
-      text: "Ready to book? Click the button below to schedule your free estimate on our Google Calendar!",
-      timestamp: Date.now(),
-    };
-    setMessages([...messages, bookingMessage]);
-  };
-
   const handleReset = () => {
     setMessages([
       {
@@ -147,7 +137,7 @@ export default function ChatBot() {
 
             {/* Messages */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
-              {messages.map((msg) => (
+              {messages.map(msg => (
                 <div
                   key={msg.id}
                   className={`flex ${
@@ -184,7 +174,9 @@ export default function ChatBot() {
                   {FAQ_DATA.map((faq, idx) => (
                     <button
                       key={idx}
-                      onClick={() => handleQuestionClick(faq.question, faq.answer)}
+                      onClick={() =>
+                        handleQuestionClick(faq.question, faq.answer)
+                      }
                       className="w-full text-left text-xs py-2 px-3 rounded transition-colors"
                       style={{
                         backgroundColor: "oklch(0.25 0.06 155)",
@@ -192,11 +184,11 @@ export default function ChatBot() {
                         fontFamily: "'Barlow', sans-serif",
                         border: "1px solid oklch(0.35 0.08 155)",
                       }}
-                      onMouseEnter={(e) => {
+                      onMouseEnter={e => {
                         (e.currentTarget as HTMLElement).style.backgroundColor =
                           "oklch(0.30 0.07 155)";
                       }}
-                      onMouseLeave={(e) => {
+                      onMouseLeave={e => {
                         (e.currentTarget as HTMLElement).style.backgroundColor =
                           "oklch(0.25 0.06 155)";
                       }}
@@ -207,42 +199,22 @@ export default function ChatBot() {
                 </>
               ) : (
                 <div className="space-y-2">
-                  <button
-                    onClick={handleBookClick}
-                    className="w-full py-2 px-3 rounded text-sm font-bold transition-opacity"
+                  <a
+                    href="/booking"
+                    className="block w-full rounded px-3 py-2 text-center text-sm font-bold transition-opacity"
                     style={{
                       backgroundColor: "oklch(0.82 0.10 75)",
                       color: "oklch(0.15 0.05 155)",
                       fontFamily: "'Barlow Condensed', sans-serif",
                     }}
-                    onMouseEnter={(e) => {
+                    onMouseEnter={e => {
                       (e.currentTarget as HTMLElement).style.opacity = "0.9";
                     }}
-                    onMouseLeave={(e) => {
+                    onMouseLeave={e => {
                       (e.currentTarget as HTMLElement).style.opacity = "1";
                     }}
                   >
-                    📅 Book Now
-                  </button>
-                  <a
-                    href="https://calendar.app.google/YmtAenZ1D6f8BQ8h9"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full py-2 px-3 rounded text-sm font-bold text-center transition-opacity"
-                    style={{
-                      backgroundColor: "oklch(0.25 0.06 155)",
-                      color: "oklch(0.82 0.10 75)",
-                      fontFamily: "'Barlow Condensed', sans-serif",
-                      border: "1px solid oklch(0.82 0.10 75)",
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.opacity = "0.8";
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLElement).style.opacity = "1";
-                    }}
-                  >
-                    Go to Calendar
+                    Schedule an On-Site Estimate
                   </a>
                   <button
                     onClick={handleReset}
@@ -251,10 +223,10 @@ export default function ChatBot() {
                       color: "oklch(0.55 0.04 155)",
                       fontFamily: "'Barlow', sans-serif",
                     }}
-                    onMouseEnter={(e) => {
+                    onMouseEnter={e => {
                       (e.currentTarget as HTMLElement).style.opacity = "0.7";
                     }}
-                    onMouseLeave={(e) => {
+                    onMouseLeave={e => {
                       (e.currentTarget as HTMLElement).style.opacity = "1";
                     }}
                   >

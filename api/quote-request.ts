@@ -27,6 +27,20 @@ type QuoteFields = {
   notes?: string;
 };
 
+const MIN_PHOTOS = 3;
+const MAX_PHOTOS = 8;
+const MAX_PHOTO_SIZE = 10 * 1024 * 1024;
+const MAX_REQUEST_PHOTO_SIZE = 4 * 1024 * 1024;
+const ALLOWED_PHOTO_TYPES = new Set([
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+  "image/heic",
+  "image/heif",
+]);
+
+class ValidationError extends Error {}
+
 const serviceLabels: Record<string, string> = {
   driveway: "Driveway Cleaning",
   deck: "Deck Cleaning",
@@ -36,11 +50,13 @@ const serviceLabels: Record<string, string> = {
   walkway: "Walkway Cleaning",
 };
 
-function parseRequest(req: any): Promise<{ fields: QuoteFields; photos: UploadedPhoto[] }> {
+function parseRequest(
+  req: any
+): Promise<{ fields: QuoteFields; photos: UploadedPhoto[] }> {
   return new Promise((resolve, reject) => {
     const contentType = req.headers["content-type"];
     if (!contentType) {
-      reject(new Error("Missing content type"));
+      reject(new ValidationError("Missing multipart form data"));
       return;
     }
 
@@ -49,12 +65,18 @@ function parseRequest(req: any): Promise<{ fields: QuoteFields; photos: Uploaded
     const busboy = Busboy({
       headers: req.headers,
       limits: {
-        files: 8,
-        fileSize: 10 * 1024 * 1024,
+        files: MAX_PHOTOS,
+        fileSize: MAX_PHOTO_SIZE,
+        fields: 10,
+        fieldSize: 4000,
       },
     });
 
-    busboy.on("field", (name, value) => {
+    busboy.on("field", (name, value, info) => {
+      if (info.valueTruncated) {
+        reject(new ValidationError(`${name} is too long`));
+        return;
+      }
       fields[name as keyof QuoteFields] = value;
     });
 
@@ -64,13 +86,19 @@ function parseRequest(req: any): Promise<{ fields: QuoteFields; photos: Uploaded
         return;
       }
 
+      if (!ALLOWED_PHOTO_TYPES.has(info.mimeType)) {
+        file.resume();
+        reject(new ValidationError("Unsupported photo type"));
+        return;
+      }
+
       const chunks: Buffer[] = [];
       let size = 0;
       file.on("data", (chunk: Buffer) => {
         chunks.push(chunk);
         size += chunk.length;
       });
-      file.on("limit", () => reject(new Error("Photo is too large")));
+      file.on("limit", () => reject(new ValidationError("Photo is too large")));
       file.on("end", () => {
         photos.push({
           filename: info.filename || "quote-photo.jpg",
@@ -81,6 +109,12 @@ function parseRequest(req: any): Promise<{ fields: QuoteFields; photos: Uploaded
       });
     });
 
+    busboy.on("filesLimit", () =>
+      reject(new ValidationError(`Maximum ${MAX_PHOTOS} photos allowed`))
+    );
+    busboy.on("fieldsLimit", () =>
+      reject(new ValidationError("Too many form fields"))
+    );
     busboy.on("error", reject);
     busboy.on("finish", () => resolve({ fields, photos }));
     req.pipe(busboy);
@@ -90,12 +124,20 @@ function parseRequest(req: any): Promise<{ fields: QuoteFields; photos: Uploaded
 function requireField(fields: QuoteFields, name: keyof QuoteFields) {
   const value = fields[name]?.trim();
   if (!value) {
-    throw new Error(`Missing ${name}`);
+    throw new ValidationError(`Missing ${name}`);
   }
   return value;
 }
 
-async function saveSubmission(fields: Required<Pick<QuoteFields, "serviceType" | "fullName" | "email" | "phone" | "propertyAddress">> & QuoteFields) {
+async function saveSubmission(
+  fields: Required<
+    Pick<
+      QuoteFields,
+      "serviceType" | "fullName" | "email" | "phone" | "propertyAddress"
+    >
+  > &
+    QuoteFields
+) {
   if (!process.env.DATABASE_URL) return;
 
   const notes = [
@@ -123,16 +165,31 @@ async function saveSubmission(fields: Required<Pick<QuoteFields, "serviceType" |
         null,
         "Photos attached to quote request email",
         notes || null,
-      ],
+      ]
     );
   } finally {
     await connection.end();
   }
 }
 
-async function sendEmail(fields: Required<Pick<QuoteFields, "serviceType" | "fullName" | "email" | "phone" | "propertyAddress">> & QuoteFields, photos: UploadedPhoto[]) {
-  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    throw new Error("Email config missing: set SMTP_HOST, SMTP_USER, and SMTP_PASS");
+async function sendEmail(
+  fields: Required<
+    Pick<
+      QuoteFields,
+      "serviceType" | "fullName" | "email" | "phone" | "propertyAddress"
+    >
+  > &
+    QuoteFields,
+  photos: UploadedPhoto[]
+) {
+  if (
+    !process.env.SMTP_HOST ||
+    !process.env.SMTP_USER ||
+    !process.env.SMTP_PASS
+  ) {
+    throw new Error(
+      "Email config missing: set SMTP_HOST, SMTP_USER, and SMTP_PASS"
+    );
   }
 
   const serviceLabel = serviceLabels[fields.serviceType] || fields.serviceType;
@@ -193,6 +250,16 @@ export default async function handler(req: any, res: any) {
 
   try {
     const { fields, photos } = await parseRequest(req);
+    if (photos.length < MIN_PHOTOS) {
+      throw new ValidationError(`Upload at least ${MIN_PHOTOS} project photos`);
+    }
+    if (
+      photos.reduce((total, photo) => total + photo.size, 0) >
+      MAX_REQUEST_PHOTO_SIZE
+    ) {
+      throw new ValidationError("Combined photo upload must be under 4MB");
+    }
+
     const requiredFields = {
       serviceType: requireField(fields, "serviceType"),
       fullName: requireField(fields, "fullName"),
@@ -205,14 +272,31 @@ export default async function handler(req: any, res: any) {
       notes: fields.notes || "",
     };
 
+    if (!(requiredFields.serviceType in serviceLabels)) {
+      throw new ValidationError("Choose a valid service type");
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(requiredFields.email)) {
+      throw new ValidationError("Enter a valid email address");
+    }
+    if (requiredFields.phone.replace(/\D/g, "").length < 10) {
+      throw new ValidationError("Enter a valid phone number");
+    }
+
     await sendEmail(requiredFields, photos);
-    await saveSubmission(requiredFields).catch((saveError) => {
-      console.warn("[QuoteRequest] email sent, but database save failed:", saveError);
+    await saveSubmission(requiredFields).catch(saveError => {
+      console.warn(
+        "[QuoteRequest] email sent, but database save failed:",
+        saveError
+      );
     });
 
     res.status(200).json({ success: true });
   } catch (error) {
     console.error("[QuoteRequest] failed:", error);
+    if (error instanceof ValidationError) {
+      res.status(400).json({ error: error.message });
+      return;
+    }
     res.status(500).json({ error: "Quote request failed" });
   }
 }
