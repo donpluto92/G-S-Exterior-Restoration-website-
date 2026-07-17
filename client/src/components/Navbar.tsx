@@ -3,7 +3,7 @@
    Font: Barlow Condensed for nav items, Playfair Display for logo text
 */
 import { useState, useEffect } from "react";
-import { Phone, Menu, X } from "lucide-react";
+import { Camera, Phone, Menu, X } from "lucide-react";
 import { LanguageToggle } from "./LanguageToggle";
 
 export default function Navbar() {
@@ -19,7 +19,7 @@ export default function Navbar() {
   const navLinks = [
     { label: "Home", href: "#home" },
     { label: "Services", href: "#services" },
-    { label: "Estimator", href: "#estimator" },
+    { label: "Photo Quote", href: "#estimator" },
     { label: "About", href: "#about" },
     { label: "Contact", href: "#contact" },
   ];
@@ -27,15 +27,17 @@ export default function Navbar() {
   const scrollTo = (href: string) => {
     setMenuOpen(false);
     const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+    window.location.href = `/${href}`;
   };
 
   return (
     <header
       className={`relative z-50 transition-all duration-300 ${
-        scrolled
-          ? "py-0 shadow-2xl"
-          : "py-1"
+        scrolled ? "py-0 shadow-2xl" : "py-1"
       }`}
       style={{
         backgroundColor: scrolled ? "oklch(0.20 0.06 155)" : "transparent",
@@ -56,8 +58,8 @@ export default function Navbar() {
         </button>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
+        <nav className="hidden md:flex items-center gap-6">
+          {navLinks.map(link => (
             <button
               key={link.label}
               onClick={() => scrollTo(link.href)}
@@ -74,17 +76,24 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Language Toggle + CTA Phone */}
-        <div className="hidden md:flex items-center gap-4">
+        {/* Language Toggle + conversion actions */}
+        <div className="hidden md:flex items-center gap-3">
           <LanguageToggle />
           <a
             href="tel:3144670332"
-            className="flex items-center gap-2 btn-gold rounded"
-            style={{ fontSize: "1.05rem" }}
+            className="flex items-center gap-2 text-sm font-bold"
+            style={{ color: "oklch(0.82 0.10 75)" }}
           >
             <Phone size={15} />
             (314) 467-0332
           </a>
+          <button
+            onClick={() => scrollTo("#estimator")}
+            className="btn-gold rounded flex items-center gap-2"
+          >
+            <Camera size={15} />
+            Request Photo Quote
+          </button>
         </div>
 
         {/* Mobile hamburger */}
@@ -106,7 +115,7 @@ export default function Navbar() {
         style={{ backgroundColor: "oklch(0.20 0.06 155)" }}
       >
         <div className="container py-4 flex flex-col gap-4">
-          {navLinks.map((link) => (
+          {navLinks.map(link => (
             <button
               key={link.label}
               onClick={() => scrollTo(link.href)}
@@ -124,13 +133,20 @@ export default function Navbar() {
           <div className="py-2">
             <LanguageToggle />
           </div>
+          <button
+            onClick={() => scrollTo("#estimator")}
+            className="btn-gold rounded text-center mt-2"
+          >
+            <Camera size={15} className="inline mr-2" />
+            Request Photo Quote
+          </button>
           <a
             href="tel:3144670332"
-            className="btn-gold rounded text-center mt-2"
+            className="btn-outline-gold rounded text-center"
             onClick={() => setMenuOpen(false)}
           >
             <Phone size={15} className="inline mr-2" />
-            (314) 467-0332
+            Call or Text
           </a>
         </div>
       </div>

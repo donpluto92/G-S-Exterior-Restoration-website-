@@ -27,24 +27,74 @@ import {
 import { toast } from "sonner";
 
 type Step = "service" | "details" | "photos" | "review" | "success";
-type ServiceType = "driveway" | "deck" | "siding" | "vehicle" | "patio" | "walkway";
+type ServiceType =
+  | "driveway"
+  | "deck"
+  | "siding"
+  | "vehicle"
+  | "patio"
+  | "walkway";
 
-const services: Array<{ id: ServiceType; label: string; hint: string; icon: LucideIcon }> = [
-  { id: "driveway", label: "Driveway Cleaning", hint: "Concrete, black streaks, oil spots", icon: Droplets },
-  { id: "deck", label: "Deck Cleaning", hint: "Wood, composite, prep for stain", icon: Layers },
-  { id: "siding", label: "Siding Washing", hint: "House wash, algae, mildew", icon: Home },
-  { id: "vehicle", label: "Vehicle Washing", hint: "Fleet, work trucks, personal vehicles", icon: Car },
-  { id: "patio", label: "Patio Cleaning", hint: "Back patios, pads, outdoor spaces", icon: Sparkles },
-  { id: "walkway", label: "Walkway Cleaning", hint: "Sidewalks, paths, entrances", icon: Footprints },
+const services: Array<{
+  id: ServiceType;
+  label: string;
+  hint: string;
+  icon: LucideIcon;
+}> = [
+  {
+    id: "driveway",
+    label: "Driveway Cleaning",
+    hint: "Concrete, black streaks, oil spots",
+    icon: Droplets,
+  },
+  {
+    id: "deck",
+    label: "Deck Cleaning",
+    hint: "Wood, composite, prep for stain",
+    icon: Layers,
+  },
+  {
+    id: "siding",
+    label: "Siding Washing",
+    hint: "House wash, algae, mildew",
+    icon: Home,
+  },
+  {
+    id: "vehicle",
+    label: "Vehicle Washing",
+    hint: "Fleet, work trucks, personal vehicles",
+    icon: Car,
+  },
+  {
+    id: "patio",
+    label: "Patio Cleaning",
+    hint: "Back patios, pads, outdoor spaces",
+    icon: Sparkles,
+  },
+  {
+    id: "walkway",
+    label: "Walkway Cleaning",
+    hint: "Sidewalks, paths, entrances",
+    icon: Footprints,
+  },
 ];
 
-const steps: Array<{ id: "service" | "details" | "send"; label: string; icon: LucideIcon }> = [
+const steps: Array<{
+  id: "service" | "details" | "send";
+  label: string;
+  icon: LucideIcon;
+}> = [
   { id: "service", label: "Service", icon: ClipboardList },
   { id: "details", label: "Details", icon: Ruler },
   { id: "send", label: "Send", icon: MailCheck },
 ];
 
-const conditions = ["Light dirt", "Moderate buildup", "Heavy staining", "Not sure"];
+const conditions = [
+  "Light dirt",
+  "Moderate buildup",
+  "Heavy staining",
+  "Not sure",
+];
 
 const trustCues = [
   { icon: ShieldCheck, label: "Owner-operated service" },
@@ -69,8 +119,8 @@ export default function AIEstimator() {
   });
 
   const selectedService = useMemo(
-    () => services.find((service) => service.id === serviceType),
-    [serviceType],
+    () => services.find(service => service.id === serviceType),
+    [serviceType]
   );
 
   const canSubmit =
@@ -81,7 +131,7 @@ export default function AIEstimator() {
     formData.propertyAddress;
 
   const updateField = (field: keyof typeof formData, value: string) => {
-    setFormData((current) => ({ ...current, [field]: value }));
+    setFormData(current => ({ ...current, [field]: value }));
   };
 
   const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -93,13 +143,13 @@ export default function AIEstimator() {
       return;
     }
 
-    const oversized = files.find((file) => file.size > 10 * 1024 * 1024);
+    const oversized = files.find(file => file.size > 10 * 1024 * 1024);
     if (oversized) {
       toast.error("Each photo needs to be under 10MB");
       return;
     }
 
-    setPhotos((current) => [...current, ...files]);
+    setPhotos(current => [...current, ...files]);
     e.target.value = "";
   };
 
@@ -116,7 +166,7 @@ export default function AIEstimator() {
       Object.entries(formData).forEach(([key, value]) => {
         payload.append(key, value);
       });
-      photos.forEach((photo) => {
+      photos.forEach(photo => {
         payload.append("photos", photo);
       });
 
@@ -154,14 +204,15 @@ export default function AIEstimator() {
             Fast photo quote
           </div>
           <h2 className="text-3xl font-bold tracking-normal md:text-4xl">
-            Get a clean, accurate quote without the back-and-forth
+            Request a Photo Quote
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-white/80 md:text-base">
-            Send the details and a few photos. We review the job and reply with a real
-            estimate instead of a generic calculator number.
+            Send the project details and a few clear photos. Darren reviews the
+            surface and replies with an estimate or requests an on-site look
+            when photos are not enough.
           </p>
           <div className="estimator-trust mx-auto mt-5 grid max-w-2xl gap-3 text-left sm:grid-cols-3">
-            {trustCues.map((item) => (
+            {trustCues.map(item => (
               <div key={item.label} className="flex items-center gap-2">
                 <item.icon size={17} />
                 <span>{item.label}</span>
@@ -172,7 +223,7 @@ export default function AIEstimator() {
 
         <Card className="estimator-card overflow-hidden border-white/15 bg-white shadow-2xl">
           <div className="estimator-stepbar grid grid-cols-3 border-b bg-slate-50 text-center text-xs font-semibold uppercase tracking-normal text-slate-500">
-            {steps.map((stepItem) => {
+            {steps.map(stepItem => {
               const isActive =
                 stepItem.id === "service"
                   ? step === "service"
@@ -200,10 +251,11 @@ export default function AIEstimator() {
                 What needs cleaned?
               </h3>
               <p className="mb-6 text-sm text-slate-600">
-                Choose the closest match. You can add special notes before sending.
+                Choose the closest match. You can add special notes before
+                sending.
               </p>
               <div className="grid gap-3 sm:grid-cols-2">
-                {services.map((service) => (
+                {services.map(service => (
                   <button
                     key={service.id}
                     onClick={() => {
@@ -215,8 +267,12 @@ export default function AIEstimator() {
                     <span className="estimator-service-icon" aria-hidden="true">
                       <service.icon size={20} />
                     </span>
-                    <span className="block font-bold text-slate-950">{service.label}</span>
-                    <span className="mt-1 block text-sm text-slate-600">{service.hint}</span>
+                    <span className="block font-bold text-slate-950">
+                      {service.label}
+                    </span>
+                    <span className="mt-1 block text-sm text-slate-600">
+                      {service.hint}
+                    </span>
                   </button>
                 ))}
               </div>
@@ -235,7 +291,11 @@ export default function AIEstimator() {
                     Job details
                   </h3>
                 </div>
-                <Button variant="outline" size="sm" onClick={() => setStep("service")}>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setStep("service")}
+                >
                   <ArrowLeft className="mr-2" size={16} />
                   Back
                 </Button>
@@ -243,10 +303,12 @@ export default function AIEstimator() {
 
               <div className="grid gap-4">
                 <div>
-                  <label className="mb-2 block text-sm font-semibold text-slate-800">Full name *</label>
+                  <label className="mb-2 block text-sm font-semibold text-slate-800">
+                    Full name *
+                  </label>
                   <input
                     value={formData.fullName}
-                    onChange={(e) => updateField("fullName", e.target.value)}
+                    onChange={e => updateField("fullName", e.target.value)}
                     className="estimator-input w-full rounded-lg border border-slate-300 px-4 py-3"
                     placeholder="John Smith"
                   />
@@ -254,21 +316,25 @@ export default function AIEstimator() {
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label className="mb-2 block text-sm font-semibold text-slate-800">Email *</label>
+                    <label className="mb-2 block text-sm font-semibold text-slate-800">
+                      Email *
+                    </label>
                     <input
                       type="email"
                       value={formData.email}
-                      onChange={(e) => updateField("email", e.target.value)}
+                      onChange={e => updateField("email", e.target.value)}
                       className="estimator-input w-full rounded-lg border border-slate-300 px-4 py-3"
                       placeholder="john@example.com"
                     />
                   </div>
                   <div>
-                    <label className="mb-2 block text-sm font-semibold text-slate-800">Phone *</label>
+                    <label className="mb-2 block text-sm font-semibold text-slate-800">
+                      Phone *
+                    </label>
                     <input
                       type="tel"
                       value={formData.phone}
-                      onChange={(e) => updateField("phone", e.target.value)}
+                      onChange={e => updateField("phone", e.target.value)}
                       className="estimator-input w-full rounded-lg border border-slate-300 px-4 py-3"
                       placeholder="(573) 555-0100"
                     />
@@ -282,7 +348,9 @@ export default function AIEstimator() {
                   </label>
                   <input
                     value={formData.propertyAddress}
-                    onChange={(e) => updateField("propertyAddress", e.target.value)}
+                    onChange={e =>
+                      updateField("propertyAddress", e.target.value)
+                    }
                     className="estimator-input w-full rounded-lg border border-slate-300 px-4 py-3"
                     placeholder="123 Main St, Mexico, Missouri 65265"
                   />
@@ -296,19 +364,23 @@ export default function AIEstimator() {
                     </label>
                     <input
                       value={formData.approximateSize}
-                      onChange={(e) => updateField("approximateSize", e.target.value)}
+                      onChange={e =>
+                        updateField("approximateSize", e.target.value)
+                      }
                       className="estimator-input w-full rounded-lg border border-slate-300 px-4 py-3"
                       placeholder="2-car driveway, 20x20 patio..."
                     />
                   </div>
                   <div>
-                    <label className="mb-2 block text-sm font-semibold text-slate-800">Condition</label>
+                    <label className="mb-2 block text-sm font-semibold text-slate-800">
+                      Condition
+                    </label>
                     <select
                       value={formData.condition}
-                      onChange={(e) => updateField("condition", e.target.value)}
+                      onChange={e => updateField("condition", e.target.value)}
                       className="estimator-input estimator-select w-full rounded-lg border border-slate-300 px-4 py-3"
                     >
-                      {conditions.map((condition) => (
+                      {conditions.map(condition => (
                         <option key={condition}>{condition}</option>
                       ))}
                     </select>
@@ -316,10 +388,12 @@ export default function AIEstimator() {
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-sm font-semibold text-slate-800">Preferred timeline</label>
+                  <label className="mb-2 block text-sm font-semibold text-slate-800">
+                    Preferred timeline
+                  </label>
                   <input
                     value={formData.timeline}
-                    onChange={(e) => updateField("timeline", e.target.value)}
+                    onChange={e => updateField("timeline", e.target.value)}
                     className="estimator-input w-full rounded-lg border border-slate-300 px-4 py-3"
                     placeholder="This week, before a party, flexible..."
                   />
@@ -344,7 +418,11 @@ export default function AIEstimator() {
                     Add job photos
                   </h3>
                 </div>
-                <Button variant="outline" size="sm" onClick={() => setStep("details")}>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setStep("details")}
+                >
                   <ArrowLeft className="mr-2" size={16} />
                   Back
                 </Button>
@@ -355,9 +433,12 @@ export default function AIEstimator() {
                 className="estimator-upload block cursor-pointer rounded-lg border-2 border-dashed border-slate-300 bg-slate-50 p-8 text-center transition hover:border-emerald-600 hover:bg-emerald-50"
               >
                 <Upload className="mx-auto mb-3 text-emerald-700" size={34} />
-                <span className="block font-bold text-slate-950">Upload clear photos</span>
+                <span className="block font-bold text-slate-950">
+                  Upload clear photos
+                </span>
                 <span className="mt-1 block text-sm text-slate-600">
-                  Wide shot, close-up stains, and any tricky areas. Up to 8 photos.
+                  Wide shot, close-up stains, and any tricky areas. Up to 8
+                  photos.
                 </span>
                 <input
                   id="photo-upload"
@@ -372,7 +453,10 @@ export default function AIEstimator() {
               {photos.length > 0 && (
                 <div className="mt-6 grid gap-3 sm:grid-cols-4">
                   {photos.map((photo, index) => (
-                    <div key={`${photo.name}-${index}`} className="relative overflow-hidden rounded-lg border">
+                    <div
+                      key={`${photo.name}-${index}`}
+                      className="relative overflow-hidden rounded-lg border"
+                    >
                       <img
                         src={URL.createObjectURL(photo)}
                         alt={`Upload ${index + 1}`}
@@ -380,7 +464,11 @@ export default function AIEstimator() {
                       />
                       <button
                         type="button"
-                        onClick={() => setPhotos((current) => current.filter((_, i) => i !== index))}
+                        onClick={() =>
+                          setPhotos(current =>
+                            current.filter((_, i) => i !== index)
+                          )
+                        }
                         className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-slate-950/80 text-white"
                         aria-label="Remove photo"
                       >
@@ -393,7 +481,7 @@ export default function AIEstimator() {
 
               <textarea
                 value={formData.notes}
-                onChange={(e) => updateField("notes", e.target.value)}
+                onChange={e => updateField("notes", e.target.value)}
                 className="estimator-input mt-6 w-full rounded-lg border border-slate-300 px-4 py-3"
                 rows={4}
                 placeholder="Gate codes, water access, problem areas, best time to contact you..."
@@ -415,20 +503,24 @@ export default function AIEstimator() {
               <div className="mb-6 flex items-start gap-3 rounded-lg border border-emerald-200 bg-emerald-50 p-4">
                 <Sparkles className="mt-1 text-emerald-700" size={22} />
                 <div>
-                  <h3 className="text-xl font-bold text-slate-950">Ready to send</h3>
+                  <h3 className="text-xl font-bold text-slate-950">
+                    Ready to send
+                  </h3>
                   <p className="mt-1 text-sm text-slate-700">
-                    This goes straight to G&S with your contact info, job notes, and photos attached.
+                    This goes straight to G&S with your contact info, job notes,
+                    and photos attached.
                   </p>
                 </div>
               </div>
 
               <div className="grid gap-3 text-sm text-slate-700">
                 <div className="estimator-summary rounded-lg bg-slate-50 p-4">
-                  <span className="font-bold text-slate-950">Service:</span> {selectedService?.label}
+                  <span className="font-bold text-slate-950">Service:</span>{" "}
+                  {selectedService?.label}
                 </div>
                 <div className="estimator-summary rounded-lg bg-slate-50 p-4">
-                  <span className="font-bold text-slate-950">Contact:</span> {formData.fullName} ·{" "}
-                  {formData.phone} · {formData.email}
+                  <span className="font-bold text-slate-950">Contact:</span>{" "}
+                  {formData.fullName} · {formData.phone} · {formData.email}
                 </div>
                 <div className="estimator-summary rounded-lg bg-slate-50 p-4">
                   <span className="font-bold text-slate-950">Address:</span>{" "}
@@ -436,7 +528,9 @@ export default function AIEstimator() {
                 </div>
                 <div className="estimator-summary rounded-lg bg-slate-50 p-4">
                   <span className="font-bold text-slate-950">Photos:</span>{" "}
-                  {photos.length > 0 ? `${photos.length} attached` : "No photos attached"}
+                  {photos.length > 0
+                    ? `${photos.length} attached`
+                    : "No photos attached"}
                 </div>
               </div>
 
@@ -445,7 +539,11 @@ export default function AIEstimator() {
                   <ArrowLeft className="mr-2" size={16} />
                   Edit
                 </Button>
-                <Button onClick={handleSubmit} disabled={isSubmitting || !canSubmit} className="flex-1">
+                <Button
+                  onClick={handleSubmit}
+                  disabled={isSubmitting || !canSubmit}
+                  className="flex-1"
+                >
                   {isSubmitting ? (
                     <>
                       <Loader2 className="mr-2 animate-spin" size={16} />
@@ -464,15 +562,23 @@ export default function AIEstimator() {
 
           {step === "success" && (
             <div className="estimator-form-panel p-8 text-center">
-              <CheckCircle className="mx-auto mb-4 text-emerald-700" size={52} />
-              <h3 className="text-2xl font-bold text-slate-950">Request sent</h3>
+              <CheckCircle
+                className="mx-auto mb-4 text-emerald-700"
+                size={52}
+              />
+              <h3 className="text-2xl font-bold text-slate-950">
+                Request sent
+              </h3>
               <p className="mx-auto mt-3 max-w-lg text-slate-600">
-                Thanks. Your details are in the G&S inbox now. You will get a real quote after the
-                photos and job notes are reviewed.
+                Thanks. Your details are in the G&S inbox now. You will get a
+                real quote after the photos and job notes are reviewed.
               </p>
               <div className="mx-auto mt-6 flex max-w-md items-center gap-3 rounded-lg bg-slate-50 p-4 text-left text-sm text-slate-700">
                 <Camera className="text-emerald-700" size={22} />
-                <span>Need to add another area? Start a second request and include fresh photos.</span>
+                <span>
+                  Need to add another area? Start a second request and include
+                  fresh photos.
+                </span>
               </div>
               <Button
                 className="mt-6"
