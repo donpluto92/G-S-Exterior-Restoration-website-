@@ -119,17 +119,30 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="p-2 xl:hidden"
-          onClick={() => setMenuOpen(!menuOpen)}
-          style={{ color: "oklch(0.98 0.015 80)" }}
-          aria-label="Toggle menu"
+          type="button"
+          className="relative z-10 ml-3 flex size-12 shrink-0 items-center justify-center rounded-lg border-2 shadow-lg transition-transform active:scale-95 xl:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+          onClick={() => setMenuOpen(open => !open)}
+          style={{
+            color: "oklch(0.88 0.13 82)",
+            backgroundColor: "oklch(0.20 0.06 155)",
+            borderColor: "oklch(0.72 0.12 75)",
+            boxShadow: "0 4px 16px rgba(0, 0, 0, 0.35)",
+          }}
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
         >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          {menuOpen ? (
+            <X size={28} strokeWidth={2.75} aria-hidden="true" />
+          ) : (
+            <Menu size={30} strokeWidth={2.75} aria-hidden="true" />
+          )}
         </button>
       </div>
 
       {/* Mobile menu */}
       <div
+        id="mobile-navigation"
         className={`overflow-hidden transition-all duration-300 xl:hidden ${
           menuOpen ? "max-h-[48rem] opacity-100" : "max-h-0 opacity-0"
         }`}
