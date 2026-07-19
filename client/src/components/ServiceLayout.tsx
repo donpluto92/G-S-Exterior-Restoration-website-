@@ -4,6 +4,7 @@
 */
 import { useEffect } from "react";
 import Navbar from "./Navbar";
+import CertificationBanner from "./CertificationBanner";
 import { Phone, CheckCircle, ArrowLeft, Camera } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import {
@@ -447,9 +448,11 @@ export default function ServiceLayout({
         }}
         className="py-8"
       >
-        <div className="container flex items-center justify-center">
+        <div className="container">
+          <CertificationBanner />
+
           <div
-            className="text-xs"
+            className="text-center text-xs"
             style={{
               color: "oklch(0.55 0.04 155)",
               fontFamily: "'Barlow', sans-serif",

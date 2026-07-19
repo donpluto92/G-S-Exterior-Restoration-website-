@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import CertificationBanner from "@/components/CertificationBanner";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { localBusinessSchema, useSeo } from "@/lib/seo";
 import {
@@ -274,36 +275,40 @@ export default function Booking() {
           </div>
         </section>
 
-        <section
+        <footer
           className="border-t py-12"
           style={{
             borderColor: "oklch(0.35 0.08 155)",
             backgroundColor: "oklch(0.15 0.05 155)",
           }}
         >
-          <div className="container flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
-            <div>
-              <p
-                className="text-xs font-bold uppercase tracking-widest"
-                style={{ color: "oklch(0.72 0.12 75)" }}
-              >
-                G&amp;S Exterior Restoration LLC
-              </p>
-              <p className="mt-1 text-sm text-white/60">Mexico, Missouri</p>
-            </div>
-            <div className="flex flex-wrap justify-center gap-5 text-sm">
-              <a
-                href="tel:3144670332"
-                className="text-white/80 hover:text-white"
-              >
-                (314) 467-0332
-              </a>
-              <Link href="/">
-                <a className="text-white/80 hover:text-white">Home</a>
-              </Link>
+          <div className="container">
+            <CertificationBanner />
+
+            <div className="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
+              <div>
+                <p
+                  className="text-xs font-bold uppercase tracking-widest"
+                  style={{ color: "oklch(0.72 0.12 75)" }}
+                >
+                  G&amp;S Exterior Restoration LLC
+                </p>
+                <p className="mt-1 text-sm text-white/60">Mexico, Missouri</p>
+              </div>
+              <div className="flex flex-wrap justify-center gap-5 text-sm">
+                <a
+                  href="tel:3144670332"
+                  className="text-white/80 hover:text-white"
+                >
+                  (314) 467-0332
+                </a>
+                <Link href="/">
+                  <a className="text-white/80 hover:text-white">Home</a>
+                </Link>
+              </div>
             </div>
           </div>
-        </section>
+        </footer>
       </main>
     </div>
   );

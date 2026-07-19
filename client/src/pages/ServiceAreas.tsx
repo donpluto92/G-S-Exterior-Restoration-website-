@@ -1,6 +1,7 @@
 /* GS Restoration — Service Availability Page */
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
+import CertificationBanner from "@/components/CertificationBanner";
 import {
   MapPin,
   Phone,
@@ -341,9 +342,11 @@ export default function ServiceAreas() {
         }}
         className="py-8"
       >
-        <div className="container flex items-center justify-center">
+        <div className="container">
+          <CertificationBanner />
+
           <div
-            className="text-xs"
+            className="text-center text-xs"
             style={{
               color: "oklch(0.55 0.04 155)",
               fontFamily: "'Barlow', sans-serif",

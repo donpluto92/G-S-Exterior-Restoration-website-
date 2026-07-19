@@ -6,6 +6,7 @@
 import { useEffect, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import AIEstimator from "@/components/AIEstimator";
+import CertificationBanner from "@/components/CertificationBanner";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
   Phone,
@@ -1138,6 +1139,8 @@ export default function HomePage() {
         className="py-10"
       >
         <div className="container">
+          <CertificationBanner />
+
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
               <div
