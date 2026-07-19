@@ -42,19 +42,10 @@ export default function ServiceLayout({
   relatedServices,
   heroFeature,
 }: ServiceLayoutProps) {
-  useEffect(() => {
-    document.title = `${title} | G&S Exterior Restoration — Mexico, Missouri`;
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute("content", metaDescription);
-  }, [title, metaDescription]);
-
   const [path] = useLocation();
 
   useSeo({
-    title: `${title} in Mexico, Missouri | G&S Exterior Restoration`,
-    description: metaDescription,
     path,
-    image: heroImg,
     schema: [
       localBusinessSchema,
       serviceSchema(title, metaDescription, path, heroImg),

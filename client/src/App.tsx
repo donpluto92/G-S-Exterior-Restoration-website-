@@ -13,6 +13,7 @@ import SidingWashing from "./pages/SidingWashing";
 import VehicleWashing from "./pages/VehicleWashing";
 import ServiceAreas from "./pages/ServiceAreas";
 import Booking from "./pages/Booking";
+import WalkwayCleaning from "./pages/WalkwayCleaning";
 
 function Router() {
   return (
@@ -20,6 +21,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/driveway-cleaning" component={DrivewayCleaning} />
       <Route path="/deck-cleaning" component={DeckCleaning} />
+      <Route path="/walkway-cleaning" component={WalkwayCleaning} />
       <Route path="/siding-washing" component={SidingWashing} />
       <Route path="/vehicle-washing" component={VehicleWashing} />
       <Route path="/service-areas" component={ServiceAreas} />

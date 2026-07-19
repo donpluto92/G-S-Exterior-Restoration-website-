@@ -1,40 +1,53 @@
 import { useEffect } from "react";
+import { SEO_ROUTES, SITE_URL, schemasForRoute } from "./seo-config";
 
-export const SITE_URL = "https://gsrestoration.net";
-export const BUSINESS_NAME = "G&S Exterior Restoration LLC";
-export const BUSINESS_PHONE = "+13144670332";
-export const BUSINESS_PHONE_DISPLAY = "(314) 467-0332";
-export const BUSINESS_EMAIL = "contact@gsrestoration.net";
-export const BUSINESS_LOGO = `${SITE_URL}/images/gs-logo.png`;
-export const BUSINESS_IMAGE =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/hero-pressure-wash-5H7By3vYupAzNxdmLxcsg7.webp";
-
-export const SERVICE_AREAS = [
-  "Mexico, Missouri",
-];
+export {
+  areaServedSchema,
+  BUSINESS_EMAIL,
+  BUSINESS_LOGO,
+  BUSINESS_NAME,
+  BUSINESS_PHONE,
+  BUSINESS_PHONE_DISPLAY,
+  faqSchema,
+  INDEXABLE_ROUTES,
+  localBusinessSchema,
+  SEO_ROUTES,
+  serviceSchema,
+  SITE_URL,
+  websiteSchema,
+} from "./seo-config";
 
 type SeoOptions = {
-  title: string;
-  description: string;
   path?: string;
+  title?: string;
+  description?: string;
   image?: string;
+  imageAlt?: string;
   schema?: unknown | unknown[];
+  noIndex?: boolean;
 };
 
 const setMeta = (selector: string, attr: "content" | "href", value: string) => {
-  let el = document.head.querySelector(selector) as HTMLMetaElement | HTMLLinkElement | null;
+  let el = document.head.querySelector(selector) as
+    | HTMLMetaElement
+    | HTMLLinkElement
+    | null;
 
   if (!el) {
-    el = selector.startsWith('meta[property="')
-      ? document.createElement("meta")
-      : selector.startsWith('link[rel="')
-        ? document.createElement("link")
-        : document.createElement("meta");
+    el = selector.startsWith('link[rel="')
+      ? document.createElement("link")
+      : document.createElement("meta");
 
     if (selector.startsWith('meta[name="')) {
-      el.setAttribute("name", selector.match(/meta\[name="([^"]+)"/)?.[1] ?? "");
+      el.setAttribute(
+        "name",
+        selector.match(/meta\[name="([^"]+)"/)?.[1] ?? ""
+      );
     } else if (selector.startsWith('meta[property="')) {
-      el.setAttribute("property", selector.match(/meta\[property="([^"]+)"/)?.[1] ?? "");
+      el.setAttribute(
+        "property",
+        selector.match(/meta\[property="([^"]+)"/)?.[1] ?? ""
+      );
     } else if (selector.startsWith('link[rel="')) {
       el.setAttribute("rel", selector.match(/link\[rel="([^"]+)"/)?.[1] ?? "");
     }
@@ -45,129 +58,102 @@ const setMeta = (selector: string, attr: "content" | "href", value: string) => {
   el.setAttribute(attr, value);
 };
 
+const removeMeta = (selector: string) => {
+  document.head.querySelector(selector)?.remove();
+};
+
 const normalizeImage = (image: string) => {
   if (image.startsWith("http")) return image;
   return `${SITE_URL}${image.startsWith("/") ? image : `/${image}`}`;
 };
 
-export function useSeo({ title, description, path = "/", image = BUSINESS_IMAGE, schema }: SeoOptions) {
-  useEffect(() => {
-    const canonicalUrl = `${SITE_URL}${path === "/" ? "" : path}`;
-    const imageUrl = normalizeImage(image);
+export function useSeo({
+  path = "/",
+  title,
+  description,
+  image,
+  imageAlt,
+  schema,
+  noIndex = false,
+}: SeoOptions) {
+  const routeSeo = SEO_ROUTES[path];
+  const resolvedTitle = routeSeo?.title ?? title ?? "G&S Exterior Restoration";
+  const resolvedDescription = routeSeo?.description ?? description ?? "";
+  const resolvedImage = normalizeImage(
+    routeSeo?.image ?? image ?? "/images/gs-logo.png"
+  );
+  const resolvedImageAlt =
+    routeSeo?.imageAlt ?? imageAlt ?? "G&S Exterior Restoration";
+  const resolvedSchema =
+    schema ?? (routeSeo ? schemasForRoute(routeSeo) : undefined);
 
-    document.title = title;
-    setMeta('meta[name="description"]', "content", description);
-    setMeta('meta[name="robots"]', "content", "index, follow, max-image-preview:large");
+  useEffect(() => {
+    const canonicalUrl = path === "/" ? `${SITE_URL}/` : `${SITE_URL}${path}`;
+
+    document.title = resolvedTitle;
+    setMeta('meta[name="description"]', "content", resolvedDescription);
+    setMeta(
+      'meta[name="robots"]',
+      "content",
+      noIndex ? "noindex, nofollow" : "index, follow, max-image-preview:large"
+    );
     setMeta('link[rel="canonical"]', "href", canonicalUrl);
-    setMeta('meta[property="og:title"]', "content", title);
-    setMeta('meta[property="og:description"]', "content", description);
+    setMeta('meta[property="og:title"]', "content", resolvedTitle);
+    setMeta('meta[property="og:description"]', "content", resolvedDescription);
     setMeta('meta[property="og:type"]', "content", "website");
     setMeta('meta[property="og:url"]', "content", canonicalUrl);
-    setMeta('meta[property="og:image"]', "content", imageUrl);
-    setMeta('meta[property="og:site_name"]', "content", BUSINESS_NAME);
+    setMeta('meta[property="og:image"]', "content", resolvedImage);
+    setMeta('meta[property="og:image:alt"]', "content", resolvedImageAlt);
+    setMeta('meta[property="og:locale"]', "content", "en_US");
+    setMeta(
+      'meta[property="og:site_name"]',
+      "content",
+      "G&S Exterior Restoration LLC"
+    );
     setMeta('meta[name="twitter:card"]', "content", "summary_large_image");
-    setMeta('meta[name="twitter:title"]', "content", title);
-    setMeta('meta[name="twitter:description"]', "content", description);
-    setMeta('meta[name="twitter:image"]', "content", imageUrl);
+    setMeta('meta[name="twitter:title"]', "content", resolvedTitle);
+    setMeta('meta[name="twitter:description"]', "content", resolvedDescription);
+    setMeta('meta[name="twitter:image"]', "content", resolvedImage);
+    setMeta('meta[name="twitter:image:alt"]', "content", resolvedImageAlt);
 
-    document.head.querySelectorAll('script[data-seo-schema="true"]').forEach((el) => el.remove());
-    if (schema) {
+    if (routeSeo?.imageWidth && routeSeo.imageHeight) {
+      setMeta(
+        'meta[property="og:image:width"]',
+        "content",
+        String(routeSeo.imageWidth)
+      );
+      setMeta(
+        'meta[property="og:image:height"]',
+        "content",
+        String(routeSeo.imageHeight)
+      );
+    } else {
+      removeMeta('meta[property="og:image:width"]');
+      removeMeta('meta[property="og:image:height"]');
+    }
+
+    document.head
+      .querySelectorAll('script[data-seo-schema="true"]')
+      .forEach(el => el.remove());
+
+    if (resolvedSchema && !noIndex) {
       const script = document.createElement("script");
       script.type = "application/ld+json";
       script.dataset.seoSchema = "true";
-      script.textContent = JSON.stringify(Array.isArray(schema) ? schema : [schema]);
+      script.textContent = JSON.stringify(
+        Array.isArray(resolvedSchema) ? resolvedSchema : [resolvedSchema]
+      );
       document.head.appendChild(script);
     }
-  }, [title, description, path, image, schema]);
-}
-
-export const areaServedSchema = SERVICE_AREAS.map((name) => ({
-  "@type": "Place",
-  name,
-}));
-
-export const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": `${SITE_URL}/#localbusiness`,
-  name: BUSINESS_NAME,
-  url: SITE_URL,
-  logo: BUSINESS_LOGO,
-  image: BUSINESS_IMAGE,
-  telephone: BUSINESS_PHONE,
-  email: BUSINESS_EMAIL,
-  priceRange: "$$",
-  foundingDate: "2026",
-  description:
-    "Owner-operated exterior cleaning in Mexico, Missouri for siding, concrete, decks, patios, walkways, and vehicles.",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Mexico",
-    addressRegion: "MO",
-    addressCountry: "US",
-  },
-  areaServed: areaServedSchema,
-  sameAs: [
-    "https://www.facebook.com/profile.php?id=61584880772273",
-    "https://instagram.com/gandrestoration",
-  ],
-  makesOffer: [
-    "Driveway Cleaning",
-    "Deck Cleaning",
-    "Siding & Exterior Washing",
-    "Vehicle Washing",
-    "Pressure Washing",
-    "Soft Washing",
-  ].map((name) => ({
-    "@type": "Offer",
-    itemOffered: {
-      "@type": "Service",
-      name,
-      areaServed: areaServedSchema,
-    },
-  })),
-};
-
-export const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": `${SITE_URL}/#website`,
-  name: BUSINESS_NAME,
-  url: SITE_URL,
-  publisher: {
-    "@id": `${SITE_URL}/#localbusiness`,
-  },
-};
-
-export function serviceSchema(name: string, description: string, path: string, image: string) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": `${SITE_URL}${path}#service`,
-    name,
-    description,
-    url: `${SITE_URL}${path}`,
-    image: normalizeImage(image),
-    provider: {
-      "@id": `${SITE_URL}/#localbusiness`,
-    },
-    areaServed: areaServedSchema,
-    serviceType: name,
-  };
-}
-
-export function faqSchema(faqs: { question: string; answer: string }[], path: string) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "@id": `${SITE_URL}${path}#faq`,
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
+  }, [
+    noIndex,
+    path,
+    resolvedDescription,
+    resolvedImage,
+    resolvedImageAlt,
+    resolvedSchema,
+    resolvedTitle,
+    routeSeo?.imageHeight,
+    routeSeo?.imageWidth,
+  ]);
 }

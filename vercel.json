@@ -6,6 +6,24 @@
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/manus-storage/(.*)", "destination": "/api/manus-storage/$1" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/siding-washing",
+      "destination": "/siding-washing/index.html"
+    },
+    {
+      "source": "/driveway-cleaning",
+      "destination": "/driveway-cleaning/index.html"
+    },
+    { "source": "/deck-cleaning", "destination": "/deck-cleaning/index.html" },
+    {
+      "source": "/walkway-cleaning",
+      "destination": "/walkway-cleaning/index.html"
+    },
+    {
+      "source": "/vehicle-washing",
+      "destination": "/vehicle-washing/index.html"
+    },
+    { "source": "/service-areas", "destination": "/service-areas/index.html" },
+    { "source": "/booking", "destination": "/booking/index.html" }
   ]
 }

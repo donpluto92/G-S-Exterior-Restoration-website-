@@ -85,9 +85,6 @@ export default function Booking() {
   const calendarEmbedUrl = `${CALENDAR_EMBED_URL}&hl=${language}`;
 
   useSeo({
-    title: "Book an Exterior Cleaning Estimate in Mexico, Missouri | G&S",
-    description:
-      "Schedule a free on-site exterior cleaning estimate with owner-operated G&S Exterior Restoration in Mexico, Missouri.",
     path: "/booking",
     schema: localBusinessSchema,
   });
