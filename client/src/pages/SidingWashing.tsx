@@ -1,13 +1,14 @@
 import ServiceLayout from "@/components/ServiceLayout";
 
-const SIDING_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/siding-clean-dk8VDGPUe5sPbznsNs5D65.webp";
+const SIDING_IMG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/siding-clean-dk8VDGPUe5sPbznsNs5D65.webp";
 
 export default function SidingWashing() {
   return (
     <ServiceLayout
-      title="Siding & Exterior Washing"
+      title="House & Siding Washing"
       subtitle="Mexico, Missouri."
-      metaDescription="Owner-operated house washing and siding cleaning in Mexico, Missouri using surface-specific soft washing methods. Free estimates from G&S Exterior Restoration."
+      metaDescription="House and siding washing with lower-pressure, surface-specific methods for dirt and organic buildup. Owner-operated service based in Mexico, Missouri."
       heroImg={SIDING_IMG}
       heroFeature={{
         title: "Siding Washing Results",
@@ -29,42 +30,54 @@ export default function SidingWashing() {
         {
           step: "01",
           title: "Inspection & Quote",
-          description: "We assess the siding material, staining type, and overall condition to recommend the right cleaning solution and pressure level.",
+          description:
+            "We assess the siding material, staining type, and overall condition to recommend the right cleaning solution and pressure level.",
         },
         {
           step: "02",
           title: "Soft Wash Application",
-          description: "We apply an appropriate cleaning treatment for the surface and buildup, allow the needed dwell time, and rinse using controlled lower pressure.",
+          description:
+            "We apply an appropriate cleaning treatment for the surface and buildup, allow the needed dwell time, and rinse using controlled lower pressure.",
         },
         {
           step: "03",
           title: "Final Rinse & Review",
-          description: "We rinse the cleaned areas and review the result, including any oxidation, deep staining, fading, or previous damage that remains visible.",
+          description:
+            "We rinse the cleaned areas and review the result, including any oxidation, deep staining, fading, or previous damage that remains visible.",
         },
       ]}
       faqs={[
         {
-          question: "What's the difference between pressure washing and soft washing for siding?",
-          answer: "Soft washing relies on lower water pressure and a cleaning treatment selected for organic buildup. Siding condition, seams, paint, oxidation, and nearby openings are inspected before choosing the method.",
+          question:
+            "What's the difference between pressure washing and soft washing for siding?",
+          answer:
+            "Soft washing relies on lower water pressure and a cleaning treatment selected for organic buildup. Siding condition, seams, paint, oxidation, and nearby openings are inspected before choosing the method.",
         },
         {
           question: "Will the cleaning solution harm my plants or lawn?",
-          answer: "We identify nearby landscaping, pre-wet and rinse plants as conditions require, and manage the work area carefully. Please tell us about sensitive plants, gardens, ponds, or recent landscaping before service.",
+          answer:
+            "We identify nearby landscaping, pre-wet and rinse plants as conditions require, and manage the work area carefully. Please tell us about sensitive plants, gardens, ponds, or recent landscaping before service.",
         },
         {
           question: "How long does house washing take?",
-          answer: "Most single-story homes take 2–3 hours. Two-story homes or larger properties may take 3–5 hours. We'll give you a time estimate during the free quote.",
+          answer:
+            "Most single-story homes take 2–3 hours. Two-story homes or larger properties may take 3–5 hours. We'll give you a time estimate during the free quote.",
         },
         {
           question: "How often should I have my siding washed?",
-          answer: "Every 1–2 years is typical for most homes in Missouri. Homes with heavy tree coverage, north-facing walls, or high humidity may benefit from annual cleaning.",
+          answer:
+            "Every 1–2 years is typical for most homes in Missouri. Homes with heavy tree coverage, north-facing walls, or high humidity may benefit from annual cleaning.",
         },
       ]}
       relatedServices={[
-        { title: "Driveway Cleaning", href: "/driveway-cleaning" },
-        { title: "Deck Cleaning", href: "/deck-cleaning" },
-        { title: "Vehicle Washing", href: "/vehicle-washing" },
-        { title: "Service Areas", href: "/service-areas" },
+        {
+          title: "Driveway & Concrete Cleaning",
+          href: "/driveway-cleaning",
+        },
+        { title: "Deck & Patio Cleaning", href: "/deck-cleaning" },
+        { title: "Walkway Cleaning", href: "/walkway-cleaning" },
+        { title: "Vehicle & Fleet Washing", href: "/vehicle-washing" },
+        { title: "Service Area", href: "/service-areas" },
       ]}
     />
   );

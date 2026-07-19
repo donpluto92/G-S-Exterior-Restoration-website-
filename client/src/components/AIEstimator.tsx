@@ -130,25 +130,25 @@ const services: Array<{
 }> = [
   {
     id: "driveway",
-    label: "Driveway Cleaning",
+    label: "Driveway & Concrete Cleaning",
     hint: "Concrete, black streaks, oil spots",
     icon: Droplets,
   },
   {
     id: "deck",
-    label: "Deck Cleaning",
+    label: "Deck & Patio Cleaning",
     hint: "Wood, composite, prep for stain",
     icon: Layers,
   },
   {
     id: "siding",
-    label: "Siding Washing",
+    label: "House & Siding Washing",
     hint: "House wash, algae, mildew",
     icon: Home,
   },
   {
     id: "vehicle",
-    label: "Vehicle Washing",
+    label: "Vehicle & Fleet Washing",
     hint: "Fleet, work trucks, personal vehicles",
     icon: Car,
   },
@@ -160,7 +160,7 @@ const services: Array<{
   },
   {
     id: "walkway",
-    label: "Walkway Cleaning",
+    label: "Walkway & Sidewalk Cleaning",
     hint: "Sidewalks, paths, entrances",
     icon: Footprints,
   },

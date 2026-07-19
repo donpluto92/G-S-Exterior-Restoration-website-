@@ -2,9 +2,18 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { AlertCircle, Home } from "lucide-react";
 import { useLocation } from "wouter";
+import { useSeo } from "@/lib/seo";
 
 export default function NotFound() {
   const [, setLocation] = useLocation();
+
+  useSeo({
+    path: "/404",
+    title: "Page Not Found | G&S Exterior Restoration",
+    description:
+      "The requested page could not be found. Return to G&S Exterior Restoration for exterior-cleaning services and estimates.",
+    noIndex: true,
+  });
 
   const handleGoHome = () => {
     setLocation("/");

@@ -29,19 +29,16 @@ const areas = [
 ];
 
 const services = [
-  { title: "Driveway Cleaning", href: "/driveway-cleaning" },
-  { title: "Deck Cleaning", href: "/deck-cleaning" },
-  { title: "Siding & Exterior Washing", href: "/siding-washing" },
-  { title: "Vehicle Washing", href: "/vehicle-washing" },
+  { title: "House & Siding Washing", href: "/siding-washing" },
+  { title: "Driveway & Concrete Cleaning", href: "/driveway-cleaning" },
+  { title: "Deck & Patio Cleaning", href: "/deck-cleaning" },
+  { title: "Walkway & Sidewalk Cleaning", href: "/walkway-cleaning" },
+  { title: "Vehicle & Fleet Washing", href: "/vehicle-washing" },
 ];
 
 export default function ServiceAreas() {
   useSeo({
-    title: "Exterior Cleaning Service Availability | Mexico, Missouri",
-    description:
-      "G&S Exterior Restoration is an owner-operated exterior-cleaning company based in Mexico, Missouri. Travel availability depends on project size, distance, and scheduling.",
     path: "/service-areas",
-    image: HERO_IMG,
     schema: localBusinessSchema,
   });
 

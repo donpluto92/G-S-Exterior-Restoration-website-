@@ -76,15 +76,18 @@ const translations = {
     drivewayTitle: "Driveway & Concrete Cleaning",
     drivewayDesc:
       "Cleaning for concrete driveways, sidewalks, and common surface buildup, with stain treatment available when appropriate.",
+    walkwayTitle: "Walkway & Sidewalk Cleaning",
+    walkwayDesc:
+      "Cleaning for entry paths, sidewalks, and walkways with attention to buildup, drainage, nearby property, and surface condition.",
     deckTitle: "Deck & Patio Cleaning",
     deckDesc:
       "Cleaning for wood, composite, and patio surfaces using an approach selected for the material and current condition.",
     sidingTitle: "House & Siding Washing",
     sidingDesc:
       "Lower-pressure cleaning for siding and exterior surfaces, adjusted for the material, organic growth, access, and condition.",
-    vehicleTitle: "Vehicle Washing",
+    vehicleTitle: "Vehicle & Fleet Washing",
     vehicleDesc:
-      "Exterior washing for cars, trucks, and work vehicles with attention to the finish, visible buildup, and existing condition.",
+      "Exterior washing for cars, trucks, work vehicles, and small fleets with attention to the finish, access, and existing condition.",
     learnMore: "Learn More →",
     freeEstimate: "All Services Include a Free Estimate — No Obligation",
     aboutUs: "About Us",
@@ -184,15 +187,18 @@ const translations = {
     drivewayTitle: "Limpieza de Entradas y Concreto",
     drivewayDesc:
       "Limpieza de entradas, aceras y acumulación común en concreto, con tratamiento de manchas cuando sea apropiado.",
+    walkwayTitle: "Limpieza de Caminos y Aceras",
+    walkwayDesc:
+      "Limpieza de entradas peatonales, aceras y caminos con atención a la acumulación, drenaje, propiedad cercana y condición de la superficie.",
     deckTitle: "Limpieza de Terrazas y Patios",
     deckDesc:
       "Limpieza de madera, material compuesto y patios con un método elegido para el material y su condición actual.",
     sidingTitle: "Lavado de Casas y Revestimiento",
     sidingDesc:
       "Limpieza de menor presión para revestimiento y superficies exteriores, ajustada al material, crecimiento orgánico, acceso y condición.",
-    vehicleTitle: "Lavado de Vehículos",
+    vehicleTitle: "Lavado de Vehículos y Flotillas",
     vehicleDesc:
-      "Lavado exterior de autos, camionetas y vehículos de trabajo con atención al acabado, acumulación visible y condición existente.",
+      "Lavado exterior de autos, camionetas, vehículos de trabajo y flotillas pequeñas con atención al acabado, acceso y condición existente.",
     learnMore: "Aprende Más →",
     freeEstimate:
       "Todos los Servicios Incluyen una Estimación Gratuita — Sin Obligación",

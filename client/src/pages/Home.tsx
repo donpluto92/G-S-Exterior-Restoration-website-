@@ -24,6 +24,7 @@ import {
   Clock,
   Camera,
   UserRound,
+  Footprints,
 } from "lucide-react";
 import { Link } from "wouter";
 import { localBusinessSchema, useSeo, websiteSchema } from "@/lib/seo";
@@ -123,6 +124,14 @@ const services = [
     tag: null,
   },
   {
+    icon: Footprints,
+    href: "/walkway-cleaning",
+    titleKey: "walkwayTitle",
+    descKey: "walkwayDesc",
+    img: DRIVEWAY_IMG,
+    tag: null,
+  },
+  {
     icon: Car,
     href: "/vehicle-washing",
     titleKey: "vehicleTitle",
@@ -190,14 +199,7 @@ export default function HomePage() {
   const whyRef = useReveal();
   const contactRef = useReveal();
 
-  useSeo({
-    title: "Exterior Cleaning in Mexico, Missouri | G&S Exterior Restoration",
-    description:
-      "Owner-operated exterior cleaning in Mexico, Missouri for siding, concrete, decks, patios, walkways, and vehicles. Free estimates and photo quotes available.",
-    path: "/",
-    image: HERO_IMG,
-    schema: [localBusinessSchema, websiteSchema],
-  });
+  useSeo({ path: "/", schema: [localBusinessSchema, websiteSchema] });
 
   // Parallax on hero
   useEffect(() => {
@@ -421,7 +423,7 @@ export default function HomePage() {
           </div>
 
           {/* Services grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {services.map((service, i) => (
               <Link
                 key={service.titleKey}
@@ -999,7 +1001,7 @@ export default function HomePage() {
                         color: "oklch(0.65 0.04 155)",
                       }}
                     >
-                      Service Area
+                      Home Base
                     </div>
                     <div
                       className="text-xl font-bold"
@@ -1010,6 +1012,14 @@ export default function HomePage() {
                     >
                       Mexico, Missouri
                     </div>
+                    <Link href="/service-areas">
+                      <a
+                        className="mt-1 block text-xs underline-offset-4 hover:underline"
+                        style={{ color: "oklch(0.72 0.12 75)" }}
+                      >
+                        Check out-of-town project availability
+                      </a>
+                    </Link>
                   </div>
                 </div>
               </div>

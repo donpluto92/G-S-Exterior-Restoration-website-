@@ -17,7 +17,7 @@ const FAQ_DATA = [
   {
     question: "What services do you offer?",
     answer:
-      "We offer exterior cleaning services including driveway and concrete cleaning, deck and patio cleaning, siding washing, walkway cleaning, and exterior vehicle washing. All services include free estimates.",
+      "We offer house and siding washing, driveway and concrete cleaning, deck and patio cleaning, walkway and sidewalk cleaning, and exterior washing for vehicles and small fleets. All services include free estimates.",
   },
   {
     question: "Do you offer free estimates?",
@@ -42,7 +42,7 @@ const FAQ_DATA = [
   {
     question: "How quickly can you schedule?",
     answer:
-      "We work to accommodate your schedule. Many jobs can be scheduled within a few days. Contact us for specific availability.",
+      "Scheduling depends on the project, travel distance, weather, and current availability. Contact us with the property details so we can discuss timing.",
   },
 ];
 
