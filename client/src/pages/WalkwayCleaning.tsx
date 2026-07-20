@@ -1,7 +1,6 @@
 import ServiceLayout from "@/components/ServiceLayout";
 
-const WALKWAY_IMG =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/driveway-clean-miGtpBbYzGprrMxfiHWwZF.webp";
+const WALKWAY_IMG = "/images/walkway-cleaning.webp";
 
 export default function WalkwayCleaning() {
   return (

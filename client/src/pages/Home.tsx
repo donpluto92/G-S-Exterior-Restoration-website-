@@ -39,6 +39,7 @@ const DECK_IMG =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/deck-clean-gknHjniPv6K2enyENyo566.webp";
 const SIDING_IMG =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/siding-clean-dk8VDGPUe5sPbznsNs5D65.webp";
+const WALKWAY_IMG = "/images/walkway-cleaning.webp";
 const VEHICLE_IMG = "/images/vehicle-wash.jpg";
 
 const projectResults = [
@@ -129,7 +130,7 @@ const services = [
     href: "/walkway-cleaning",
     titleKey: "walkwayTitle",
     descKey: "walkwayDesc",
-    img: DRIVEWAY_IMG,
+    img: WALKWAY_IMG,
     tag: null,
   },
   {
