@@ -7,7 +7,7 @@ export default function CertificationBanner() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Verify G&S Exterior Restoration's Locally Owned and Operated certification"
-      className="mx-auto mb-8 block max-w-5xl overflow-hidden rounded-md border transition-transform hover:scale-[1.005] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-950 motion-reduce:transition-none motion-reduce:hover:transform-none"
+      className="mx-auto mb-8 block max-w-4xl overflow-hidden rounded-md border transition-transform hover:scale-[1.005] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-950 motion-reduce:transition-none motion-reduce:hover:transform-none"
       style={{
         borderColor: "oklch(0.72 0.12 75 / 0.35)",
         backgroundColor: "#efede8",
