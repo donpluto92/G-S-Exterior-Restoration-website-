@@ -88,8 +88,10 @@ export const SEO_ROUTES: Record<string, SeoRoute> = {
     title: "Walkway Cleaning in Mexico, Missouri | G&S",
     description:
       "Walkway and sidewalk cleaning for dirt, organic buildup, and common concrete discoloration. Free estimates from owner-operated G&S Exterior Restoration.",
-    image: DRIVEWAY_IMAGE,
-    imageAlt: "Concrete walkway and sidewalk cleaning",
+    image: "/images/walkway-cleaning.webp",
+    imageAlt: "Residential concrete sidewalk cleaning in progress",
+    imageWidth: 1536,
+    imageHeight: 1024,
     kind: "service",
     serviceName: "Walkway & Sidewalk Cleaning",
     changeFrequency: "monthly",
