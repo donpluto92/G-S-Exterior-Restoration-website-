@@ -1,7 +1,6 @@
 import ServiceLayout from "@/components/ServiceLayout";
 
-const DECK_IMG =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/deck-clean-gknHjniPv6K2enyENyo566.webp";
+const DECK_IMG = "/images/deck-pressure-washing.webp";
 
 export default function DeckCleaning() {
   return (

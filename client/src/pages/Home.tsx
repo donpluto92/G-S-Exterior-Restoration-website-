@@ -30,15 +30,11 @@ import {
 import { Link } from "wouter";
 import { localBusinessSchema, useSeo, websiteSchema } from "@/lib/seo";
 
-// Image URLs from generated assets
-const HERO_IMG =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/hero-pressure-wash-5H7By3vYupAzNxdmLxcsg7.webp";
-const DRIVEWAY_IMG =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/driveway-clean-miGtpBbYzGprrMxfiHWwZF.webp";
-const DECK_IMG =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/deck-clean-gknHjniPv6K2enyENyo566.webp";
-const SIDING_IMG =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/siding-clean-dk8VDGPUe5sPbznsNs5D65.webp";
+// Site-owned image assets avoid relying on expiring third-party URLs.
+const HERO_IMG = "/images/hero-pressure-washing.webp";
+const DRIVEWAY_IMG = "/images/driveway-cleaning.webp";
+const DECK_IMG = "/images/deck-pressure-washing.webp";
+const SIDING_IMG = "/images/siding-washing-before-after.webp";
 const WALKWAY_IMG = "/images/walkway-cleaning.webp";
 const VEHICLE_IMG = "/images/vehicle-wash.jpg";
 

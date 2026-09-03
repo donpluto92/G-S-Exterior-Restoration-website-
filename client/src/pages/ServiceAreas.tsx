@@ -13,8 +13,7 @@ import {
 import { Link } from "wouter";
 import { localBusinessSchema, useSeo } from "@/lib/seo";
 
-const HERO_IMG =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/hero-pressure-wash-5H7By3vYupAzNxdmLxcsg7.webp";
+const HERO_IMG = "/images/hero-pressure-washing.webp";
 
 const areas = [
   {

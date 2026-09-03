@@ -1,7 +1,6 @@
 import ServiceLayout from "@/components/ServiceLayout";
 
-const SIDING_IMG =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/siding-clean-dk8VDGPUe5sPbznsNs5D65.webp";
+const SIDING_IMG = "/images/siding-washing-before-after.webp";
 
 export default function SidingWashing() {
   return (

@@ -1,7 +1,6 @@
 import ServiceLayout from "@/components/ServiceLayout";
 
-const DRIVEWAY_IMG =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/driveway-clean-miGtpBbYzGprrMxfiHWwZF.webp";
+const DRIVEWAY_IMG = "/images/driveway-cleaning.webp";
 
 export default function DrivewayCleaning() {
   return (

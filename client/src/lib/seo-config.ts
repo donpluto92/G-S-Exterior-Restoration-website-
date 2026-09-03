@@ -5,8 +5,7 @@ export const BUSINESS_PHONE_DISPLAY = "(314) 467-0332";
 export const BUSINESS_EMAIL = "contact@gsrestoration.net";
 export const BUSINESS_LOGO = `${SITE_URL}/images/gs-logo.png`;
 
-const DRIVEWAY_IMAGE =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663635557924/ZNUNRNhUogzMzaRUqgDaXD/driveway-clean-miGtpBbYzGprrMxfiHWwZF.webp";
+const DRIVEWAY_IMAGE = "/images/driveway-cleaning.webp";
 
 export type SeoRoute = {
   path: string;
@@ -61,6 +60,8 @@ export const SEO_ROUTES: Record<string, SeoRoute> = {
       "Driveway and concrete cleaning for dirt, organic buildup, and common surface stains. Owner-operated service based in Mexico, Missouri.",
     image: DRIVEWAY_IMAGE,
     imageAlt: "Residential driveway and concrete cleaning",
+    imageWidth: 1200,
+    imageHeight: 900,
     kind: "service",
     serviceName: "Driveway & Concrete Cleaning",
     changeFrequency: "monthly",
