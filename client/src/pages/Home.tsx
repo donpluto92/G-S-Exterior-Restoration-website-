@@ -66,6 +66,15 @@ const projectResults = [
     width: 1200,
     height: 1200,
   },
+  {
+    title: "Exterior Siding Cleaning",
+    description:
+      "Heavy organic growth removed from tan siding for a brighter, cleaner exterior.",
+    image: "/images/tan-siding-before-after.webp",
+    alt: "Before and after exterior cleaning showing heavy organic growth removed from tan house siding",
+    width: 1080,
+    height: 1350,
+  },
 ];
 
 // Scroll reveal hook inline
@@ -706,7 +715,7 @@ export default function HomePage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
             {projectResults.map(project => (
               <figure
                 key={project.image}
