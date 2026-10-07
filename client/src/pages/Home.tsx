@@ -1147,8 +1147,8 @@ export default function HomePage() {
         <div className="container">
           <CertificationBanner />
 
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="text-center md:text-left">
+          <div className="flex flex-col items-center justify-center gap-6 text-center">
+            <div className="text-center">
               <div
                 className="text-xs tracking-widest uppercase"
                 style={{
@@ -1205,7 +1205,7 @@ export default function HomePage() {
 
             {/* Copyright */}
             <div
-              className="text-xs text-center md:text-right"
+              className="text-xs text-center"
               style={{
                 color: "oklch(0.55 0.04 155)",
                 fontFamily: "'Barlow', sans-serif",
